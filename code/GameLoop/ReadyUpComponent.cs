@@ -47,6 +47,8 @@ public sealed class ReadyUpComponent : Component
 	/// </summary>
 	[Property, InputAction, Group( "Setup" )] public string InputAction { get; set; } = "Run";
 
+	public int ReadyCount => ReadyPlayers.Count;
+
 	public void ToggleReady( int playerId )
 	{
 		if ( !ReadyPlayers.TryGetValue( playerId, out var _ ) )

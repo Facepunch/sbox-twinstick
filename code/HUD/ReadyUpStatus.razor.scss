@@ -64,10 +64,15 @@ ReadyUpStatus
     {
         bottom: 64px;
         position: absolute;
-        gap: 8px;
-        justify-content: center;
-        align-items: center;
-        align-content: stretch;
+        flex-direction: column;
+
+        .row
+        {
+            gap: 8px;
+            justify-content: center;
+            align-items: center;
+            align-content: stretch;
+        }
 
         label
         {

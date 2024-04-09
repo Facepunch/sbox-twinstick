@@ -20,21 +20,38 @@
     </div>
 
     <div class="hints">
-        <label>
-            Press
-        </label>
+        <div class="row">
+            <label>
+                Waiting for
+            </label>
 
-        <InputHint Action=@ReadyUpSystem.InputAction />
+            <label>
+                @(RequiredPlayers)
+            </label>
 
-        <label>
-            to ready up
-        </label>
+            <label>more player@(RequiredPlayers == 1 ? "" : "s")</label>
+        </div>
+
+        <div class="row">
+            <label>
+                Press
+            </label>
+
+            <InputHint Action=@ReadyUpSystem.InputAction />
+
+            <label>
+                to ready up
+            </label>
+        </div>
+
     </div>
 </root>
 
 @code
 {
     public ReadyUpComponent ReadyUpSystem { get; set; }
+
+    int RequiredPlayers => ReadyUpSystem.MinPlayers - ReadyUpSystem.ReadyCount;
 
     protected override int BuildHash()
     {

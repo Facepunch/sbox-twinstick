@@ -184,7 +184,7 @@
           "__guid": "9e36c9a7-79fe-4d41-bfbb-414e933875a7",
           "InputAction": "Run",
           "MaxPlayers": 4,
-          "MinPlayers": 1,
+          "MinPlayers": 2,
           "WaitingForInput": true
         },
         {
@@ -330,7 +330,7 @@
   },
   "Title": "Game Scene",
   "Description": "",
-  "LastSaved": "2024-04-09T15:15:31.491962\u002B01:00",
+  "LastSaved": "2024-04-09T15:23:15.9939559\u002B01:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []
