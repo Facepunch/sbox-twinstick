@@ -9,7 +9,12 @@
 
     <div class="break"></div>
 
-	<div class="button">Press @Input.GetButtonOrigin( "Jump" ).ToUpperInvariant() to play</div>
+	<div class="button">
+        <label>Press</label>
+        <InputHint Action="Jump" />
+
+        <label>to play</label>
+    </div>
 </root>
 
 @code
@@ -18,9 +23,16 @@
 
     protected override void OnUpdate()
     {
-        if ( Input.Pressed( "Jump" ) )
+        for ( int i = 0; i < 4; i++ )
         {
-            Play();
+            // Is anyone hitting the button?
+            using ( Input.PlayerScope( i ) )
+            {
+                if ( Input.Pressed( "Jump" ) )
+                {
+                    Play();
+                }
+            }
         }
     }
 
