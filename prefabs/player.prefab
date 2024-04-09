@@ -1,19 +1,24 @@
 {
   "RootObject": {
-    "__guid": "3c2490ef-54a0-49bb-8f13-490e40aa51d1",
-    "Name": "Player",
+    "__guid": "6d136054-63a2-4900-809d-213cb5ffac03",
+    "Name": "player",
     "Enabled": true,
     "NetworkMode": 2,
     "Components": [
       {
         "__type": "Twinstick.PlayerComponent",
-        "__guid": "84857313-47ec-4c6b-86c0-93781b5c5544",
-        "PlayerId": 0
+        "__guid": "cb2ce50d-5698-4450-9a2c-afa0cad21412",
+        "Acceleration": 50,
+        "MoveSpeed": 500,
+        "PlayerId": 0,
+        "Radius": 16,
+        "TurnSpeed": 20,
+        "Velocity": "0,0,0"
       }
     ],
     "Children": [
       {
-        "__guid": "2ce982f2-909c-477c-9468-508137833c13",
+        "__guid": "2d472146-56c1-4c16-bfb0-f699a4f93f18",
         "Name": "Body",
         "Scale": "0.5,0.5,0.5",
         "Enabled": true,
@@ -21,14 +26,39 @@
         "Components": [
           {
             "__type": "Sandbox.ModelRenderer",
-            "__guid": "bb7cf825-e278-488c-b3b6-a5c8926971e4",
+            "__guid": "2b2a685a-6a21-4690-b6a3-54f2bca81b25",
             "BodyGroups": 18446744073709551615,
             "RenderType": "On",
             "Tint": "0.88372,0.08632,0.08632,1"
           },
           {
             "__type": "Sandbox.BoxCollider",
-            "__guid": "41c64ed6-74b5-41c0-97f4-b0a9b8bf5751",
+            "__guid": "1e48f060-1f49-46f6-8cca-c34de976d5a8",
+            "Center": "0,0,0",
+            "IsTrigger": false,
+            "Scale": "50,50,50",
+            "Static": false
+          }
+        ]
+      },
+      {
+        "__guid": "a9936758-8fa7-40dd-9c16-bc8cfca7a71d",
+        "Name": "Arrow",
+        "Position": "13.98238,0,10.50743",
+        "Scale": "0.5,0.09341495,0.07772086",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "9847fd04-7ebb-4ced-ae87-3039d3c28e4c",
+            "BodyGroups": 18446744073709551615,
+            "RenderType": "On",
+            "Tint": "0.88372,0.08632,0.08632,1"
+          },
+          {
+            "__type": "Sandbox.BoxCollider",
+            "__guid": "1916d921-07d2-4834-b9f0-0d55ca9e9f7c",
             "Center": "0,0,0",
             "IsTrigger": false,
             "Scale": "50,50,50",

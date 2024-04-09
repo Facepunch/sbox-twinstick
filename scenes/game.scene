@@ -245,6 +245,7 @@
     {
       "__guid": "43b7b83f-16ae-4dcc-8a4d-1a81bf3ecec0",
       "Name": "Spawn Points",
+      "Position": "0,0,55.09144",
       "Enabled": true,
       "NetworkMode": 2,
       "Children": [
@@ -330,7 +331,7 @@
   },
   "Title": "Game Scene",
   "Description": "",
-  "LastSaved": "2024-04-09T15:23:15.9939559\u002B01:00",
+  "LastSaved": "2024-04-09T16:56:24.413519\u002B01:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []
