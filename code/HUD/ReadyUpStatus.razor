@@ -9,7 +9,8 @@
             {
                 <div class="player @(ReadyUpSystem.IsReady(i) ? "ready" : "")">
                     <div class="id">
-                        <label>P@(i + 1)</label>
+                        <div class="color" style="border: 2px solid @GetControllerColor(i)" />
+                        <label style="color: @GetControllerColor(i)">P@(i + 1)</label>
                     </div>
 
                     <label class="text">@(ReadyUpSystem.IsReady(i) ? "ready" : "not ready")</label>
@@ -21,27 +22,15 @@
 
     <div class="hints">
         <div class="row">
-            <label>
-                Waiting for
-            </label>
-
-            <label>
-                @(RequiredPlayers)
-            </label>
-
+            <label> Waiting for</label>
+            <label>@(RequiredPlayers)</label>
             <label>more player@(RequiredPlayers == 1 ? "" : "s")</label>
         </div>
 
         <div class="row">
-            <label>
-                Press
-            </label>
-
+            <label>Press</label>
             <InputHint Action=@ReadyUpSystem.InputAction />
-
-            <label>
-                to ready up
-            </label>
+            <label>to ready up</label>
         </div>
 
     </div>
@@ -52,6 +41,17 @@
     public ReadyUpComponent ReadyUpSystem { get; set; }
 
     int RequiredPlayers => ReadyUpSystem.MinPlayers - ReadyUpSystem.ReadyCount;
+
+    private Color[] ControllerColors = new[]
+    {
+        Color.Red,
+        Color.Green,
+        Color.Blue,
+        Color.White
+    };
+
+
+    string GetControllerColor(int i) => ControllerColors[i].Hex;
 
     protected override int BuildHash()
     {
