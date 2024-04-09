@@ -33,6 +33,14 @@
             <label>to ready up</label>
         </div>
 
+        @if ( ReadyUpSystem.ReadyCount > 0 )
+        {
+            <div class="row">
+                <label>Press</label>
+                <InputHint Action="View" />
+                <label>to force-start</label>
+            </div>
+        }
     </div>
 </root>
 
@@ -50,11 +58,26 @@
         Color.White
     };
 
-
-    string GetControllerColor(int i) => ControllerColors[i].Hex;
+    string GetControllerColor( int i ) => ControllerColors[i].Hex;
 
     protected override int BuildHash()
     {
         return System.HashCode.Combine( ReadyUpSystem.ReadyPlayers.Count );
+    }
+
+    public override void Tick()
+    {
+        for ( int i = 0; i < 4; i++ )
+        {
+            // Is anyone hitting the button?
+            using ( Input.PlayerScope( i ) )
+            {
+                if ( Input.Down( "View" ) )
+                {
+                    var gameManager = Game.ActiveScene.GetAllComponents<GameStateManager>().FirstOrDefault();
+                    gameManager.SetGameState( GameStateManager.GameState.Countdown );
+                }
+            }
+        }
     }
 }

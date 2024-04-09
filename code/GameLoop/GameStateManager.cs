@@ -1,6 +1,3 @@
-using System;
-using System.Reflection.Metadata.Ecma335;
-
 namespace Twinstick;
 
 /// <summary>
@@ -73,12 +70,6 @@ public sealed class GameStateManager : Component
 		if ( CurrentState != GameState.ReadyingPlayers ) return;
 
 		SetGameState( GameState.Countdown );
-
-		// Create the players
-		foreach ( var playerId in players )
-		{
-			PlayerSpawner.CreatePlayer( playerId );
-		}
 	}
 
 	private void OnMaxPlayersReached( int[] players )
@@ -108,6 +99,12 @@ public sealed class GameStateManager : Component
 	{
 		if ( @new == GameState.Countdown )
 		{
+			// Create the players
+			foreach ( var playerId in ReadyUpSystem.ReadyPlayers.Keys )
+			{
+				PlayerSpawner.CreatePlayer( playerId );
+			}
+
 			TimeUntilCountdown = 10;
 		}
 		if ( @new == GameState.Play )
