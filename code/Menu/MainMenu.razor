@@ -1,0 +1,32 @@
+@using Sandbox;
+@using Sandbox.UI;
+
+@inherits PanelComponent
+
+<root>
+    <div class="title">Twinstick Shooter</div>
+    <div class="subtitle">A game to test out local multiplayer.</div>
+
+    <div class="break"></div>
+
+	<div class="button">Press @Input.GetButtonOrigin( "Jump" ).ToUpperInvariant() to play</div>
+</root>
+
+@code
+{
+    [Property] public SceneFile SceneToPlay { get; set; }
+
+    protected override void OnUpdate()
+    {
+        if ( Input.Pressed( "Jump" ) )
+        {
+            Play();
+        }
+    }
+
+
+    void Play()
+    {
+        Game.ActiveScene.Load( SceneToPlay );
+    }
+}

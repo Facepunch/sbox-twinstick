@@ -1,0 +1,47 @@
+{
+  "RootObject": {
+    "__guid": "3c2490ef-54a0-49bb-8f13-490e40aa51d1",
+    "Name": "Player",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "Components": [
+      {
+        "__type": "Twinstick.PlayerComponent",
+        "__guid": "84857313-47ec-4c6b-86c0-93781b5c5544",
+        "PlayerId": 0
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "2ce982f2-909c-477c-9468-508137833c13",
+        "Name": "Body",
+        "Scale": "0.5,0.5,0.5",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "Sandbox.ModelRenderer",
+            "__guid": "bb7cf825-e278-488c-b3b6-a5c8926971e4",
+            "BodyGroups": 18446744073709551615,
+            "RenderType": "On",
+            "Tint": "0.88372,0.08632,0.08632,1"
+          },
+          {
+            "__type": "Sandbox.BoxCollider",
+            "__guid": "41c64ed6-74b5-41c0-97f4-b0a9b8bf5751",
+            "Center": "0,0,0",
+            "IsTrigger": false,
+            "Scale": "50,50,50",
+            "Static": false
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
+  "__references": []
+}

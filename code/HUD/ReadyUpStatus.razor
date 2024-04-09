@@ -1,0 +1,43 @@
+@namespace Twinstick
+@inherits Panel
+@attribute [StyleSheet]
+
+<root>
+    <div class="players">
+        <div class="container">
+            @for (int i = 0; i < ReadyUpSystem.MaxPlayers; i++)
+            {
+                <div class="player @(ReadyUpSystem.IsReady(i) ? "ready" : "")">
+                    <div class="id">
+                        <label>P@(i + 1)</label>
+                    </div>
+
+                    <label class="text">@(ReadyUpSystem.IsReady(i) ? "ready" : "not ready")</label>
+                </div>
+            }
+        </div>
+
+    </div>
+
+    <div class="hints">
+        <label>
+            Press
+        </label>
+
+        <InputHint Action=@ReadyUpSystem.InputAction />
+
+        <label>
+            to ready up
+        </label>
+    </div>
+</root>
+
+@code
+{
+    public ReadyUpComponent ReadyUpSystem { get; set; }
+
+    protected override int BuildHash()
+    {
+        return System.HashCode.Combine( ReadyUpSystem.ReadyPlayers.Count );
+    }
+}

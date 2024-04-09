@@ -1,0 +1,50 @@
+$theme: green;
+
+MainMenu
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #444;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+	flex-direction: column;
+	pointer-events: all;
+
+	.title
+	{
+		font-size: 25px;
+		font-family: Poppins;
+		color: #fff;
+	}
+
+	.subtitle
+	{
+		font-size: 18px;
+		font-family: Poppins;
+		font-weight: 400;
+		color: #fff;
+	}
+
+	.button
+	{
+		font-size: 23px;
+		font-family: Poppins;
+		color: #fff;
+
+		&:hover
+		{
+			color: $theme;
+			sound-in: ui.button.over;
+		}
+	}
+
+	.break
+	{
+		width: 128px;
+		height: 32px;
+	}
+}

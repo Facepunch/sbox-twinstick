@@ -1,0 +1,43 @@
+GameHUD
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+	border-radius: 20px;
+	flex-direction: column;
+
+	.title
+	{
+		font-size: 25px;
+		font-family: Poppins;
+		color: #fff;
+	}
+
+	.countdown
+	{
+		backdrop-filter: blur( 10px );
+		top: 64px;
+		position: absolute;
+		z-index: 999;
+		font-size: 25px;
+		font-family: Poppins;
+		color: #fff;
+		justify-content: center;
+		align-items: center;
+		border-radius: 60px;
+		background-image: linear-gradient( to right, rgba( black, 0.5 ), rgb(black, 0.2), rgba( black, 0.5 ) );
+		box-shadow: 0px 0px 0px rgb(182, 255, 0, 0.2);
+		padding: 8px 16px;
+		width: 200px;
+
+		label
+		{
+			text-shadow: 2px 2px 2px rgba( black, 0.5 );
+		}
+	}
+}

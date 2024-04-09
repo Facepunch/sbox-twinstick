@@ -1,0 +1,337 @@
+{
+  "__guid": "c67fc9bc-ba2b-48d0-b652-af8ffa7b1fd3",
+  "GameObjects": [
+    {
+      "__guid": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
+      "Name": "Sun",
+      "Rotation": "-0.0729315,0.4822396,0.1305433,0.8631827",
+      "Tags": "light_directional,light",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "Sandbox.DirectionalLight",
+          "__guid": "fd6ec6ee-9e68-4aa1-a704-a7f460009f32",
+          "FogMode": "Enabled",
+          "FogStrength": 1,
+          "LightColor": "0.94419,0.97767,1,1",
+          "Shadows": true,
+          "SkyColor": "0.2532,0.32006,0.35349,1"
+        }
+      ]
+    },
+    {
+      "__guid": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
+      "Name": "2D Skybox",
+      "Tags": "skybox",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "Sandbox.SkyBox2D",
+          "__guid": "5b511822-4497-4969-bf47-2d1e93eeddd8",
+          "SkyMaterial": "materials/skybox/light_test_sky_sunny03.vmat",
+          "Tint": "1,1,1,1"
+        },
+        {
+          "__type": "Sandbox.EnvmapProbe",
+          "__guid": "367e70b4-37fb-4fb7-bed3-58e6d72842b7",
+          "Texture": "textures/cubemaps/default2.vtex",
+          "Bounds": {
+            "Mins": "-512,-512,-512",
+            "Maxs": "512,512,512"
+          },
+          "DelayBetweenUpdates": 0.1,
+          "Feathering": 0.02,
+          "FrameInterval": 5,
+          "MaxDistance": 512,
+          "Projection": "Sphere",
+          "RenderDynamically": false,
+          "TintColor": "1,1,1,1",
+          "UpdateStrategy": "OnEnabled",
+          "ZFar": 4096,
+          "ZNear": 16
+        }
+      ]
+    },
+    {
+      "__guid": "6ad70641-3c6c-4402-9c85-9a4969af4764",
+      "Name": "Plane",
+      "Scale": "20,30,2",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "6befe42e-6c2b-453b-955b-f8c70340bf25",
+          "BodyGroups": 18446744073709551615,
+          "MaterialOverride": "materials/default.vmat",
+          "Model": "models/dev/plane.vmdl",
+          "RenderType": "On",
+          "Tint": "0.39546,0.51163,0.27128,1"
+        },
+        {
+          "__type": "Sandbox.BoxCollider",
+          "__guid": "20d0a05b-b58d-4f49-9d79-e8052487b688",
+          "Center": "0,0,-5",
+          "IsTrigger": false,
+          "Scale": "100,100,10",
+          "Static": false
+        }
+      ]
+    },
+    {
+      "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
+      "Name": "Camera",
+      "Position": "-0.00007776803,0.000000000008416578,622.9174",
+      "Rotation": "0.00000002652705,0.7071068,-0.00000002652705,0.7071068",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "Sandbox.CameraComponent",
+          "__guid": "08c82cbd-90f6-4f32-abf7-58d9b55cf8bc",
+          "BackgroundColor": "0.33333,0.46275,0.52157,1",
+          "ClearFlags": "All",
+          "FieldOfView": 60,
+          "IsMainCamera": true,
+          "Orthographic": true,
+          "OrthographicHeight": 1204,
+          "Priority": 1,
+          "RenderExcludeTags": "",
+          "RenderTags": "",
+          "TargetEye": "None",
+          "Viewport": "0,0,1,1",
+          "ZFar": 10000,
+          "ZNear": 10
+        },
+        {
+          "__type": "Sandbox.Bloom",
+          "__guid": "f1545e92-b407-4bee-9b9e-6ac228cec435",
+          "BloomColor": {
+            "color": [
+              {
+                "c": "1,1,1,1"
+              },
+              {
+                "t": 1,
+                "c": "1,1,1,1"
+              }
+            ],
+            "alpha": []
+          },
+          "BloomCurve": [
+            {
+              "y": 0.5
+            },
+            {
+              "x": 1,
+              "y": 1
+            }
+          ],
+          "Mode": "Additive",
+          "Strength": 0.5,
+          "Threshold": 0.5,
+          "ThresholdWidth": 0.5
+        },
+        {
+          "__type": "Sandbox.Tonemapping",
+          "__guid": "63602e63-a94c-48ef-a971-b3f74ebf9256",
+          "ExposureCompensation": 0,
+          "MaximumExposure": 2,
+          "MinimumExposure": 1,
+          "Rate": 1
+        },
+        {
+          "__type": "Sandbox.Sharpen",
+          "__guid": "de1f529d-ccf6-4fb5-b1e2-c1d8b5f0664b",
+          "Scale": 0.2
+        }
+      ]
+    },
+    {
+      "__guid": "60e1ff4e-a325-435d-b298-20484e2b3879",
+      "Name": "GameManager",
+      "Position": "21.18487,14.66469,14.19653",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "Twinstick.GameStateManager",
+          "__guid": "5c25a0df-eb91-4e70-991a-9103d3afa86c",
+          "CurrentState": "ReadyingPlayers",
+          "PlayerManager": {
+            "_type": "component",
+            "component_id": "cedc9af5-6e3f-4c38-80f9-d38fefd16f6b",
+            "go": "60e1ff4e-a325-435d-b298-20484e2b3879",
+            "component_type": "PlayerManager"
+          },
+          "PlayerSpawner": {
+            "_type": "component",
+            "component_id": "5a0784a7-df94-4c84-84da-840dacb6a71c",
+            "go": "60e1ff4e-a325-435d-b298-20484e2b3879",
+            "component_type": "PlayerSpawnerComponent"
+          },
+          "ReadyUpSystem": {
+            "_type": "component",
+            "component_id": "9e36c9a7-79fe-4d41-bfbb-414e933875a7",
+            "go": "60e1ff4e-a325-435d-b298-20484e2b3879",
+            "component_type": "ReadyUpComponent"
+          }
+        },
+        {
+          "__type": "Twinstick.ReadyUpComponent",
+          "__guid": "9e36c9a7-79fe-4d41-bfbb-414e933875a7",
+          "InputAction": "Run",
+          "MaxPlayers": 4,
+          "MinPlayers": 1,
+          "WaitingForInput": true
+        },
+        {
+          "__type": "Twinstick.PlayerSpawnerComponent",
+          "__guid": "5a0784a7-df94-4c84-84da-840dacb6a71c",
+          "GameManager": {
+            "_type": "component",
+            "component_id": "5c25a0df-eb91-4e70-991a-9103d3afa86c",
+            "go": "60e1ff4e-a325-435d-b298-20484e2b3879",
+            "component_type": "GameStateManager"
+          },
+          "PlayerPrefab": {
+            "_type": "gameobject",
+            "prefab": "prefabs/player.prefab"
+          }
+        },
+        {
+          "__type": "Twinstick.PlayerManager",
+          "__guid": "cedc9af5-6e3f-4c38-80f9-d38fefd16f6b"
+        }
+      ],
+      "Children": [
+        {
+          "__guid": "0e42fbe9-6fd3-4666-a1fc-7ba8f3253b6a",
+          "Name": "HUD",
+          "Position": "0,0,0",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "Components": [
+            {
+              "__type": "Twinstick.GameHUD",
+              "__guid": "e2d01e4b-a254-4b18-bcd9-1ef40f3829fe",
+              "GameManager": {
+                "_type": "component",
+                "component_id": "5c25a0df-eb91-4e70-991a-9103d3afa86c",
+                "go": "60e1ff4e-a325-435d-b298-20484e2b3879",
+                "component_type": "GameStateManager"
+              },
+              "ReadyUpSystem": {
+                "_type": "component",
+                "component_id": "9e36c9a7-79fe-4d41-bfbb-414e933875a7",
+                "go": "60e1ff4e-a325-435d-b298-20484e2b3879",
+                "component_type": "ReadyUpComponent"
+              }
+            },
+            {
+              "__type": "Sandbox.ScreenPanel",
+              "__guid": "ced10566-289e-45c3-b591-94a4b2c209fa",
+              "AutoScreenScale": true,
+              "Opacity": 1,
+              "Scale": 1,
+              "ZIndex": 100
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "__guid": "43b7b83f-16ae-4dcc-8a4d-1a81bf3ecec0",
+      "Name": "Spawn Points",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Children": [
+        {
+          "__guid": "3b04ce1d-8a54-4b5a-a24c-0cacab57d26c",
+          "Name": "Point",
+          "Position": "-297.8163,-319.0418,-0.00008385931",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "Components": [
+            {
+              "__type": "Sandbox.SpawnPoint",
+              "__guid": "2f4f5011-a547-4a7b-ba32-6a1706eb737c",
+              "Color": "0.8902,0.31765,0.05098,1"
+            }
+          ]
+        },
+        {
+          "__guid": "e3a3fb00-2639-469e-81f4-fc1f037a91a9",
+          "Name": "Point (1)",
+          "Position": "448.2776,348.3219,-0.00001314103",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "Components": [
+            {
+              "__type": "Sandbox.SpawnPoint",
+              "__guid": "226a5edd-81b5-422d-b986-a7ae5998b404",
+              "Color": "0.8902,0.31765,0.05098,1"
+            }
+          ]
+        },
+        {
+          "__guid": "64e11c34-8b24-47c7-827b-b96140d18095",
+          "Name": "Point (2)",
+          "Position": "450.0531,-336.8779,0.0007095374",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "Components": [
+            {
+              "__type": "Sandbox.SpawnPoint",
+              "__guid": "abc69b2e-f32e-4148-9553-f3ee50e0054f",
+              "Color": "0.8902,0.31765,0.05098,1"
+            }
+          ]
+        },
+        {
+          "__guid": "814d2177-77e4-4679-aef4-99279621441e",
+          "Name": "Point (3)",
+          "Position": "-326.2569,326.8099,0.0004430546",
+          "Enabled": true,
+          "NetworkMode": 2,
+          "Components": [
+            {
+              "__type": "Sandbox.SpawnPoint",
+              "__guid": "580cfd06-0ab9-4e08-9600-2142794eb3e2",
+              "Color": "0.8902,0.31765,0.05098,1"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "SceneProperties": {
+    "FixedUpdateFrequency": 50,
+    "Lerping": true,
+    "MaxFixedUpdates": 5,
+    "NetworkFrequency": 60,
+    "ThreadedAnimation": true,
+    "TimeScale": 1,
+    "UseFixedUpdate": true,
+    "NavMesh": {
+      "Enabled": false,
+      "IncludeStaticBodies": true,
+      "IncludeKeyframedBodies": true,
+      "EditorAutoUpdate": true,
+      "AgentHeight": 64,
+      "AgentRadius": 16,
+      "AgentStepSize": 18,
+      "AgentMaxSlope": 40,
+      "ExcludedBodies": "",
+      "IncludedBodies": ""
+    }
+  },
+  "Title": "Game Scene",
+  "Description": "",
+  "LastSaved": "2024-04-09T15:15:31.491962\u002B01:00",
+  "ResourceVersion": 1,
+  "__version": 1,
+  "__references": []
+}

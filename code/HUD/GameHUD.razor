@@ -1,0 +1,27 @@
+@namespace Twinstick
+@inherits PanelComponent
+
+<root>
+    @if ( GameManager.HasCountdown )
+    {
+        <div class="countdown">@Countdown</div>
+    }
+
+    @if ( GameManager.CurrentState == GameStateManager.GameState.ReadyingPlayers )
+    {
+        <ReadyUpStatus ReadyUpSystem=@ReadyUpSystem />
+    }
+</root>
+
+@code
+{
+    [Property] public GameStateManager GameManager { get; set; }
+    [Property] public ReadyUpComponent ReadyUpSystem { get; set; }
+
+    private string Countdown => System.TimeSpan.FromSeconds( GameManager.TimeUntilCountdown ).ToString( "mm\\:ss" );
+
+    protected override int BuildHash()
+    {
+        return System.HashCode.Combine( Countdown );
+    }
+}
