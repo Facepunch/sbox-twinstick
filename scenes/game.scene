@@ -295,14 +295,6 @@
       ]
     },
     {
-      "__guid": "bb350551-88ba-44b1-9c1b-4f7c9684e3c1",
-      "Name": "player",
-      "Position": "63.744,-57.16617,8",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "__Prefab": "prefabs/player.prefab"
-    },
-    {
       "__guid": "0aec3a1e-0332-4c5a-808e-014e1e4a8237",
       "Name": "Cubemap Fog",
       "Position": "-37.68263,85.71933,146.4176",
@@ -401,7 +393,7 @@
   },
   "Title": "Game Scene",
   "Description": "",
-  "LastSaved": "2024-04-10T16:28:40.8208487\u002B01:00",
+  "LastSaved": "2024-04-11T10:22:09.6470325\u002B01:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

@@ -6,24 +6,26 @@ namespace Twinstick;
 public sealed class GameStateManager : Component
 {
 	/// <summary>
-	/// What's our current state?
-	/// </summary>
-	[Property, Title( "Game State" )] public GameState CurrentState { get; private set; }
-
-	/// <summary>
 	/// The ready up system
 	/// </summary>
-	[Property] public ReadyUpComponent ReadyUpSystem { get; set; }
+	[Property, Group( "Setup" )] public ReadyUpComponent ReadyUpSystem { get; set; }
 
 	/// <summary>
 	/// The player spawner system
 	/// </summary>
-	[Property] public PlayerSpawnerComponent PlayerSpawner { get; set; }
+	[Property, Group( "Setup" )] public PlayerSpawnerComponent PlayerSpawner { get; set; }
 
 	/// <summary>
 	/// The player manager
 	/// </summary>
-	[Property] public PlayerManager PlayerManager { get; set; }
+	[Property, Group( "Setup" )] public PlayerManager PlayerManager { get; set; }
+
+	[Property, Group( "Development" )] public bool IsDevelopment { get; set; } = true;
+
+	/// <summary>
+	/// What's our current state?
+	/// </summary>
+	[Property, Title( "Game State" ), Group( "Data" )] public GameState CurrentState { get; private set; }
 
 	/// <summary>
 	/// Does the current game state have a countdown?
@@ -50,6 +52,12 @@ public sealed class GameStateManager : Component
 		ReadyUpSystem.OnMinPlayersReached	+= OnMinPlayersReached;
 		ReadyUpSystem.OnPlayerReady			+= OnPlayerReady;
 		ReadyUpSystem.OnMinPlayersReached	+= OnMaxPlayersReached;
+
+		if ( IsDevelopment )
+		{
+			SetGameState( GameState.Play );
+			CreatePlayers( 0, 1 );
+		}
 	}
 
 	protected override void OnDisabled()
@@ -62,6 +70,15 @@ public sealed class GameStateManager : Component
 	private void OnPlayerReady( int playerId, bool isReady )
 	{
 		Log.Info( $"Player {playerId} is {(isReady ? "ready" : "not ready")}" );
+	}
+
+	private void CreatePlayers( params int[] players )
+	{
+		// Create the players
+		foreach ( var playerId in players )
+		{
+			PlayerSpawner.CreatePlayer( playerId );
+		}
 	}
 
 	private void OnMinPlayersReached( int[] players )
@@ -99,12 +116,7 @@ public sealed class GameStateManager : Component
 	{
 		if ( @new == GameState.Countdown )
 		{
-			// Create the players
-			foreach ( var playerId in ReadyUpSystem.ReadyPlayers.Keys )
-			{
-				PlayerSpawner.CreatePlayer( playerId );
-			}
-
+			CreatePlayers( ReadyUpSystem.ReadyPlayers.Keys.ToArray() );
 			TimeUntilCountdown = 10;
 		}
 		if ( @new == GameState.Play )
