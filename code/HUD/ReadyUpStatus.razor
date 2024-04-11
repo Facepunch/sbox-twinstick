@@ -67,7 +67,7 @@
 
     public override void Tick()
     {
-        for ( int i = 0; i < 4; i++ )
+        for ( int i = 0; i < ReadyUpSystem.MaxPlayers; i++ )
         {
             // Is anyone hitting the button?
             using ( Input.PlayerScope( i ) )
