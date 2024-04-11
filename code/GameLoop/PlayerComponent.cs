@@ -56,6 +56,7 @@ public sealed class PlayerComponent : Component
 	}
 
 	Rotation TargetRotation;
+	Vector3 LookDirection;
 	void Turn()
 	{
 		var analogLook = Input.AnalogLook.AsVector3();
@@ -66,6 +67,8 @@ public sealed class PlayerComponent : Component
 		// Don't bother if we're not looking at anything
 		if ( direction.Length <= 0 )
 			return;
+
+		LookDirection = direction;
 
 		const float fwd = 100f;
 		var lookAt = Rotation.LookAt( direction * fwd );
@@ -152,11 +155,20 @@ public sealed class PlayerComponent : Component
 		Accelerate( WishVelocity );
 	}
 
+	private void ShootInput()
+	{
+		if ( Input.Down( "Attack1" ) )
+		{
+			Components.Get<ShootingComponent>( FindMode.EnabledInSelfAndDescendants )?.Fire( LookDirection );
+		}
+	}
+
 	protected override void OnFixedUpdate()
 	{
 		using var _ = ScopeInput();
 
 		MoveInput();
 		Move();
+		ShootInput();
 	}
 }
