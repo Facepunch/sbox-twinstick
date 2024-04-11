@@ -1,64 +1,41 @@
 {
   "RootObject": {
-    "__guid": "6d136054-63a2-4900-809d-213cb5ffac03",
+    "__guid": "649307b1-dede-4291-9977-b145451025af",
     "Name": "player",
     "Enabled": true,
     "NetworkMode": 2,
     "Components": [
       {
         "__type": "Twinstick.PlayerComponent",
-        "__guid": "cb2ce50d-5698-4450-9a2c-afa0cad21412",
+        "__guid": "ada5a52b-0f9f-4771-b65b-68140d43aeb7",
         "Acceleration": 50,
+        "BaseFriction": 10,
         "MoveSpeed": 500,
         "PlayerId": 0,
         "Radius": 16,
-        "TurnSpeed": 20,
-        "Velocity": "0,0,0"
+        "TurnSpeed": 20
       }
     ],
     "Children": [
       {
-        "__guid": "2d472146-56c1-4c16-bfb0-f699a4f93f18",
+        "__guid": "bf0fa544-d751-452d-8796-17de8f93bdd4",
         "Name": "Body",
-        "Scale": "0.5,0.5,0.5",
+        "Scale": "2,2,2",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
           {
             "__type": "Sandbox.ModelRenderer",
-            "__guid": "2b2a685a-6a21-4690-b6a3-54f2bca81b25",
+            "__guid": "aa98332d-ab20-4d72-b31b-936c8bed927b",
             "BodyGroups": 18446744073709551615,
+            "MaterialOverride": "materials/dev/reflectivity_90.vmat",
+            "Model": "assets/ships/craft_speeder_a.vmdl",
             "RenderType": "On",
-            "Tint": "0.88372,0.08632,0.08632,1"
+            "Tint": "0,0,0,1"
           },
           {
             "__type": "Sandbox.BoxCollider",
-            "__guid": "1e48f060-1f49-46f6-8cca-c34de976d5a8",
-            "Center": "0,0,0",
-            "IsTrigger": false,
-            "Scale": "50,50,50",
-            "Static": false
-          }
-        ]
-      },
-      {
-        "__guid": "a9936758-8fa7-40dd-9c16-bc8cfca7a71d",
-        "Name": "Arrow",
-        "Position": "13.98238,0,10.50743",
-        "Scale": "0.5,0.09341495,0.07772086",
-        "Enabled": true,
-        "NetworkMode": 2,
-        "Components": [
-          {
-            "__type": "Sandbox.ModelRenderer",
-            "__guid": "9847fd04-7ebb-4ced-ae87-3039d3c28e4c",
-            "BodyGroups": 18446744073709551615,
-            "RenderType": "On",
-            "Tint": "0.88372,0.08632,0.08632,1"
-          },
-          {
-            "__type": "Sandbox.BoxCollider",
-            "__guid": "1916d921-07d2-4834-b9f0-0d55ca9e9f7c",
+            "__guid": "ccbac80b-12d2-44aa-bc68-555f4d5bb1c1",
             "Center": "0,0,0",
             "IsTrigger": false,
             "Scale": "50,50,50",

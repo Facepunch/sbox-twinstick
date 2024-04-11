@@ -55,32 +55,6 @@
       ]
     },
     {
-      "__guid": "6ad70641-3c6c-4402-9c85-9a4969af4764",
-      "Name": "Plane",
-      "Scale": "20,30,2",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "Components": [
-        {
-          "__type": "Sandbox.ModelRenderer",
-          "__guid": "6befe42e-6c2b-453b-955b-f8c70340bf25",
-          "BodyGroups": 18446744073709551615,
-          "MaterialOverride": "materials/default.vmat",
-          "Model": "models/dev/plane.vmdl",
-          "RenderType": "On",
-          "Tint": "0.39546,0.51163,0.27128,1"
-        },
-        {
-          "__type": "Sandbox.BoxCollider",
-          "__guid": "20d0a05b-b58d-4f49-9d79-e8052487b688",
-          "Center": "0,0,-5",
-          "IsTrigger": false,
-          "Scale": "100,100,10",
-          "Static": false
-        }
-      ]
-    },
-    {
       "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
       "Name": "Camera",
       "Position": "-0.00007776803,0.000000000008416578,622.9174",
@@ -129,23 +103,36 @@
               "y": 1
             }
           ],
-          "Mode": "Additive",
-          "Strength": 0.5,
-          "Threshold": 0.5,
-          "ThresholdWidth": 0.5
+          "Mode": "Screen",
+          "Strength": 0.28,
+          "Threshold": 0.62,
+          "ThresholdWidth": 0.38
         },
         {
           "__type": "Sandbox.Tonemapping",
           "__guid": "63602e63-a94c-48ef-a971-b3f74ebf9256",
-          "ExposureCompensation": 0,
-          "MaximumExposure": 2,
-          "MinimumExposure": 1,
+          "ExposureCompensation": 0.53,
+          "MaximumExposure": 1.43,
+          "MinimumExposure": 1.5,
           "Rate": 1
         },
         {
           "__type": "Sandbox.Sharpen",
           "__guid": "de1f529d-ccf6-4fb5-b1e2-c1d8b5f0664b",
-          "Scale": 0.2
+          "Scale": 0.38
+        },
+        {
+          "__type": "Sandbox.MotionBlur",
+          "__guid": "1df1e299-df75-4018-b830-f78ec7c7355e",
+          "__enabled": false,
+          "Samples": 16,
+          "Scale": 0.05
+        },
+        {
+          "__type": "Sandbox.FilmGrain",
+          "__guid": "b6624041-0931-49f0-b935-0ecfa1c34351",
+          "Intensity": 0.02,
+          "Response": 0.5
         }
       ]
     },
@@ -183,7 +170,7 @@
           "__type": "Twinstick.ReadyUpComponent",
           "__guid": "9e36c9a7-79fe-4d41-bfbb-414e933875a7",
           "InputAction": "Run",
-          "MaxPlayers": 4,
+          "MaxPlayers": 2,
           "MinPlayers": 2,
           "WaitingForInput": true
         },
@@ -306,6 +293,89 @@
           ]
         }
       ]
+    },
+    {
+      "__guid": "bb350551-88ba-44b1-9c1b-4f7c9684e3c1",
+      "Name": "player",
+      "Position": "63.744,-57.16617,8",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "__Prefab": "prefabs/player.prefab"
+    },
+    {
+      "__guid": "0aec3a1e-0332-4c5a-808e-014e1e4a8237",
+      "Name": "Cubemap Fog",
+      "Position": "-37.68263,85.71933,146.4176",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "Sandbox.CubemapFog",
+          "__guid": "3bfa7427-5d1f-497b-b5ea-9136ae8b015b",
+          "__enabled": false,
+          "Blur": 0.29,
+          "EndDistance": 2048,
+          "FalloffExponent": 0.8000052,
+          "HeightExponent": 2,
+          "HeightStart": 0,
+          "HeightWidth": 0,
+          "Sky": "materials/skybox/light_test_sky_sunny02.vmat",
+          "StartDistance": 0
+        }
+      ]
+    },
+    {
+      "__guid": "04527242-9fa1-47a6-bc30-9cd0425ff517",
+      "Name": "2D Skybox",
+      "Position": "-37.68263,85.71933,146.4176",
+      "Tags": "skybox",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "Sandbox.SkyBox2D",
+          "__guid": "535d0c57-56cc-47c2-8464-123a4ff86951",
+          "SkyMaterial": "materials/skybox/light_test_sky_sunny.vmat",
+          "Tint": "1,1,1,1"
+        }
+      ]
+    },
+    {
+      "__guid": "0bf104c8-4a15-4e61-b305-cf9948d3ef82",
+      "Name": "Gradient Fog",
+      "Position": "-37.68263,85.71933,152.6209",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "Sandbox.GradientFog",
+          "__guid": "9293ea96-c4b0-4c4c-a24f-21beb77e2719",
+          "Color": "0,0,0,1",
+          "EndDistance": 1024,
+          "FalloffExponent": 1,
+          "Height": 5000,
+          "StartDistance": 512,
+          "VerticalFalloffExponent": 1
+        }
+      ]
+    },
+    {
+      "__guid": "ad18a618-e09e-43f1-9425-826f2fa2bc48",
+      "Name": "Cube",
+      "Position": "1390.834,-543.6668,-219.1329",
+      "Scale": "150,150,1",
+      "Enabled": true,
+      "NetworkMode": 2,
+      "Components": [
+        {
+          "__type": "Sandbox.ModelRenderer",
+          "__guid": "dee64e8b-2cc9-4b74-8526-f91fcd8dae1c",
+          "BodyGroups": 18446744073709551615,
+          "Model": "models/dev/box.vmdl",
+          "RenderType": "On",
+          "Tint": "0.20928,0.16896,0.33023,1"
+        }
+      ]
     }
   ],
   "SceneProperties": {
@@ -331,7 +401,7 @@
   },
   "Title": "Game Scene",
   "Description": "",
-  "LastSaved": "2024-04-09T16:56:24.413519\u002B01:00",
+  "LastSaved": "2024-04-10T16:28:40.8208487\u002B01:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []
