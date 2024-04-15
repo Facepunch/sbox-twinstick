@@ -80,12 +80,10 @@
             "FireRate": 0.2,
             "ProjectilePrefab": {
               "_type": "gameobject",
-              "prefab": "prefabs/bullet.prefab"
+              "prefab": "assets/prefabs/bullet.prefab"
             },
-            "ShootSound": "sounds/weapons/laser_shoot.sound",
-            "TimeSinceLastFire": {
-              "Relative": 1962.567
-            }
+            "ShootSound": "assets/sounds/weapons/laser_shoot.sound",
+            "TimeSinceLastFire": {}
           }
         ]
       }

@@ -11,7 +11,7 @@
         {
           "__type": "MainMenu",
           "__guid": "fa3ab7e3-85cd-48ef-a427-1bd8f9b88a4e",
-          "SceneToPlay": "scenes/game.scene"
+          "SceneToPlay": "assets/scenes/game.scene"
         },
         {
           "__type": "Sandbox.ScreenPanel",
@@ -47,7 +47,7 @@
   },
   "Title": "Game Scene",
   "Description": "",
-  "LastSaved": "2024-04-09T13:21:15.8905744\u002B01:00",
+  "LastSaved": "2024-04-15T19:17:12.8653829\u002B01:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

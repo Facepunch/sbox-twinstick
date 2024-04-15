@@ -5,9 +5,9 @@
   "Decibels": 70,
   "SelectionMode": "Random",
   "Sounds": [
-    "sounds/ui/ui_button_1.vsnd",
-    "sounds/ui/ui_button_2.vsnd",
-    "sounds/ui/ui_button_3.vsnd"
+    "assets/sounds/ui/ui_button_1.vsnd",
+    "assets/sounds/ui/ui_button_2.vsnd",
+    "assets/sounds/ui/ui_button_3.vsnd"
   ],
   "Occlusion": true,
   "Reflections": true,
