@@ -38,8 +38,8 @@
           "__guid": "367e70b4-37fb-4fb7-bed3-58e6d72842b7",
           "Texture": "textures/cubemaps/default2.vtex",
           "Bounds": {
-            "Mins": "-512,-512,-512",
-            "Maxs": "512,512,512"
+            "Mins": "-5000,-5000,-512",
+            "Maxs": "5000,5000,512"
           },
           "DelayBetweenUpdates": 0.1,
           "Feathering": 0.02,
@@ -57,8 +57,8 @@
     {
       "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
       "Name": "Camera",
-      "Position": "-0.00007776803,0.000000000008416578,622.9174",
-      "Rotation": "0.00000002652705,0.7071068,-0.00000002652705,0.7071068",
+      "Position": "-0.0006160085,0.00004222622,2583.727",
+      "Rotation": "0.00000002652706,0.7071068,-0.00000002652706,0.7071068",
       "Enabled": true,
       "NetworkMode": 2,
       "Components": [
@@ -133,6 +133,19 @@
           "__guid": "b6624041-0931-49f0-b935-0ecfa1c34351",
           "Intensity": 0.02,
           "Response": 0.5
+        },
+        {
+          "__type": "CameraManager",
+          "__guid": "83f5d4d1-f843-4cdd-8360-0f5d1b2cee03",
+          "Camera": {
+            "_type": "component",
+            "component_id": "08c82cbd-90f6-4f32-abf7-58d9b55cf8bc",
+            "go": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
+            "component_type": "CameraComponent"
+          },
+          "DampTime": 0.2,
+          "MinSize": 1000,
+          "ScreenEdge": 750
         }
       ]
     },
@@ -296,28 +309,6 @@
       ]
     },
     {
-      "__guid": "0aec3a1e-0332-4c5a-808e-014e1e4a8237",
-      "Name": "Cubemap Fog",
-      "Position": "-37.68263,85.71933,146.4176",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "Components": [
-        {
-          "__type": "Sandbox.CubemapFog",
-          "__guid": "3bfa7427-5d1f-497b-b5ea-9136ae8b015b",
-          "__enabled": false,
-          "Blur": 0.29,
-          "EndDistance": 2048,
-          "FalloffExponent": 0.8000052,
-          "HeightExponent": 2,
-          "HeightStart": 0,
-          "HeightWidth": 0,
-          "Sky": "materials/skybox/light_test_sky_sunny02.vmat",
-          "StartDistance": 0
-        }
-      ]
-    },
-    {
       "__guid": "04527242-9fa1-47a6-bc30-9cd0425ff517",
       "Name": "2D Skybox",
       "Position": "-37.68263,85.71933,146.4176",
@@ -334,29 +325,9 @@
       ]
     },
     {
-      "__guid": "0bf104c8-4a15-4e61-b305-cf9948d3ef82",
-      "Name": "Gradient Fog",
-      "Position": "-37.68263,85.71933,152.6209",
-      "Enabled": true,
-      "NetworkMode": 2,
-      "Components": [
-        {
-          "__type": "Sandbox.GradientFog",
-          "__guid": "9293ea96-c4b0-4c4c-a24f-21beb77e2719",
-          "Color": "0,0,0,1",
-          "EndDistance": 1024,
-          "FalloffExponent": 1,
-          "Height": 5000,
-          "StartDistance": 512,
-          "VerticalFalloffExponent": 1
-        }
-      ]
-    },
-    {
       "__guid": "ad18a618-e09e-43f1-9425-826f2fa2bc48",
       "Name": "Cube",
-      "Position": "1390.834,-543.6668,-219.1329",
-      "Scale": "150,150,1",
+      "Scale": "300,300,1",
       "Enabled": true,
       "NetworkMode": 2,
       "Components": [
@@ -394,7 +365,7 @@
   },
   "Title": "Game Scene",
   "Description": "",
-  "LastSaved": "2024-04-11T14:37:39.3135651\u002B01:00",
+  "LastSaved": "2024-04-15T13:29:41.806502\u002B01:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []
