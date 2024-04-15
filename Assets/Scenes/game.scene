@@ -146,6 +146,10 @@
           "DampTime": 0.2,
           "MinSize": 100,
           "ScreenEdge": 750
+        },
+        {
+          "__type": "Sandbox.Highlight",
+          "__guid": "2bce9b9c-cb96-41cd-956e-400724ffc465"
         }
       ]
     },
@@ -365,7 +369,7 @@
   },
   "Title": "Game Scene",
   "Description": "",
-  "LastSaved": "2024-04-15T19:17:06.3321055\u002B01:00",
+  "LastSaved": "2024-04-15T19:24:26.3744324\u002B01:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

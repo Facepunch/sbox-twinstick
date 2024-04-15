@@ -1,6 +1,7 @@
 public sealed class PlayerBodyComponent : Component
 {
 	[Property] public ModelRenderer Renderer { get; set; }
+	[Property] public HighlightOutline Outliner { get; set; }
 
 	static private Color[] PlayerColors = new[]
 	{
@@ -12,6 +13,7 @@ public sealed class PlayerBodyComponent : Component
 
 	internal void SetPlayerId( int playerId )
 	{
-		Renderer.Tint = PlayerColors[playerId];
+		Outliner.Color = PlayerColors[playerId];
+		Outliner.InsideColor = Outliner.Color.WithAlpha( 0.25f );
 	}
 }
