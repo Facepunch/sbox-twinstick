@@ -6,6 +6,8 @@ public partial class ShootingComponent : Component
 	[Property] public float FireRate { get; set; } = 0.1f;
 	[Property] public TimeSince TimeSinceLastFire { get; set; } = 1f;
 
+	[Property] public SoundEvent ShootSound { get; set; }
+
 	protected bool CanFire()
 	{
 		return TimeSinceLastFire > FireRate;
@@ -35,5 +37,7 @@ public partial class ShootingComponent : Component
 			projectile.SetOwner( GameObject );
 			projectile.SetDirection( direction.Normal );
 		}
+
+		var snd = Sound.Play( ShootSound, Transform.Position );
 	}
 }

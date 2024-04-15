@@ -1,19 +1,19 @@
 {
   "RootObject": {
-    "__guid": "54619f6f-57b7-4f83-9d68-9bec46220400",
+    "__guid": "bc57eb5b-8196-42ae-9067-6d90152e8a67",
     "Name": "player",
     "Enabled": true,
     "NetworkMode": 2,
     "Components": [
       {
         "__type": "Twinstick.PlayerComponent",
-        "__guid": "f0ef599f-a91b-4c8a-8580-f4e0518b0c64",
+        "__guid": "d982ace9-37dc-4577-bcc0-80cc6f7437fe",
         "Acceleration": 50,
         "BaseFriction": 10,
         "Body": {
           "_type": "component",
-          "component_id": "75428809-7d43-4f49-b54c-77f56ce15818",
-          "go": "c8ef6b63-94f6-471d-89f7-3c3297112143",
+          "component_id": "8894e624-de18-4681-bc75-85833d06b09b",
+          "go": "a95bc717-1236-4c91-bb12-300b58b85a0e",
           "component_type": "PlayerBodyComponent"
         },
         "MoveSpeed": 500,
@@ -23,7 +23,7 @@
       },
       {
         "__type": "Sandbox.SphereCollider",
-        "__guid": "7a476695-0d2e-4ea8-ac6b-5bd2c94fd05e",
+        "__guid": "8ff71987-0cd8-46b7-b012-29a7ed11e9ff",
         "Center": "0,0,0",
         "IsTrigger": true,
         "Radius": 30,
@@ -32,7 +32,7 @@
     ],
     "Children": [
       {
-        "__guid": "c8ef6b63-94f6-471d-89f7-3c3297112143",
+        "__guid": "a95bc717-1236-4c91-bb12-300b58b85a0e",
         "Name": "Body",
         "Scale": "2,2,2",
         "Enabled": true,
@@ -40,7 +40,7 @@
         "Components": [
           {
             "__type": "Sandbox.ModelRenderer",
-            "__guid": "27e54552-8bd2-46df-aa30-0a6883b4caf5",
+            "__guid": "f701d2bd-e3f6-483b-9ef9-1ff928c70f0a",
             "BodyGroups": 18446744073709551615,
             "MaterialOverride": "materials/dev/reflectivity_90.vmat",
             "Model": "assets/ships/craft_speeder_a.vmdl",
@@ -49,7 +49,7 @@
           },
           {
             "__type": "Sandbox.BoxCollider",
-            "__guid": "91c1297f-814a-4221-9ee6-31344523e0d8",
+            "__guid": "653304cd-f262-4cd9-bdea-0f22179f4274",
             "Center": "0,0,0",
             "IsTrigger": false,
             "Scale": "50,50,50",
@@ -57,18 +57,18 @@
           },
           {
             "__type": "PlayerBodyComponent",
-            "__guid": "75428809-7d43-4f49-b54c-77f56ce15818",
+            "__guid": "8894e624-de18-4681-bc75-85833d06b09b",
             "Renderer": {
               "_type": "component",
-              "component_id": "27e54552-8bd2-46df-aa30-0a6883b4caf5",
-              "go": "c8ef6b63-94f6-471d-89f7-3c3297112143",
+              "component_id": "f701d2bd-e3f6-483b-9ef9-1ff928c70f0a",
+              "go": "a95bc717-1236-4c91-bb12-300b58b85a0e",
               "component_type": "ModelRenderer"
             }
           }
         ]
       },
       {
-        "__guid": "ca8b07e5-2ea3-4499-8a26-cfc3a3b0c928",
+        "__guid": "69f0889e-a5eb-47f8-bca1-3fb923e5ee68",
         "Name": "Shooting",
         "Position": "40.06812,0,0",
         "Enabled": true,
@@ -76,14 +76,15 @@
         "Components": [
           {
             "__type": "Twinstick.ShootingComponent",
-            "__guid": "ebdd5340-8034-4eba-b2b2-e187abe88266",
+            "__guid": "2d197fb5-a0e2-4728-80b5-ff2ee561fce2",
             "FireRate": 0.2,
             "ProjectilePrefab": {
               "_type": "gameobject",
               "prefab": "prefabs/bullet.prefab"
             },
+            "ShootSound": "sounds/weapons/laser_shoot.sound",
             "TimeSinceLastFire": {
-              "Relative": 847.3998
+              "Relative": 1962.567
             }
           }
         ]
