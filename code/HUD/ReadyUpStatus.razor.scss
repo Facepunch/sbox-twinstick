@@ -33,6 +33,22 @@ ReadyUpStatus
             align-items: center;
             transition: all 0.3s ease;
             height: 96px;
+            opacity: 1;
+
+            &:intro
+            {
+                transition: all 1s ease;
+                transform: scale( 1.2 );
+                opacity: 0;
+            }
+
+
+            &:outro
+            {
+                transition: all 1s ease;
+                transform: scale( 1.2 );
+                opacity: 0;
+            }
 
             .id
             {

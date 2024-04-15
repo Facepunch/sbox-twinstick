@@ -5,7 +5,7 @@
 <root>
     <div class="players">
         <div class="container">
-            @for (int i = 0; i < ReadyUpSystem.MaxPlayers; i++)
+            @for (int i = 0; i < ReadyUpSystem.ControllerCount; i++)
             {
                 <div class="player @(ReadyUpSystem.IsReady(i) ? "ready" : "")">
                     <div class="id">
@@ -62,12 +62,12 @@
 
     protected override int BuildHash()
     {
-        return System.HashCode.Combine( ReadyUpSystem.ReadyPlayers.Count );
+        return System.HashCode.Combine( ReadyUpSystem.ReadyPlayers.Count, ReadyUpSystem.ControllerCount );
     }
 
     public override void Tick()
     {
-        for ( int i = 0; i < ReadyUpSystem.MaxPlayers; i++ )
+        for ( int i = 0; i < ReadyUpSystem.ControllerCount; i++ )
         {
             // Is anyone hitting the button?
             using ( Input.PlayerScope( i ) )

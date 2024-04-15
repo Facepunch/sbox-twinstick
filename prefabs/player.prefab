@@ -1,15 +1,21 @@
 {
   "RootObject": {
-    "__guid": "9713e31f-3fca-4f45-87ad-727a6d15d4b3",
+    "__guid": "54619f6f-57b7-4f83-9d68-9bec46220400",
     "Name": "player",
     "Enabled": true,
     "NetworkMode": 2,
     "Components": [
       {
         "__type": "Twinstick.PlayerComponent",
-        "__guid": "b684b2e3-3e4c-4ac9-8b74-186514004ca3",
+        "__guid": "f0ef599f-a91b-4c8a-8580-f4e0518b0c64",
         "Acceleration": 50,
         "BaseFriction": 10,
+        "Body": {
+          "_type": "component",
+          "component_id": "75428809-7d43-4f49-b54c-77f56ce15818",
+          "go": "c8ef6b63-94f6-471d-89f7-3c3297112143",
+          "component_type": "PlayerBodyComponent"
+        },
         "MoveSpeed": 500,
         "PlayerId": 0,
         "Radius": 16,
@@ -17,7 +23,7 @@
       },
       {
         "__type": "Sandbox.SphereCollider",
-        "__guid": "27f639f8-dc8e-4245-89a4-524efc224c53",
+        "__guid": "7a476695-0d2e-4ea8-ac6b-5bd2c94fd05e",
         "Center": "0,0,0",
         "IsTrigger": true,
         "Radius": 30,
@@ -26,7 +32,7 @@
     ],
     "Children": [
       {
-        "__guid": "7daf88df-7a5a-40fc-831d-a81f037dccfa",
+        "__guid": "c8ef6b63-94f6-471d-89f7-3c3297112143",
         "Name": "Body",
         "Scale": "2,2,2",
         "Enabled": true,
@@ -34,25 +40,35 @@
         "Components": [
           {
             "__type": "Sandbox.ModelRenderer",
-            "__guid": "d6e37c42-1cad-4e2a-9702-4651ad6f182e",
+            "__guid": "27e54552-8bd2-46df-aa30-0a6883b4caf5",
             "BodyGroups": 18446744073709551615,
             "MaterialOverride": "materials/dev/reflectivity_90.vmat",
             "Model": "assets/ships/craft_speeder_a.vmdl",
             "RenderType": "On",
-            "Tint": "0,0,0,1"
+            "Tint": "1,1,1,1"
           },
           {
             "__type": "Sandbox.BoxCollider",
-            "__guid": "e1a44a87-ed43-4bb9-95da-5e3c7c274206",
+            "__guid": "91c1297f-814a-4221-9ee6-31344523e0d8",
             "Center": "0,0,0",
             "IsTrigger": false,
             "Scale": "50,50,50",
             "Static": false
+          },
+          {
+            "__type": "PlayerBodyComponent",
+            "__guid": "75428809-7d43-4f49-b54c-77f56ce15818",
+            "Renderer": {
+              "_type": "component",
+              "component_id": "27e54552-8bd2-46df-aa30-0a6883b4caf5",
+              "go": "c8ef6b63-94f6-471d-89f7-3c3297112143",
+              "component_type": "ModelRenderer"
+            }
           }
         ]
       },
       {
-        "__guid": "3ae9f639-2a63-4dca-87e3-4f01ebe0070d",
+        "__guid": "ca8b07e5-2ea3-4499-8a26-cfc3a3b0c928",
         "Name": "Shooting",
         "Position": "40.06812,0,0",
         "Enabled": true,
@@ -60,15 +76,14 @@
         "Components": [
           {
             "__type": "Twinstick.ShootingComponent",
-            "__guid": "1fe9fc5b-7498-465f-a298-61ea3942ac5c",
+            "__guid": "ebdd5340-8034-4eba-b2b2-e187abe88266",
             "FireRate": 0.2,
             "ProjectilePrefab": {
               "_type": "gameobject",
               "prefab": "prefabs/bullet.prefab"
             },
             "TimeSinceLastFire": {
-              "Absolute": 16869.393,
-              "Relative": 1419.3496
+              "Relative": 847.3998
             }
           }
         ]

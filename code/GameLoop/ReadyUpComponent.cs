@@ -47,6 +47,8 @@ public sealed class ReadyUpComponent : Component
 	/// </summary>
 	[Property, InputAction, Group( "Setup" )] public string InputAction { get; set; } = "Run";
 
+	public float ControllerCount => MathF.Min( Input.ControllerCount, MaxPlayers );
+
 	public int ReadyCount => ReadyPlayers.Count;
 
 	public void ToggleReady( int playerId )
@@ -93,7 +95,7 @@ public sealed class ReadyUpComponent : Component
 	protected override void OnUpdate()
 	{
 		// Go through, set the input scope, listen for input
-		for ( int i = 0; i < MaxPlayers; i++ )
+		for ( int i = 0; i < ControllerCount; i++ )
 		{
 			using ( Input.PlayerScope( i ) )
 			{

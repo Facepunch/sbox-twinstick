@@ -22,6 +22,8 @@ public sealed class PlayerComponent : Component
 
 	[Property, Group( "Movement" )] public float BaseFriction { get; set; } = 10f;
 
+	[Property] public PlayerBodyComponent Body { get; set; }
+
 	/// <summary>
 	/// The bounds of the player.
 	/// </summary>
@@ -46,6 +48,8 @@ public sealed class PlayerComponent : Component
 	public void SetPlayer( int playerId )
 	{
 		PlayerId = playerId;
+
+		Body.SetPlayerId( playerId );
 	}
 
 	protected override void OnUpdate()
