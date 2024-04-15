@@ -44,7 +44,7 @@
         "__type": "Sandbox.SphereCollider",
         "__guid": "2cc0ec56-eccf-426f-a5a5-3855c2906b75",
         "Center": "0,0,0",
-        "IsTrigger": true,
+        "IsTrigger": false,
         "Radius": 30,
         "Static": false
       }
@@ -110,7 +110,7 @@
             },
             "ShootSound": "assets/sounds/weapons/laser_shoot.sound",
             "TimeSinceLastFire": {
-              "Relative": 2870.953
+              "Relative": 3352.8237
             }
           }
         ]

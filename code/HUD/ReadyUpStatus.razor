@@ -50,12 +50,12 @@
 
     int RequiredPlayers => ReadyUpSystem.MinPlayers - ReadyUpSystem.ReadyCount;
 
-    private Color[] ControllerColors = new[]
+    private Dictionary<int, Color> ControllerColors => GameStateManager.Instance.PlayerManager?.PlayerColors ?? new()
     {
-        Color.Red,
-        Color.Green,
-        Color.Blue,
-        Color.White
+       { 0, Color.White },
+       { 1, Color.White },
+       { 2, Color.White },
+       { 3, Color.White },
     };
 
     string GetControllerColor( int i ) => ControllerColors[i].Hex;

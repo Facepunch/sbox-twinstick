@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace Twinstick;
 
 /// <summary>
@@ -5,6 +7,14 @@ namespace Twinstick;
 /// </summary>
 public partial class PlayerManager : Component
 {
+	/// <summary>
+	/// A list of player colors we'll use in multiple systems across the game.
+	/// </summary>
+	[Property] public Dictionary<int, Color> PlayerColors { get; set; }
+
+	/// <summary>
+	/// A list of current players.
+	/// </summary>
 	public List<Player> Players { get; set; } = new();
 
 	/// <summary>
@@ -39,6 +49,9 @@ public partial class PlayerManager : Component
 		Players.Remove( player );
 	}
 
+	/// <summary>
+	/// Clears out all the players in the game.
+	/// </summary>
 	public void Clear()
 	{
 		foreach ( var player in Players )
@@ -49,9 +62,24 @@ public partial class PlayerManager : Component
 		Players.Clear();
 	}
 
+	/// <summary>
+	/// A player. They could be a networked player, or a local one FROM a networked player.
+	/// </summary>
 	public class Player
 	{
+		/// <summary>
+		/// The owning connection's SteamId
+		/// </summary>
+		public long OwningSteamId { get; set; }
+
+		/// <summary>
+		/// The player's index. Unique to an OwningSteamId
+		/// </summary>
 		public int Index { get; set; }
+
+		/// <summary>
+		/// What GameObject is our player controlling?
+		/// </summary>
 		public GameObject GameObject { get; set; }
 	}
 }

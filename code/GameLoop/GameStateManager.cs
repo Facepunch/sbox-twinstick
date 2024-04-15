@@ -47,6 +47,11 @@ public sealed class GameStateManager : Component
 	/// </summary>
 	public TimeUntil TimeUntilCountdown { get; private set; }
 
+	/// <summary>
+	/// The singleton instance of GameStateManager
+	/// </summary>
+	public static GameStateManager Instance { get; private set; }
+
 	protected override void OnEnabled()
 	{
 		ReadyUpSystem.OnMinPlayersReached	+= OnMinPlayersReached;
@@ -58,6 +63,8 @@ public sealed class GameStateManager : Component
 			SetGameState( GameState.Play );
 			CreatePlayers( 0, 1 );
 		}
+
+		Instance = this;
 	}
 
 	protected override void OnDisabled()
@@ -65,6 +72,9 @@ public sealed class GameStateManager : Component
 		ReadyUpSystem.OnMinPlayersReached -= OnMinPlayersReached;
 		ReadyUpSystem.OnPlayerReady		  -= OnPlayerReady;
 		ReadyUpSystem.OnMinPlayersReached -= OnMaxPlayersReached;
+
+		if ( Instance == this )
+			Instance = null;
 	}
 
 	private void OnPlayerReady( int playerId, bool isReady )

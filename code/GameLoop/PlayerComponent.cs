@@ -196,21 +196,6 @@ public sealed class PlayerComponent : Component, ILifeStateListener
 		}
 	}
 
-	protected override void OnEnabled()
-	{
-		HealthComponent.OnHealthChanged += OnHealthChanged;
-	}
-
-	protected override void OnDisabled()
-	{
-		HealthComponent.OnHealthChanged -= OnHealthChanged;
-	}
-
-	private void OnHealthChanged( float oldHealth, float newHealth )
-	{
-		Log.Info( $"Player HP changed: {newHealth}" );
-	}
-
 	protected override void OnFixedUpdate()
 	{
 		using var _ = ScopeInput();
@@ -231,13 +216,13 @@ public sealed class PlayerComponent : Component, ILifeStateListener
 		{
 			// TODO: disable input, don't render, don't collide
 			EnableInput = false;
-			Body.SetShouldRender( false );
+			Body?.SetShouldRender( false );
 		}
 		if ( after == HealthComponent.LifeState.Alive )
 		{
 			// TODO: enable input, render, collide
 			EnableInput = true;
-			Body.SetShouldRender( true );
+			Body?.SetShouldRender( true );
 		}
 	}
 }
