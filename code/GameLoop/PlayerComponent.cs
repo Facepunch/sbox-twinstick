@@ -214,15 +214,15 @@ public sealed class PlayerComponent : Component, ILifeStateListener
 	{
 		if ( after == HealthComponent.LifeState.Dead || after == HealthComponent.LifeState.Respawning )
 		{
-			// TODO: disable input, don't render, don't collide
 			EnableInput = false;
 			Body?.SetShouldRender( false );
+			MainCollider.Enabled = false;
 		}
 		if ( after == HealthComponent.LifeState.Alive )
 		{
-			// TODO: enable input, render, collide
 			EnableInput = true;
 			Body?.SetShouldRender( true );
+			MainCollider.Enabled = true;
 		}
 	}
 }
