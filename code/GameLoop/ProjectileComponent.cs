@@ -10,6 +10,11 @@ public partial class ProjectileComponent : Component, Component.ITriggerListener
 	[Property, Group( "Setup" )] public float Speed { get; set; }
 
 	/// <summary>
+	/// How long until this projectile is deleted?
+	/// </summary>
+	[Property, Group( "Setup" )] public float Lifetime { get; set; }
+
+	/// <summary>
 	/// Is this a homing projectile?
 	/// </summary>
 	[Property, Group( "Homing" )] public bool IsHoming { get; set; } = false;
@@ -51,6 +56,19 @@ public partial class ProjectileComponent : Component, Component.ITriggerListener
 	public void SetOwner( GameObject owner )
 	{
 		Owner = owner;
+	}
+
+	protected override void OnStart()
+	{
+		if ( Lifetime > 0f )
+		{
+			GameObject.DestroyAsync( Lifetime );
+		}
+	}
+
+	protected override void OnDestroy()
+	{
+		// TODO: Explosions
 	}
 
 	protected override void OnUpdate()

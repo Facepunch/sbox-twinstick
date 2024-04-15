@@ -57,12 +57,15 @@ public sealed class ReadyUpComponent : Component
 		{
 			ReadyPlayers.Add( playerId, true );
 			OnToggleReady( playerId, true );
+			Sound.Play( "ui_ready_up" );
 		}
 		else
 		{
 			ReadyPlayers.Remove( playerId );
 			OnToggleReady( playerId, false );
+			Sound.Play( "ui_unready" );
 		}
+
 	}
 
 	public bool IsReady( int playerId )

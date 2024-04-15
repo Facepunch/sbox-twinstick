@@ -16,6 +16,7 @@
         },
         "HomingPower": 10,
         "IsHoming": false,
+        "Lifetime": 1,
         "ModelRenderer": {
           "_type": "component",
           "component_id": "a4005fd4-44c0-412c-b706-1b434a5b894d",
