@@ -67,14 +67,6 @@
             "Tint": "1,1,1,1"
           },
           {
-            "__type": "Sandbox.BoxCollider",
-            "__guid": "9d4fede7-dc1b-4025-80d0-201bdd8d1990",
-            "Center": "0,0,0",
-            "IsTrigger": false,
-            "Scale": "50,50,50",
-            "Static": false
-          },
-          {
             "__type": "PlayerBodyComponent",
             "__guid": "931439e8-b622-4f09-959c-805ce3b1937a",
             "Outliner": {
@@ -118,7 +110,7 @@
             },
             "ShootSound": "assets/sounds/weapons/laser_shoot.sound",
             "TimeSinceLastFire": {
-              "Relative": 2447.635
+              "Relative": 2870.953
             }
           }
         ]
