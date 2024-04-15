@@ -16,10 +16,21 @@
           "go": "48d843ee-6c9e-465b-a79e-89b73af3c9d5",
           "component_type": "PlayerBodyComponent"
         },
+        "HealthComponent": {
+          "_type": "component",
+          "component_id": "69c24764-3631-40d0-993d-a0f6c83d7d02",
+          "go": "8c0578c0-c77c-4300-baf3-728b30eaf559",
+          "component_type": "HealthComponent"
+        },
         "MoveSpeed": 500,
         "PlayerId": 0,
         "Radius": 16,
         "TurnSpeed": 20
+      },
+      {
+        "__type": "Twinstick.HealthComponent",
+        "__guid": "69c24764-3631-40d0-993d-a0f6c83d7d02",
+        "Health": 100
       },
       {
         "__type": "Sandbox.SphereCollider",
@@ -99,7 +110,7 @@
             },
             "ShootSound": "assets/sounds/weapons/laser_shoot.sound",
             "TimeSinceLastFire": {
-              "Relative": 276.40872
+              "Relative": 967.6277
             }
           }
         ]

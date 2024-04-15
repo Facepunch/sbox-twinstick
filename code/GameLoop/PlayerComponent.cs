@@ -22,7 +22,8 @@ public sealed class PlayerComponent : Component
 
 	[Property, Group( "Movement" )] public float BaseFriction { get; set; } = 10f;
 
-	[Property] public PlayerBodyComponent Body { get; set; }
+	[Property, Group( "Components" )] public PlayerBodyComponent Body { get; set; }
+	[Property, Group( "Components" )] public HealthComponent HealthComponent { get; set; }
 
 	/// <summary>
 	/// The bounds of the player.
@@ -165,6 +166,23 @@ public sealed class PlayerComponent : Component
 		{
 			Components.Get<ShootingComponent>( FindMode.EnabledInSelfAndDescendants )?.Fire( LookDirection );
 		}
+	}
+
+	protected override void OnEnabled()
+	{
+		HealthComponent.OnHealthChanged += OnHealthChanged;
+	}
+
+	protected override void OnDisabled()
+	{
+		HealthComponent.OnHealthChanged -= OnHealthChanged;
+	}
+
+	private void OnHealthChanged( float oldHealth, float newHealth )
+	{
+		Log.Info( $"Player HP changed: {newHealth}" );
+
+		// TODO: at 0, kill the player, set their life state or something... don't feel like destroying the player
 	}
 
 	protected override void OnFixedUpdate()

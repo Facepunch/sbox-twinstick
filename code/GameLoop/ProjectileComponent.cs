@@ -35,6 +35,11 @@ public partial class ProjectileComponent : Component, Component.ITriggerListener
 	[Property, Group( "Components" )] public Collider Collider { get; set; }
 
 	/// <summary>
+	/// How much damage?
+	/// </summary>
+	[Property, Group( "Damage" )] public float Damage { get; set; } = 25f;
+
+	/// <summary>
 	/// Called when the projectile hits something.
 	/// </summary>
 	public Action<GameObject> OnProjectileHit { get; set; }
@@ -56,6 +61,11 @@ public partial class ProjectileComponent : Component, Component.ITriggerListener
 	public void SetOwner( GameObject owner )
 	{
 		Owner = owner;
+	}
+
+	public float CalculateDamage()
+	{
+		return Damage;
 	}
 
 	protected override void OnStart()
@@ -115,7 +125,11 @@ public partial class ProjectileComponent : Component, Component.ITriggerListener
 	{
 		var rootObject = obj.Root;
 
-		Log.Info( $"Collided with {rootObject}" );
+		// All recipients need this event
+		foreach ( var recipient in rootObject.Components.GetAll<IProjectileCollisionRecipient>( FindMode.EnabledInSelfAndDescendants ) )
+		{
+			recipient.OnProjectileCollision( this );
+		}
 
 		GameObject.Destroy();
 	}
