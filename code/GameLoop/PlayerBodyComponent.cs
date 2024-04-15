@@ -1,3 +1,5 @@
+using System;
+
 public sealed class PlayerBodyComponent : Component
 {
 	[Property] public ModelRenderer Renderer { get; set; }
@@ -15,5 +17,11 @@ public sealed class PlayerBodyComponent : Component
 	{
 		Outliner.Color = PlayerColors[playerId];
 		Outliner.InsideColor = Outliner.Color.WithAlpha( 0.25f );
+	}
+
+	internal void SetShouldRender( bool shouldRender )
+	{
+		Renderer.Enabled = shouldRender;
+		Outliner.Enabled = shouldRender;
 	}
 }

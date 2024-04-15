@@ -22,6 +22,12 @@
           "go": "8c0578c0-c77c-4300-baf3-728b30eaf559",
           "component_type": "HealthComponent"
         },
+        "MainCollider": {
+          "_type": "component",
+          "component_id": "2cc0ec56-eccf-426f-a5a5-3855c2906b75",
+          "go": "8c0578c0-c77c-4300-baf3-728b30eaf559",
+          "component_type": "SphereCollider"
+        },
         "MoveSpeed": 500,
         "PlayerId": 0,
         "Radius": 16,
@@ -30,7 +36,9 @@
       {
         "__type": "Twinstick.HealthComponent",
         "__guid": "69c24764-3631-40d0-993d-a0f6c83d7d02",
-        "Health": 100
+        "Health": 100,
+        "RespawnTime": 0,
+        "State": "Alive"
       },
       {
         "__type": "Sandbox.SphereCollider",
@@ -110,7 +118,7 @@
             },
             "ShootSound": "assets/sounds/weapons/laser_shoot.sound",
             "TimeSinceLastFire": {
-              "Relative": 967.6277
+              "Relative": 2447.635
             }
           }
         ]

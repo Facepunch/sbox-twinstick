@@ -126,7 +126,7 @@ public partial class ProjectileComponent : Component, Component.ITriggerListener
 		var rootObject = obj.Root;
 
 		// All recipients need this event
-		foreach ( var recipient in rootObject.Components.GetAll<IProjectileCollisionRecipient>( FindMode.EnabledInSelfAndDescendants ) )
+		foreach ( var recipient in rootObject.Components.GetAll<IProjectileCollisionListener>( FindMode.EnabledInSelfAndDescendants ) )
 		{
 			recipient.OnProjectileCollision( this );
 		}

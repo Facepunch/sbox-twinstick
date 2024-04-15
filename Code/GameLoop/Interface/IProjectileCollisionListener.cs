@@ -1,6 +1,6 @@
 namespace Twinstick;
 
-public interface IProjectileCollisionRecipient
+public interface IProjectileCollisionListener
 {
 	public void OnProjectileCollision( ProjectileComponent projectile );
 }

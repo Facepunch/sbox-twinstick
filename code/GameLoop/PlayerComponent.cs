@@ -2,7 +2,7 @@ using System;
 
 namespace Twinstick;
 
-public sealed class PlayerComponent : Component
+public sealed class PlayerComponent : Component, ILifeStateListener
 {
 	/// <summary>
 	/// What's this player's ID? Used for input.
@@ -14,16 +14,45 @@ public sealed class PlayerComponent : Component
 	/// </summary>
 	[Property, Group( "Movement" )] public float TurnSpeed { get; set; } = 20f;
 
+	/// <summary>
+	/// What's our base move speed (left stick)?
+	/// </summary>
 	[Property, Group( "Movement" )] public float MoveSpeed { get; set; } = 10f;
 
+	/// <summary>
+	/// How quickly can we get moving?
+	/// </summary>
 	[Property, Group( "Movement" )] public float Acceleration { get; set; } = 10f;
 
+	/// <summary>
+	/// For movement, how wide are we?
+	/// </summary>
 	[Range( 0, 200 ), Property, Group( "Movement" )] public float Radius { get; set; } = 16.0f;
 
+	/// <summary>
+	/// How slippery is our movement?
+	/// </summary>
 	[Property, Group( "Movement" )] public float BaseFriction { get; set; } = 10f;
 
+	/// <summary>
+	/// The body component, which handles visuals for the player.
+	/// </summary>
 	[Property, Group( "Components" )] public PlayerBodyComponent Body { get; set; }
+
+	/// <summary>
+	/// The player's health component.
+	/// </summary>
 	[Property, Group( "Components" )] public HealthComponent HealthComponent { get; set; }
+
+	/// <summary>
+	/// The main collider for the player.
+	/// </summary>
+	[Property, Group( "Components" )] public Collider MainCollider { get; set; }
+
+	/// <summary>
+	/// Is input enabled right now for this player?
+	/// </summary>
+	private bool EnableInput { get; set; } = true;
 
 	/// <summary>
 	/// The bounds of the player.
@@ -49,14 +78,12 @@ public sealed class PlayerComponent : Component
 	public void SetPlayer( int playerId )
 	{
 		PlayerId = playerId;
-
 		Body.SetPlayerId( playerId );
 	}
 
 	protected override void OnUpdate()
 	{
 		using var _ = ScopeInput();
-
 		Turn();
 	}
 
@@ -64,7 +91,7 @@ public sealed class PlayerComponent : Component
 	Vector3 LookDirection;
 	void Turn()
 	{
-		var analogLook = Input.AnalogLook.AsVector3();
+		var analogLook = EnableInput ? Input.AnalogLook.AsVector3() : 0;
 		analogLook = analogLook.Normal;
 
 		var direction = new Vector3( -analogLook.x, analogLook.y, 0 );
@@ -116,7 +143,6 @@ public sealed class PlayerComponent : Component
 		Velocity *= newspeed;
 	}
 
-
 	SceneTrace BuildTrace( Vector3 from, Vector3 to ) => BuildTrace( Scene.Trace.Ray( from, to ) );
 
 	SceneTrace BuildTrace( SceneTrace source ) => source.Size( BoundingBox ).WithoutTags( "player" ).IgnoreGameObjectHierarchy( GameObject );
@@ -146,7 +172,7 @@ public sealed class PlayerComponent : Component
 	Vector3 WishVelocity;
 	void MoveInput()
 	{
-		WishVelocity = Input.AnalogMove;
+		WishVelocity = EnableInput ? Input.AnalogMove : 0;
 
 		if ( !WishVelocity.IsNearlyZero() )
 		{
@@ -162,6 +188,8 @@ public sealed class PlayerComponent : Component
 
 	private void ShootInput()
 	{
+		if ( !EnableInput ) return;
+
 		if ( Input.Down( "Attack1" ) )
 		{
 			Components.Get<ShootingComponent>( FindMode.EnabledInSelfAndDescendants )?.Fire( LookDirection );
@@ -181,8 +209,6 @@ public sealed class PlayerComponent : Component
 	private void OnHealthChanged( float oldHealth, float newHealth )
 	{
 		Log.Info( $"Player HP changed: {newHealth}" );
-
-		// TODO: at 0, kill the player, set their life state or something... don't feel like destroying the player
 	}
 
 	protected override void OnFixedUpdate()
@@ -192,5 +218,26 @@ public sealed class PlayerComponent : Component
 		MoveInput();
 		Move();
 		ShootInput();
+	}
+
+	/// <summary>
+	/// Called when a health component's life state has changed, on this GameObject, or a child of the HealthComponent
+	/// </summary>
+	/// <param name="before"></param>
+	/// <param name="after"></param>
+	void ILifeStateListener.OnLifeStateChanged( HealthComponent.LifeState before, HealthComponent.LifeState after )
+	{
+		if ( after == HealthComponent.LifeState.Dead || after == HealthComponent.LifeState.Respawning )
+		{
+			// TODO: disable input, don't render, don't collide
+			EnableInput = false;
+			Body.SetShouldRender( false );
+		}
+		if ( after == HealthComponent.LifeState.Alive )
+		{
+			// TODO: enable input, render, collide
+			EnableInput = true;
+			Body.SetShouldRender( true );
+		}
 	}
 }

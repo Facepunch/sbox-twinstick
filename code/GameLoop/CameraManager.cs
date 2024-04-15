@@ -12,7 +12,16 @@ public sealed class CameraManager : Component
 	[Property] public float MinSize { get; set; } = 6.5f;
 	[Property] public CameraComponent Camera { get; set; }
 
-	public IEnumerable<GameTransform> Targets => Scene.GetAllComponents<PlayerComponent>().Select( x => x.Transform );
+	public IEnumerable<GameTransform> Targets
+	{
+		get
+		{
+			var players = Scene.GetAllComponents<PlayerComponent>();
+			// Only look for alive players
+			players = players.Where( x => x.Components.Get<HealthComponent>().State == HealthComponent.LifeState.Alive );
+			return players.Select( x => x.Transform );
+		}
+	}
 
 	private float ZoomSpeed;
 	private Vector3 MoveVelocity;
