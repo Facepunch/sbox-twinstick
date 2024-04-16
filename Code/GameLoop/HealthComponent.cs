@@ -4,6 +4,9 @@ namespace Twinstick;
 
 public partial class HealthComponent : Component, IProjectileCollisionListener
 {
+	[ConVar( "twinstick_debug_health" )]
+	private static bool IsDebugging { get; set; } = false;
+
 	/// <summary>
 	/// Can this object respawn?
 	/// </summary>
@@ -82,6 +85,14 @@ public partial class HealthComponent : Component, IProjectileCollisionListener
 		if ( dmgInfo.Damage > 0f )
 		{
 			Health -= dmgInfo.Damage;
+		}
+	}
+
+	protected override void OnUpdate()
+	{
+		if ( IsDebugging )
+		{
+			Gizmo.Draw.ScreenText( $"Health: {Health}", Scene.Camera.PointToScreenPixels( Transform.Position ), "Roboto", 12, TextFlag.Center );
 		}
 	}
 

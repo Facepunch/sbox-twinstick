@@ -121,7 +121,7 @@ public sealed class ShieldComponent : Component, IDamageListener
 
 		if ( IsDebugging )
 		{
-			Gizmo.Draw.ScreenText( $"Shield: {isActive}, {ShieldAmount}", Scene.Camera.PointToScreenPixels( Transform.Position ) );
+			Gizmo.Draw.ScreenText( $"Shield: {isActive}, {ShieldAmount}", Scene.Camera.PointToScreenPixels( Transform.Position ), "Roboto", 12, TextFlag.Center );
 		}
 	}
 
