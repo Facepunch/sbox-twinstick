@@ -46,6 +46,8 @@ public sealed class ShieldComponent : Component, IDamageListener, IProjectileCol
 		set
 		{
 			var old = IsActive;
+			if ( old == value ) return;
+
 			isActive = value;
 			ActiveChanged( old, isActive );
 		}
@@ -100,16 +102,18 @@ public sealed class ShieldComponent : Component, IDamageListener, IProjectileCol
 	{
 		using ( Player.ScopeInput() )
 		{
-			if ( Input.Pressed( "Attack2" ) )
+			if ( Input.Down( "Attack2" ) )
 			{
 				if ( CanToggleActive() )
 				{
-					// Flip the thing off
-					IsActive ^= true;
+					IsActive = true;
 				}
 			}
+			else
+			{
+				IsActive = false;
+			}
 		}
-
 	}
 
 	protected override void OnUpdate()

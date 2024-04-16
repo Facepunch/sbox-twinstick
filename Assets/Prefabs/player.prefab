@@ -110,7 +110,7 @@
             },
             "ShootSound": "assets/sounds/weapons/laser_shoot.sound",
             "TimeSinceLastFire": {
-              "Relative": 3526.992
+              "Relative": 3834.0525
             }
           }
         ]
