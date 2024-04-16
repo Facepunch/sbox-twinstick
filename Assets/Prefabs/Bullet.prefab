@@ -1,26 +1,28 @@
 {
   "RootObject": {
-    "__guid": "ad01fb26-31ca-42a9-968f-48671652f779",
+    "__guid": "3398f3bb-8ba2-425b-b252-e542d3d248e4",
     "Name": "bullet",
     "Enabled": true,
     "NetworkMode": 2,
     "Components": [
       {
         "__type": "Twinstick.ProjectileComponent",
-        "__guid": "5750f254-ed3f-46d0-a2e2-26df3a8a81b0",
+        "__guid": "03af83f3-e959-4e04-9b50-a798984b8e8f",
         "Collider": {
           "_type": "component",
-          "component_id": "4fb7a7cc-5067-409d-869e-83119cd41c25",
-          "go": "eb1d2683-a37f-46eb-b0ed-c49a8485feb9",
+          "component_id": "683efe2b-f2a3-422b-bd89-cb1e00816921",
+          "go": "fb7ae828-3144-485f-a776-036af5cc8557",
           "component_type": "BoxCollider"
         },
-        "HomingPower": 10,
-        "IsHoming": false,
+        "Damage": 25,
+        "HomingPower": 256,
+        "HomingRadius": 512,
+        "IsHoming": true,
         "Lifetime": 1,
         "ModelRenderer": {
           "_type": "component",
-          "component_id": "a4005fd4-44c0-412c-b706-1b434a5b894d",
-          "go": "eb1d2683-a37f-46eb-b0ed-c49a8485feb9",
+          "component_id": "ad06c2aa-0617-4dec-9b8d-659d75e103f5",
+          "go": "fb7ae828-3144-485f-a776-036af5cc8557",
           "component_type": "ModelRenderer"
         },
         "Speed": 1000
@@ -28,7 +30,7 @@
     ],
     "Children": [
       {
-        "__guid": "eb1d2683-a37f-46eb-b0ed-c49a8485feb9",
+        "__guid": "fb7ae828-3144-485f-a776-036af5cc8557",
         "Name": "Mesh",
         "Position": "12.02762,0,0",
         "Scale": "0.5,0.1,0.1",
@@ -37,14 +39,14 @@
         "Components": [
           {
             "__type": "Sandbox.ModelRenderer",
-            "__guid": "a4005fd4-44c0-412c-b706-1b434a5b894d",
+            "__guid": "ad06c2aa-0617-4dec-9b8d-659d75e103f5",
             "BodyGroups": 18446744073709551615,
             "RenderType": "On",
             "Tint": "1,0.09767,0.09767,1"
           },
           {
             "__type": "Sandbox.BoxCollider",
-            "__guid": "4fb7a7cc-5067-409d-869e-83119cd41c25",
+            "__guid": "683efe2b-f2a3-422b-bd89-cb1e00816921",
             "Center": "0,0,0",
             "IsTrigger": false,
             "Scale": "100,100,100",

@@ -24,6 +24,8 @@ public partial class ProjectileComponent : Component, Component.ITriggerListener
 	/// </summary>
 	[Property, Group( "Homing" )] public float HomingPower { get; set; } = 10f;
 
+	[Property, Group( "Homing" )] public float HomingRadius { get; set; } = 512f;
+
 	/// <summary>
 	/// The projectile's model renderer.
 	/// </summary>
@@ -86,8 +88,28 @@ public partial class ProjectileComponent : Component, Component.ITriggerListener
 		UpdateHeading();
 	}
 
+	void Home()
+	{
+		if ( IsHoming )
+		{
+			var targets = Scene.FindInPhysics( BBox.FromPositionAndSize( Transform.Position, HomingRadius ) ).Where( IsSuitableCollision );
+			var closestTarget = targets.OrderBy( x => x.Transform.Position.DistanceSquared( Transform.Position ) ).FirstOrDefault();
+
+			if ( closestTarget.IsValid() )
+			{
+				var direction = ( closestTarget.Transform.Position - Transform.Position ).Normal;
+				Velocity += direction * ( HomingPower * Time.Delta );
+				// TODO: clean this up
+				Velocity = Velocity.Normal * Speed * Time.Delta;
+			}
+		}
+	}
+
 	protected override void OnFixedUpdate()
 	{
+		Home();
+
+		// Move the projectile
 		Transform.Position += Velocity;
 
 		CheckCollisions();
@@ -117,6 +139,12 @@ public partial class ProjectileComponent : Component, Component.ITriggerListener
 		if ( obj == Owner ) return false;
 		if ( obj.Root == Owner ) return false;
 		if ( obj.Root == Owner.Root ) return false;
+
+		// Don't home to projectiles 
+		if ( obj.Root.Components.Get<ProjectileComponent>( FindMode.EnabledInSelfAndDescendants ) is { } projectile /* && projectile.Owner == Owner */ )
+		{
+			return false;
+		}
 
 		return true;
 	}

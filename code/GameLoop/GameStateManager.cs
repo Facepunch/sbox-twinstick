@@ -54,6 +54,8 @@ public sealed class GameStateManager : Component
 
 	protected override void OnEnabled()
 	{
+		Instance = this;
+
 		ReadyUpSystem.OnMinPlayersReached	+= OnMinPlayersReached;
 		ReadyUpSystem.OnPlayerReady			+= OnPlayerReady;
 		ReadyUpSystem.OnMinPlayersReached	+= OnMaxPlayersReached;
@@ -63,8 +65,6 @@ public sealed class GameStateManager : Component
 			SetGameState( GameState.Play );
 			CreatePlayers( 0, 1 );
 		}
-
-		Instance = this;
 	}
 
 	protected override void OnDisabled()
