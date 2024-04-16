@@ -21,11 +21,14 @@
     </div>
 
     <div class="hints">
-        <div class="row">
-            <label> Waiting for</label>
-            <label>@(RequiredPlayers)</label>
-            <label>more player@(RequiredPlayers == 1 ? "" : "s")</label>
-        </div>
+        @if ( RequiredPlayers > 0 )
+        {
+            <div class="row">
+                <label> Waiting for</label>
+                <label>@(RequiredPlayers)</label>
+                <label>more player@(RequiredPlayers == 1 ? "" : "s")</label>
+            </div>
+        }
 
         <div class="row">
             <label>Press</label>
@@ -38,7 +41,7 @@
             <div class="row">
                 <label>Press</label>
                 <InputHint Action="View" />
-                <label>to force-start</label>
+                <label>to start playing</label>
             </div>
         }
     </div>

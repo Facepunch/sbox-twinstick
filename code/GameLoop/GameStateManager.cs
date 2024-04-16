@@ -96,7 +96,8 @@ public sealed class GameStateManager : Component
 		// Don't care
 		if ( CurrentState != GameState.ReadyingPlayers ) return;
 
-		SetGameState( GameState.Countdown );
+		// Tick this if you want to start the game when everyone's ready automatically
+		// SetGameState( GameState.Countdown );
 	}
 
 	private void OnMaxPlayersReached( int[] players )
