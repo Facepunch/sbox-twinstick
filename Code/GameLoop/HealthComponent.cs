@@ -20,6 +20,8 @@ public partial class HealthComponent : Component, IProjectileCollisionListener
 
 	[Property] public RangedFloat HealthRange { get; set; } = new( 0, 100 );
 
+	public int Priority { get; set; } = 0;
+
 	/// <summary>
 	/// What's our health?
 	/// </summary>
@@ -90,7 +92,7 @@ public partial class HealthComponent : Component, IProjectileCollisionListener
 	}
 
 	// @IProjectileCollisionRecipient
-	public void OnProjectileCollision( ProjectileComponent projectile )
+	public bool OnProjectileCollision( ProjectileComponent projectile )
 	{
 		var dmgInfo = projectile.CalculateDamage();
 
@@ -103,6 +105,9 @@ public partial class HealthComponent : Component, IProjectileCollisionListener
 		{
 			Health -= dmgInfo.Damage;
 		}
+
+		// Do we destroy the collider?
+		return true;
 	}
 
 	protected override void OnUpdate()

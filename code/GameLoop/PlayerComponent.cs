@@ -88,7 +88,7 @@ public sealed class PlayerComponent : Component, ILifeStateListener
 	}
 
 	Rotation TargetRotation;
-	Vector3 LookDirection;
+	internal Vector3 LookDirection;
 	void Turn()
 	{
 		var analogLook = EnableInput ? Input.AnalogLook.AsVector3() : 0;

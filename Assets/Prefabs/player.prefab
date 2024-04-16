@@ -1,31 +1,31 @@
 {
   "RootObject": {
-    "__guid": "e722e19b-f593-4941-acb1-b2061acdd5fe",
+    "__guid": "8e6f7c2d-c513-4754-aecb-b38263195146",
     "Name": "player",
     "Enabled": true,
     "NetworkMode": 2,
     "Components": [
       {
         "__type": "Twinstick.PlayerComponent",
-        "__guid": "d16870cd-1320-4fae-ab51-ab2324c0c3d4",
+        "__guid": "033c2ab4-fc66-4572-9382-728463f72807",
         "Acceleration": 50,
         "BaseFriction": 10,
         "Body": {
           "_type": "component",
-          "component_id": "7ea839b1-c9dc-45f2-b804-2f6e1602cac9",
-          "go": "69e43b33-d0b0-479d-9974-f2b69ee51d9a",
+          "component_id": "5f59766c-9ea3-4137-9b8d-7123bd8b8222",
+          "go": "1db81159-e4eb-44da-b40c-d10f0db507e7",
           "component_type": "PlayerBodyComponent"
         },
         "HealthComponent": {
           "_type": "component",
-          "component_id": "d0c90e1b-15b2-46c4-8fe1-06be44263a1c",
-          "go": "e722e19b-f593-4941-acb1-b2061acdd5fe",
+          "component_id": "04db169a-ab44-4a8e-b074-79a755aee1fa",
+          "go": "8e6f7c2d-c513-4754-aecb-b38263195146",
           "component_type": "HealthComponent"
         },
         "MainCollider": {
           "_type": "component",
-          "component_id": "708ff94b-e944-4aa1-b936-5ddb607ae406",
-          "go": "e722e19b-f593-4941-acb1-b2061acdd5fe",
+          "component_id": "e9edb7a4-ef9e-49db-bb65-f8ecaa6fedfb",
+          "go": "8e6f7c2d-c513-4754-aecb-b38263195146",
           "component_type": "SphereCollider"
         },
         "MoveSpeed": 500,
@@ -35,55 +35,56 @@
       },
       {
         "__type": "Twinstick.HealthComponent",
-        "__guid": "d0c90e1b-15b2-46c4-8fe1-06be44263a1c",
+        "__guid": "04db169a-ab44-4a8e-b074-79a755aee1fa",
         "Health": 100,
+        "HealthRange": "0.00,100.00,1",
         "RespawnTime": 3,
         "State": "Alive"
       },
       {
         "__type": "Sandbox.SphereCollider",
-        "__guid": "708ff94b-e944-4aa1-b936-5ddb607ae406",
+        "__guid": "e9edb7a4-ef9e-49db-bb65-f8ecaa6fedfb",
         "Center": "0,0,0",
         "IsTrigger": false,
-        "Radius": 30,
+        "Radius": 35,
         "Static": false
       }
     ],
     "Children": [
       {
-        "__guid": "69e43b33-d0b0-479d-9974-f2b69ee51d9a",
+        "__guid": "1db81159-e4eb-44da-b40c-d10f0db507e7",
         "Name": "Body",
+        "Scale": "2,2,2",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
           {
             "__type": "Sandbox.ModelRenderer",
-            "__guid": "d92c209a-cfa0-4cca-86f7-baa1e63b85e6",
+            "__guid": "35555f23-db00-4a6b-a0ca-03044a169fa9",
             "BodyGroups": 18446744073709551615,
-            "MaterialOverride": "materials/dev/reflectivity_90.vmat",
-            "Model": "assets/ships/fp4/fp4_ship_2.vmdl",
-            "RenderType": "On",
+            "Model": "assets/ships/craft_speeder_a.vmdl",
+            "RenderType": "Off",
             "Tint": "0,0,0,1"
           },
           {
             "__type": "PlayerBodyComponent",
-            "__guid": "7ea839b1-c9dc-45f2-b804-2f6e1602cac9",
+            "__guid": "5f59766c-9ea3-4137-9b8d-7123bd8b8222",
             "Outliner": {
               "_type": "component",
-              "component_id": "50c4124d-54e5-4241-a420-9c6d7a1043fd",
-              "go": "69e43b33-d0b0-479d-9974-f2b69ee51d9a",
+              "component_id": "e84793fd-849b-41b2-a32d-d6b479430749",
+              "go": "1db81159-e4eb-44da-b40c-d10f0db507e7",
               "component_type": "HighlightOutline"
             },
             "Renderer": {
               "_type": "component",
-              "component_id": "d92c209a-cfa0-4cca-86f7-baa1e63b85e6",
-              "go": "69e43b33-d0b0-479d-9974-f2b69ee51d9a",
+              "component_id": "35555f23-db00-4a6b-a0ca-03044a169fa9",
+              "go": "1db81159-e4eb-44da-b40c-d10f0db507e7",
               "component_type": "ModelRenderer"
             }
           },
           {
             "__type": "Sandbox.HighlightOutline",
-            "__guid": "50c4124d-54e5-4241-a420-9c6d7a1043fd",
+            "__guid": "e84793fd-849b-41b2-a32d-d6b479430749",
             "Color": "1,0.03721,0.03721,0",
             "InsideColor": "1,0,0,0.4",
             "InsideObscuredColor": "0,0,0,0",
@@ -93,7 +94,7 @@
         ]
       },
       {
-        "__guid": "1c24830b-5876-4577-8807-bedb9cae0e6c",
+        "__guid": "529739a2-2cfd-4840-bea7-e5f45222b21d",
         "Name": "Shooting",
         "Position": "65.0824,0,0",
         "Enabled": true,
@@ -101,7 +102,7 @@
         "Components": [
           {
             "__type": "Twinstick.ShootingComponent",
-            "__guid": "fbef1136-5fa7-4889-99f4-98410ae800bc",
+            "__guid": "a931bce7-4ad3-4709-b320-bed36c9fa092",
             "FireRate": 0.2,
             "ProjectilePrefab": {
               "_type": "gameobject",
@@ -109,33 +110,32 @@
             },
             "ShootSound": "assets/sounds/weapons/laser_shoot.sound",
             "TimeSinceLastFire": {
-              "Relative": 1459.5624
+              "Relative": 1599.3894
             }
           }
         ]
       },
       {
-        "__guid": "32d02eeb-9070-4377-9d6a-645ec0352563",
+        "__guid": "ef3ed454-745f-422d-b94b-92ee33b3ee65",
         "Name": "Shield",
-        "Position": "28.10667,26.71332,-26.08853",
         "Tags": "shield",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
           {
             "__type": "ShieldComponent",
-            "__guid": "824dd1e6-35fe-47ad-8788-fc6c11f06d83",
+            "__guid": "90ffb790-7872-46d1-a2a7-b72b83fb5b20",
             "Collider": {
               "_type": "component",
-              "component_id": "5fc06f07-3c29-4dd1-a71f-28896e465c96",
-              "go": "32d02eeb-9070-4377-9d6a-645ec0352563",
+              "component_id": "d77b36bf-d054-4c13-a54c-0feb24b3c448",
+              "go": "ef3ed454-745f-422d-b94b-92ee33b3ee65",
               "component_type": "SphereCollider"
             },
             "DrainPower": 10,
             "Player": {
               "_type": "component",
-              "component_id": "d16870cd-1320-4fae-ab51-ab2324c0c3d4",
-              "go": "e722e19b-f593-4941-acb1-b2061acdd5fe",
+              "component_id": "033c2ab4-fc66-4572-9382-728463f72807",
+              "go": "8e6f7c2d-c513-4754-aecb-b38263195146",
               "component_type": "PlayerComponent"
             },
             "RegeneratePower": 10,
@@ -144,10 +144,10 @@
           },
           {
             "__type": "Sandbox.SphereCollider",
-            "__guid": "5fc06f07-3c29-4dd1-a71f-28896e465c96",
+            "__guid": "d77b36bf-d054-4c13-a54c-0feb24b3c448",
             "Center": "0,0,0",
             "IsTrigger": false,
-            "Radius": 128,
+            "Radius": 64,
             "Static": false
           }
         ]

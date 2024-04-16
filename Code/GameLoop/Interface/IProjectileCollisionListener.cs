@@ -2,5 +2,6 @@ namespace Twinstick;
 
 public interface IProjectileCollisionListener
 {
-	public void OnProjectileCollision( ProjectileComponent projectile );
+	public int Priority { get; }
+	public bool OnProjectileCollision( ProjectileComponent projectile );
 }

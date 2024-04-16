@@ -1,7 +1,7 @@
 using System;
 using Twinstick;
 
-public sealed class ShieldComponent : Component, IDamageListener
+public sealed class ShieldComponent : Component, IDamageListener, IProjectileCollisionListener
 {
 	[ConVar( "twinstick_debug_shields" )]
 	private static bool IsDebugging { get; set; } = false;
@@ -34,6 +34,8 @@ public sealed class ShieldComponent : Component, IDamageListener
 	[Property] public Action<Twinstick.DamageInfo> OnDamageDeflected { get; set; }
 	[Property] public Action<bool> OnActiveChanged { get; set; }
 	[Property] public RangedFloat ShieldRange { get; set; } = new( 0, 100f );
+
+	public int Priority { get; set; } = 100;
 
 	private bool isActive = false;
 	public bool IsActive
@@ -131,12 +133,28 @@ public sealed class ShieldComponent : Component, IDamageListener
 		// TODO: sound, VFX
 	}
 
-	public void OnDamage( ref Twinstick.DamageInfo dmgInfo )
+	// @IDamageListener
+	void IDamageListener.OnDamage( ref Twinstick.DamageInfo dmgInfo )
 	{
 		if ( IsActive )
 		{
 			DeflectDamage( dmgInfo );
 			dmgInfo.Damage = 0;
 		}
+	}
+
+	// @IProjectileCollisionListener
+	bool IProjectileCollisionListener.OnProjectileCollision( ProjectileComponent projectile )
+	{
+		// Don't delete the projectile
+		if ( IsActive )
+		{
+			projectile.SetOwner( Player.GameObject );
+			projectile.SetDirection( Player.LookDirection );
+
+			return false;
+		}
+
+		return true;
 	}
 }

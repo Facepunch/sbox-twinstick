@@ -63,6 +63,7 @@ public partial class ProjectileComponent : Component, Component.ITriggerListener
 	public void SetOwner( GameObject owner )
 	{
 		Owner = owner;
+		Target = null;
 	}
 
 	public DamageInfo CalculateDamage() => DamageInfo.FromProjectile( this );
@@ -164,12 +165,13 @@ public partial class ProjectileComponent : Component, Component.ITriggerListener
 		var rootObject = obj.Root;
 
 		// All recipients need this event
-		foreach ( var recipient in rootObject.Components.GetAll<IProjectileCollisionListener>( FindMode.EnabledInSelfAndDescendants ) )
+		foreach ( var recipient in rootObject.Components.GetAll<IProjectileCollisionListener>( FindMode.EnabledInSelfAndDescendants ).OrderByDescending( x => x.Priority ) )
 		{
-			recipient.OnProjectileCollision( this );
-		}
+			var shouldDestroy = recipient.OnProjectileCollision( this );
+			if ( !shouldDestroy ) return;
 
-		GameObject.Destroy();
+			GameObject.Destroy();
+		}
 	}
 
 	void UpdateHeading()
