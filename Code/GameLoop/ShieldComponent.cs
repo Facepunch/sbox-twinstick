@@ -31,6 +31,8 @@ public sealed class ShieldComponent : Component, IDamageListener, IProjectileCol
 	/// </summary>
 	[Property, Group( "Configuration" )] public float RegeneratePower { get; set; } = 5f;
 
+	[Property] public GameObject EffectsGameObject { get; set; }
+
 	[Property] public Action<Twinstick.DamageInfo> OnDamageDeflected { get; set; }
 	[Property] public Action<bool> OnActiveChanged { get; set; }
 	[Property] public RangedFloat ShieldRange { get; set; } = new( 0, 100f );
@@ -53,6 +55,8 @@ public sealed class ShieldComponent : Component, IDamageListener, IProjectileCol
 	{
 		Collider.Enabled = active;
 		OnActiveChanged?.Invoke( active );
+
+		if ( EffectsGameObject is not null ) EffectsGameObject.Enabled = active;
 	}
 
 	float GetDrainAmount()

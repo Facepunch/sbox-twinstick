@@ -1,4 +1,3 @@
-using System;
 using Twinstick;
 
 public sealed class PlayerBodyComponent : Component
@@ -19,6 +18,7 @@ public sealed class PlayerBodyComponent : Component
 	{
 		Renderer.Enabled = shouldRender;
 		Outliner.Enabled = shouldRender;
-		EffectsGameObject.Enabled = shouldRender;
+
+		if ( EffectsGameObject is not null ) EffectsGameObject.Enabled = shouldRender;
 	}
 }
