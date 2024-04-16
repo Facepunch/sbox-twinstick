@@ -15,7 +15,7 @@
           "FogMode": "Enabled",
           "FogStrength": 1,
           "LightColor": "0.94419,0.97767,1,1",
-          "Shadows": true,
+          "Shadows": false,
           "SkyColor": "0.2532,0.32006,0.35349,1"
         }
       ]
@@ -375,7 +375,7 @@
   },
   "Title": "Game Scene",
   "Description": "",
-  "LastSaved": "2024-04-16T09:48:43.4957125\u002B01:00",
+  "LastSaved": "2024-04-16T14:41:13.0107188\u002B01:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

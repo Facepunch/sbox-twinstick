@@ -54,7 +54,7 @@ public partial class ProjectileComponent : Component, Component.ITriggerListener
 	/// <summary>
 	/// Who fired this? We don't want to hit them.
 	/// </summary>
-	protected GameObject Owner { get; set; }
+	public GameObject Owner { get; private set; }
 
 	/// <summary>
 	/// Sets the owner of this projectile.
@@ -65,10 +65,7 @@ public partial class ProjectileComponent : Component, Component.ITriggerListener
 		Owner = owner;
 	}
 
-	public float CalculateDamage()
-	{
-		return Damage;
-	}
+	public DamageInfo CalculateDamage() => DamageInfo.FromProjectile( this );
 
 	protected override void OnStart()
 	{
@@ -88,16 +85,29 @@ public partial class ProjectileComponent : Component, Component.ITriggerListener
 		UpdateHeading();
 	}
 
+	GameObject Target { get; set; }
+	TimeSince TimeSinceTargeted { get; set; } = 1f;
+	void TryGetTarget()
+	{
+		if ( TimeSinceTargeted < 0.2f ) return;
+
+		TimeSinceTargeted = 0;
+
+		var targets = Scene.FindInPhysics( BBox.FromPositionAndSize( Transform.Position, HomingRadius ) ).Where( IsSuitableCollision );
+		var closestTarget = targets.OrderBy( x => x.Transform.Position.DistanceSquared( Transform.Position ) ).FirstOrDefault();
+
+		Target = closestTarget;
+	}
+
 	void Home()
 	{
+		TryGetTarget();
+
 		if ( IsHoming )
 		{
-			var targets = Scene.FindInPhysics( BBox.FromPositionAndSize( Transform.Position, HomingRadius ) ).Where( IsSuitableCollision );
-			var closestTarget = targets.OrderBy( x => x.Transform.Position.DistanceSquared( Transform.Position ) ).FirstOrDefault();
-
-			if ( closestTarget.IsValid() )
+			if ( Target.IsValid() )
 			{
-				var direction = ( closestTarget.Transform.Position - Transform.Position ).Normal;
+				var direction = ( Target.Transform.Position - Transform.Position ).Normal;
 				Velocity += direction * ( HomingPower * Time.Delta );
 				// TODO: clean this up
 				Velocity = Velocity.Normal * Speed * Time.Delta;
@@ -130,6 +140,12 @@ public partial class ProjectileComponent : Component, Component.ITriggerListener
 
 	bool IsSuitableCollision( GameObject obj )
 	{
+		// Don't home to projectiles 
+		if ( obj.Root.Components.Get<ProjectileComponent>( FindMode.EnabledInSelfAndDescendants ) is { } projectile /* && projectile.Owner == Owner */ )
+		{
+			return false;
+		}
+
 		// Self 
 		if ( obj == GameObject ) return false;
 		if ( obj.Root == GameObject ) return false;
@@ -139,12 +155,6 @@ public partial class ProjectileComponent : Component, Component.ITriggerListener
 		if ( obj == Owner ) return false;
 		if ( obj.Root == Owner ) return false;
 		if ( obj.Root == Owner.Root ) return false;
-
-		// Don't home to projectiles 
-		if ( obj.Root.Components.Get<ProjectileComponent>( FindMode.EnabledInSelfAndDescendants ) is { } projectile /* && projectile.Owner == Owner */ )
-		{
-			return false;
-		}
 
 		return true;
 	}

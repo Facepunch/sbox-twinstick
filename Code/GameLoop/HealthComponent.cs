@@ -72,8 +72,17 @@ public partial class HealthComponent : Component, IProjectileCollisionListener
 	// @IProjectileCollisionRecipient
 	public void OnProjectileCollision( ProjectileComponent projectile )
 	{
-		var damage = projectile.CalculateDamage();
-		Health -= damage;
+		var dmgInfo = projectile.CalculateDamage();
+
+		foreach ( var listener in Components.GetAll<IDamageListener>( FindMode.EnabledInSelfAndDescendants ) )
+		{
+			listener.OnDamage( ref dmgInfo );
+		}
+
+		if ( dmgInfo.Damage > 0f )
+		{
+			Health -= dmgInfo.Damage;
+		}
 	}
 
 	/// <summary>

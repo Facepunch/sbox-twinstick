@@ -73,7 +73,7 @@ public sealed class PlayerComponent : Component, ILifeStateListener
 	/// A shorthand way to scope input.
 	/// </summary>
 	/// <returns></returns>
-	private IDisposable ScopeInput() => Input.PlayerScope( PlayerId );
+	internal IDisposable ScopeInput() => Input.PlayerScope( PlayerId );
 
 	public void SetPlayer( int playerId )
 	{
