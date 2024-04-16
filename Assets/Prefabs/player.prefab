@@ -54,6 +54,7 @@
       {
         "__guid": "b07397ec-f4a6-4ded-8440-d65fee89ccfe",
         "Name": "Body",
+        "Scale": "3,3,3",
         "Enabled": true,
         "NetworkMode": 2,
         "Components": [
@@ -62,7 +63,7 @@
             "__guid": "ea05b3d8-a64b-4583-9aeb-d3c844008aca",
             "BodyGroups": 18446744073709551615,
             "MaterialOverride": "materials/dev/reflectivity_90.vmat",
-            "Model": "assets/ships/fp4/fp4_ship_2.vmdl",
+            "Model": "assets/ships/craft_speeder_a.vmdl",
             "RenderType": "On",
             "Tint": "0,0,0,1"
           },
@@ -110,7 +111,7 @@
             },
             "ShootSound": "assets/sounds/weapons/laser_shoot.sound",
             "TimeSinceLastFire": {
-              "Relative": 3834.0525
+              "Relative": 4008.202
             }
           }
         ]
