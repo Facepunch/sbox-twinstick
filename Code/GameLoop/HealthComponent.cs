@@ -16,6 +16,9 @@ public partial class HealthComponent : Component, IProjectileCollisionListener
 
 	float health = 100f;
 	private LifeState state = LifeState.Alive;
+	private TimeUntil TimeUntilRespawn;
+
+	[Property] public RangedFloat HealthRange { get; set; } = new( 0, 100 );
 
 	/// <summary>
 	/// What's our health?
@@ -26,6 +29,8 @@ public partial class HealthComponent : Component, IProjectileCollisionListener
 		set
 		{
 			var old = health;
+			if ( old == value ) return;
+
 			health = value;
 			HealthChanged( old, health );
 		}
@@ -41,6 +46,8 @@ public partial class HealthComponent : Component, IProjectileCollisionListener
 		set
 		{
 			var old = state;
+			if ( old == value ) return;
+
 			state = value;
 			LifeStateChanged( old, state );
 		}
@@ -51,7 +58,7 @@ public partial class HealthComponent : Component, IProjectileCollisionListener
 		OnHealthChanged?.Invoke( before, after );
 
 		// On death
-		if ( Health <= 0f )
+		if ( Health <= HealthRange.x )
 		{
 			if ( RespawnTime > 0f ) State = LifeState.Respawning;
 			else State = LifeState.Dead;
@@ -64,6 +71,16 @@ public partial class HealthComponent : Component, IProjectileCollisionListener
 
 	void LifeStateChanged( LifeState before, LifeState after )
 	{
+		if ( after == LifeState.Respawning )
+		{
+			TimeUntilRespawn = RespawnTime;
+		}
+
+		if ( after == LifeState.Alive )
+		{
+			Health = HealthRange.y;
+		}
+
 		OnLifeStateChanged?.Invoke( before, after );
 
 		foreach ( var listener in Components.GetAll<ILifeStateListener>( FindMode.EnabledInSelfAndDescendants ) )
@@ -94,6 +111,16 @@ public partial class HealthComponent : Component, IProjectileCollisionListener
 		{
 			Gizmo.Draw.ScreenText( $"Health: {Health}", Scene.Camera.PointToScreenPixels( Transform.Position ), "Roboto", 12, TextFlag.Center );
 		}
+
+		if ( State == LifeState.Respawning && TimeUntilRespawn )
+		{
+			State = LifeState.Alive;
+		}
+	}
+
+	protected override void OnStart()
+	{
+		Health = HealthRange.y;
 	}
 
 	/// <summary>

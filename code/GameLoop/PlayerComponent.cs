@@ -223,6 +223,8 @@ public sealed class PlayerComponent : Component, ILifeStateListener
 			EnableInput = true;
 			Body?.SetShouldRender( true );
 			MainCollider.Enabled = true;
+
+			GameStateManager.Instance.PlayerSpawner?.MoveToSpawnPoint( this );
 		}
 	}
 }

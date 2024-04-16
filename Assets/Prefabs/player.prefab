@@ -37,7 +37,7 @@
         "__type": "Twinstick.HealthComponent",
         "__guid": "d0c90e1b-15b2-46c4-8fe1-06be44263a1c",
         "Health": 100,
-        "RespawnTime": 0,
+        "RespawnTime": 3,
         "State": "Alive"
       },
       {
@@ -109,7 +109,7 @@
             },
             "ShootSound": "assets/sounds/weapons/laser_shoot.sound",
             "TimeSinceLastFire": {
-              "Relative": 1117.7435
+              "Relative": 1459.5624
             }
           }
         ]

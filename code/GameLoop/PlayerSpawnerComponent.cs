@@ -1,3 +1,5 @@
+using System;
+
 namespace Twinstick;
 
 public sealed class PlayerSpawnerComponent : Component
@@ -28,5 +30,18 @@ public sealed class PlayerSpawnerComponent : Component
 
 		// Register the player
 		GameManager.PlayerManager.AddPlayer( playerId, gameObject );
+	}
+
+	/// <summary>
+	/// Moves a player to a spawnpoint
+	/// </summary>
+	/// <param name="player"></param>
+	internal void MoveToSpawnPoint( PlayerComponent player )
+	{
+		var spawnPoint = FindSpawnPoint( player.PlayerId );
+		if ( spawnPoint is not null )
+		{
+			player.Transform.Position = spawnPoint.Transform.Position;
+		}
 	}
 }
