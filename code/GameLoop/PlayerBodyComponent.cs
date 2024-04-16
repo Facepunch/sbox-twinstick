@@ -5,6 +5,7 @@ public sealed class PlayerBodyComponent : Component
 {
 	[Property] public ModelRenderer Renderer { get; set; }
 	[Property] public HighlightOutline Outliner { get; set; }
+	[Property] public GameObject EffectsGameObject { get; set; }
 
 	PlayerManager PlayerManager => GameStateManager.Instance.PlayerManager;
 
@@ -18,5 +19,6 @@ public sealed class PlayerBodyComponent : Component
 	{
 		Renderer.Enabled = shouldRender;
 		Outliner.Enabled = shouldRender;
+		EffectsGameObject.Enabled = shouldRender;
 	}
 }
