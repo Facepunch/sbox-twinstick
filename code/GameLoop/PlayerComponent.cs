@@ -94,21 +94,34 @@ public sealed class PlayerComponent : Component, ILifeStateListener
 
 	Rotation TargetRotation;
 	internal Vector3 LookDirection;
+
+	[Property] public bool IsTwinStick { get; set; } = false;
+
 	void Turn()
 	{
-		var analogLook = EnableInput ? Input.AnalogLook.AsVector3() : 0;
-		analogLook = analogLook.Normal;
+		if ( IsTwinStick )
+		{
+			var analogLook = EnableInput ? Input.AnalogLook.AsVector3() : 0;
+			analogLook = analogLook.Normal;
 
-		var direction = new Vector3( -analogLook.x, analogLook.y, 0 );
+			var direction = new Vector3( -analogLook.x, analogLook.y, 0 );
 
-		// Don't bother if we're not looking at anything
-		if ( direction.Length <= 0 )
-			return;
+			// Don't bother if we're not looking at anything
+			if ( direction.Length <= 0 )
+				return;
 
-		LookDirection = direction;
+			LookDirection = direction;
+		}
+		else
+		{
+			if ( Velocity.Length < 0.1f ) 
+				return;
+
+			LookDirection = Velocity.Normal;
+		}
 
 		const float fwd = 100f;
-		var lookAt = Rotation.LookAt( direction * fwd );
+		var lookAt = Rotation.LookAt( LookDirection * fwd );
 
 		TargetRotation = Rotation.Lerp( TargetRotation, lookAt, Time.Delta * TurnSpeed );
 		GameObject.Transform.Rotation = Rotation.From( 0, TargetRotation.Yaw(), 0 );
