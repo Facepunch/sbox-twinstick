@@ -4,8 +4,12 @@ namespace Twinstick;
 
 public sealed class PlayerSpawnerComponent : Component
 {
-	[Property] public GameStateManager GameManager { get; set; }
 	[Property] public GameObject PlayerPrefab { get; set; }
+
+	/// <summary>
+	/// Called when a player spawns at a spawn point. Good for making FX.
+	/// </summary>
+	[Property] public Action<PlayerComponent, SpawnPoint> OnPlayerSpawned { get; set; }
 
 	public SpawnPoint FindSpawnPoint( int playerId )
 	{
@@ -13,6 +17,11 @@ public sealed class PlayerSpawnerComponent : Component
 			.ToList();
 
 		return spawnPoints[playerId];
+	}
+
+	void PlayerSpawnedAt( PlayerComponent player, SpawnPoint spawnPoint )
+	{
+		OnPlayerSpawned?.Invoke( player, spawnPoint );
 	}
 
 	public void CreatePlayer( int playerId )
@@ -29,7 +38,7 @@ public sealed class PlayerSpawnerComponent : Component
 		player.SetPlayer( playerId );
 
 		// Register the player
-		GameManager.PlayerManager.AddPlayer( playerId, gameObject );
+		GameStateManager.Instance.PlayerManager?.AddPlayer( playerId, gameObject );
 	}
 
 	/// <summary>
@@ -43,5 +52,7 @@ public sealed class PlayerSpawnerComponent : Component
 		{
 			player.Transform.Position = spawnPoint.Transform.Position;
 		}
+
+		PlayerSpawnedAt( player, spawnPoint );
 	}
 }
