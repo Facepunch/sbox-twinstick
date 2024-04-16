@@ -11,7 +11,7 @@
 
 	<div class="button">
         <label>Press</label>
-        <InputHint Action="Jump" />
+        <InputHint Action="ReadyUp" />
 
         <label>to play</label>
     </div>
@@ -28,7 +28,7 @@
             // Is anyone hitting the button?
             using ( Input.PlayerScope( i ) )
             {
-                if ( Input.Pressed( "Jump" ) )
+                if ( Input.Pressed( "ReadyUp" ) )
                 {
                     Play();
                 }
