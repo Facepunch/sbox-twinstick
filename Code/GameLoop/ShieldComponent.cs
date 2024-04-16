@@ -3,6 +3,9 @@ using Twinstick;
 
 public sealed class ShieldComponent : Component, IDamageListener
 {
+	[ConVar( "twinstick_debug_shields" )]
+	private static bool IsDebugging { get; set; } = false;
+
 	/// <summary>
 	/// The collider
 	/// </summary>
@@ -30,9 +33,7 @@ public sealed class ShieldComponent : Component, IDamageListener
 
 	[Property] public Action<Twinstick.DamageInfo> OnDamageDeflected { get; set; }
 	[Property] public Action<bool> OnActiveChanged { get; set; }
-
-	private const float MinShield = 0f;
-	private const float MaxShield = 100f;
+	[Property] public RangedFloat ShieldRange { get; set; } = new( 0, 100f );
 
 	private bool isActive = false;
 	public bool IsActive
@@ -64,12 +65,12 @@ public sealed class ShieldComponent : Component, IDamageListener
 
 	void Drain()
 	{
-		if ( ShieldAmount <= MinShield ) return;
+		if ( ShieldAmount <= ShieldRange.x ) return;
 
 		ShieldAmount -= GetDrainAmount();
-		ShieldAmount = ShieldAmount.Clamp( MinShield, MaxShield );
+		ShieldAmount = ShieldAmount.Clamp( ShieldRange.x, ShieldRange.y );
 
-		if ( ShieldAmount <= MinShield )
+		if ( ShieldAmount <= ShieldRange.x )
 		{
 			IsActive = false;
 		}
@@ -77,15 +78,15 @@ public sealed class ShieldComponent : Component, IDamageListener
 
 	void Regenerate()
 	{
-		if ( ShieldAmount >= MaxShield ) return;
+		if ( ShieldAmount >= ShieldRange.y ) return;
 
 		ShieldAmount += GetRegenerateAmount();
-		ShieldAmount = ShieldAmount.Clamp( MinShield, MaxShield );
+		ShieldAmount = ShieldAmount.Clamp( ShieldRange.x, ShieldRange.y );
 	}
 
 	bool CanToggleActive()
 	{
-		if ( ShieldAmount <= MinShield ) return false;
+		if ( ShieldAmount <= ShieldRange.x ) return false;
 		return true;
 	}
 
@@ -118,7 +119,10 @@ public sealed class ShieldComponent : Component, IDamageListener
 			Regenerate();
 		}
 
-		// Gizmo.Draw.ScreenText( $"Shield: {isActive}, {ShieldAmount}", Scene.Camera.PointToScreenPixels( Transform.Position ) );
+		if ( IsDebugging )
+		{
+			Gizmo.Draw.ScreenText( $"Shield: {isActive}, {ShieldAmount}", Scene.Camera.PointToScreenPixels( Transform.Position ) );
+		}
 	}
 
 	void DeflectDamage( Twinstick.DamageInfo dmgInfo )
