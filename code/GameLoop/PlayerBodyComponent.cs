@@ -5,6 +5,7 @@ public sealed class PlayerBodyComponent : Component
 	[Property] public ModelRenderer Renderer { get; set; }
 	[Property] public HighlightOutline Outliner { get; set; }
 	[Property] public GameObject EffectsGameObject { get; set; }
+	[Property] public GameObject BoostEffectsGameObject { get; set; }
 
 	PlayerManager PlayerManager => GameStateManager.Instance.PlayerManager;
 
@@ -19,6 +20,18 @@ public sealed class PlayerBodyComponent : Component
 		Renderer.Enabled = shouldRender;
 		Outliner.Enabled = shouldRender;
 
-		if ( EffectsGameObject is not null ) EffectsGameObject.Enabled = shouldRender;
+		if ( !shouldRender )
+		{
+			BoostEffectsGameObject.Enabled = shouldRender;
+			EffectsGameObject.Enabled = shouldRender;
+		}
+	}
+
+	private bool isBoost = false;
+	internal void SetBoosting( bool boosting )
+	{
+		isBoost = boosting;
+		BoostEffectsGameObject.Enabled = isBoost;
+		EffectsGameObject.Enabled = !isBoost;
 	}
 }

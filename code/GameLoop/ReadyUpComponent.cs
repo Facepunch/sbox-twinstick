@@ -37,15 +37,14 @@ public sealed class ReadyUpComponent : Component
 	/// </summary>
 	[Property] public Action<int[]> OnMaxPlayersReached { get; set; }
 
-	/// <summary>
-	/// Called when a player readys up
+	/// <summary>Inpu
 	/// </summary>
 	[Property] public Action<int, bool> OnPlayerReady { get; set; }
 
 	/// <summary>
 	/// Which key should we listen to?
 	/// </summary>
-	[Property, InputAction, Group( "Setup" )] public string InputAction { get; set; } = "Run";
+	[Property, InputAction, Group( "Setup" )] public string InputAction { get; set; } = "Ready";
 
 	public float ControllerCount => MathF.Min( Input.ControllerCount, MaxPlayers );
 

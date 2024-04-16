@@ -55,11 +55,6 @@
           "GroupName": "Movement"
         },
         {
-          "Name": "Jump",
-          "KeyboardCode": "space",
-          "GroupName": "Movement"
-        },
-        {
           "Name": "Run",
           "KeyboardCode": "shift",
           "GamepadCode": "LeftJoystickButton",
@@ -78,21 +73,15 @@
           "GroupName": "Actions"
         },
         {
-          "Name": "reload",
-          "KeyboardCode": "r",
-          "GamepadCode": "X",
-          "GroupName": "Actions"
-        },
-        {
-          "Name": "use",
-          "KeyboardCode": "e",
-          "GamepadCode": "Y",
-          "GroupName": "Actions"
-        },
-        {
           "Name": "View",
           "KeyboardCode": "C",
           "GamepadCode": "RightJoystickButton",
+          "GroupName": "Other"
+        },
+        {
+          "Name": "ReadyUp",
+          "KeyboardCode": "R",
+          "GamepadCode": "Y",
           "GroupName": "Other"
         }
       ],

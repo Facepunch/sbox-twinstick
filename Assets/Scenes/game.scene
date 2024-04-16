@@ -137,13 +137,14 @@
         {
           "__type": "CameraManager",
           "__guid": "83f5d4d1-f843-4cdd-8360-0f5d1b2cee03",
+          "BoostScreenScale": 75,
           "Camera": {
             "_type": "component",
             "component_id": "08c82cbd-90f6-4f32-abf7-58d9b55cf8bc",
             "go": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
             "component_type": "CameraComponent"
           },
-          "DampTime": 0.2,
+          "DampTime": 0.5,
           "MinSize": 100,
           "ScreenEdge": 750
         },
@@ -164,7 +165,7 @@
           "__type": "Twinstick.GameStateManager",
           "__guid": "5c25a0df-eb91-4e70-991a-9103d3afa86c",
           "CurrentState": "ReadyingPlayers",
-          "IsDevelopment": true,
+          "IsDevelopment": false,
           "PlayerManager": {
             "_type": "component",
             "component_id": "cedc9af5-6e3f-4c38-80f9-d38fefd16f6b",
@@ -187,7 +188,7 @@
         {
           "__type": "Twinstick.ReadyUpComponent",
           "__guid": "9e36c9a7-79fe-4d41-bfbb-414e933875a7",
-          "InputAction": "Run",
+          "InputAction": "ReadyUp",
           "MaxPlayers": 2,
           "MinPlayers": 2,
           "WaitingForInput": true
@@ -195,12 +196,6 @@
         {
           "__type": "Twinstick.PlayerSpawnerComponent",
           "__guid": "5a0784a7-df94-4c84-84da-840dacb6a71c",
-          "GameManager": {
-            "_type": "component",
-            "component_id": "5c25a0df-eb91-4e70-991a-9103d3afa86c",
-            "go": "60e1ff4e-a325-435d-b298-20484e2b3879",
-            "component_type": "GameStateManager"
-          },
           "PlayerPrefab": {
             "_type": "gameobject",
             "prefab": "assets/prefabs/player.prefab"
@@ -375,7 +370,7 @@
   },
   "Title": "Game Scene",
   "Description": "",
-  "LastSaved": "2024-04-16T14:41:13.0107188\u002B01:00",
+  "LastSaved": "2024-04-16T17:42:45.0687497\u002B01:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

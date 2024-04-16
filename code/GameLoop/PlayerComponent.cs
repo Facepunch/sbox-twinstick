@@ -17,7 +17,12 @@ public sealed class PlayerComponent : Component, ILifeStateListener
 	/// <summary>
 	/// What's our base move speed (left stick)?
 	/// </summary>
-	[Property, Group( "Movement" )] public float MoveSpeed { get; set; } = 10f;
+	[Property, Group( "Movement" )] public float MoveSpeed { get; set; } = 500f;
+
+	/// <summary>
+	/// What's our move speed when boosting?
+	/// </summary>
+	[Property, Group( "Movement" )] public float BoostMoveSpeed { get; set; } = 1000f;
 
 	/// <summary>
 	/// How quickly can we get moving?
@@ -169,16 +174,33 @@ public sealed class PlayerComponent : Component, ILifeStateListener
 		Velocity = mover.Velocity;
 	}
 
+	public bool IsBoosting { get; private set; } = false;
+	void SetBoosting( bool boosting )
+	{
+		if ( boosting == IsBoosting ) return;
+
+		IsBoosting = boosting;
+		Body.SetBoosting( boosting );
+	}
+
+	float GetMoveSpeed()
+	{
+		if ( IsBoosting ) return BoostMoveSpeed;
+		return MoveSpeed;
+	}
+
 	Vector3 WishVelocity;
 	void MoveInput()
 	{
 		WishVelocity = EnableInput ? Input.AnalogMove : 0;
 
+		SetBoosting( Input.Down( "Run" ) && WishVelocity.Length > 0f );
+
 		if ( !WishVelocity.IsNearlyZero() )
 		{
 			WishVelocity = WishVelocity.WithZ( 0 );
 			WishVelocity = WishVelocity.ClampLength( 1 );
-			WishVelocity *= MoveSpeed;
+			WishVelocity *= GetMoveSpeed();
 		}
 
 		ApplyFriction( BaseFriction );

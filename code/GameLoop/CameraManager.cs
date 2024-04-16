@@ -10,6 +10,7 @@ public sealed class CameraManager : Component
 	[Property] public float DampTime { get; set; } = 0.2f;
 	[Property] public float ScreenEdge { get; set; } = 4f;
 	[Property] public float MinSize { get; set; } = 6.5f;
+	[Property] public float BoostScreenScale { get; set; } = 25f;
 	[Property] public CameraComponent Camera { get; set; }
 
 	public IEnumerable<GameTransform> Targets
@@ -20,6 +21,19 @@ public sealed class CameraManager : Component
 			// Only look for alive players
 			players = players.Where( x => x.Components.Get<HealthComponent>().State == HealthComponent.LifeState.Alive );
 			return players.Select( x => x.Transform );
+		}
+	}
+	public int Boosters
+	{
+		get
+		{
+			var players = Scene.GetAllComponents<PlayerComponent>();
+			int count = 0;
+			foreach ( var player in players )
+			{
+				if ( player.IsBoosting ) count++;
+			}
+			return count;
 		}
 	}
 
@@ -55,6 +69,7 @@ public sealed class CameraManager : Component
 		}
 
 		size += ScreenEdge;
+		size += Boosters * BoostScreenScale;
 		size = MathF.Max( size, MinSize );
 
 		return size;
