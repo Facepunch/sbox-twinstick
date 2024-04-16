@@ -1,3 +1,4 @@
+using System;
 using Twinstick;
 
 public sealed class ShieldComponent : Component, IDamageListener
@@ -27,6 +28,9 @@ public sealed class ShieldComponent : Component, IDamageListener
 	/// </summary>
 	[Property, Group( "Configuration" )] public float RegeneratePower { get; set; } = 5f;
 
+	[Property] public Action<Twinstick.DamageInfo> OnDamageDeflected { get; set; }
+	[Property] public Action<bool> OnActiveChanged { get; set; }
+
 	private const float MinShield = 0f;
 	private const float MaxShield = 100f;
 
@@ -45,6 +49,7 @@ public sealed class ShieldComponent : Component, IDamageListener
 	void ActiveChanged( bool prevActive, bool active )
 	{
 		Collider.Enabled = active;
+		OnActiveChanged?.Invoke( active );
 	}
 
 	float GetDrainAmount()
@@ -116,12 +121,18 @@ public sealed class ShieldComponent : Component, IDamageListener
 		// Gizmo.Draw.ScreenText( $"Shield: {isActive}, {ShieldAmount}", Scene.Camera.PointToScreenPixels( Transform.Position ) );
 	}
 
+	void DeflectDamage( Twinstick.DamageInfo dmgInfo )
+	{
+		OnDamageDeflected?.Invoke( dmgInfo );
+		// TODO: sound, VFX
+	}
+
 	public void OnDamage( ref Twinstick.DamageInfo dmgInfo )
 	{
 		if ( IsActive )
 		{
+			DeflectDamage( dmgInfo );
 			dmgInfo.Damage = 0;
-			// TODO: deflect effects
 		}
 	}
 }
