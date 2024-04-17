@@ -166,7 +166,7 @@
           "__guid": "5c25a0df-eb91-4e70-991a-9103d3afa86c",
           "CurrentState": "ReadyingPlayers",
           "IsDevelopment": true,
-          "PlayerCount": 4,
+          "PlayerCount": 1,
           "PlayerManager": {
             "_type": "component",
             "component_id": "cedc9af5-6e3f-4c38-80f9-d38fefd16f6b",
@@ -371,7 +371,7 @@
   },
   "Title": "Game Scene",
   "Description": "",
-  "LastSaved": "2024-04-17T16:29:34.9682236\u002B01:00",
+  "LastSaved": "2024-04-17T16:38:01.8473646\u002B01:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []
