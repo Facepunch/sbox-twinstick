@@ -11,6 +11,11 @@
     {
         <ReadyUpStatus ReadyUpSystem=@ReadyUpSystem />
     }
+
+    @if ( GameManager.CurrentState != GameStateManager.GameState.ReadyingPlayers )
+    {
+        // Game HUD
+    }
 </root>
 
 @code

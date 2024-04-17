@@ -5,9 +5,9 @@ namespace Twinstick;
 public sealed class PlayerComponent : Component, ILifeStateListener
 {
 	/// <summary>
-	/// What's this player's ID? Used for input.
+	/// What's this player's info? Used for input, networking, identification.
 	/// </summary>
-	[Property, Group( "Input" )] public int PlayerId { get; private set; }
+	[Property, Group( "Input" )] public PlayerManager.Player Info { get; private set; } = new();
 
 	/// <summary>
 	/// The turn speed (right stick)
@@ -78,11 +78,19 @@ public sealed class PlayerComponent : Component, ILifeStateListener
 	/// A shorthand way to scope input.
 	/// </summary>
 	/// <returns></returns>
-	internal IDisposable ScopeInput() => Input.PlayerScope( PlayerId );
+	internal IDisposable ScopeInput() => Input.PlayerScope( Info.Index );
 
-	public void SetPlayer( int playerId )
+	public void SetPlayer( int playerId, ulong steamId = 0 )
 	{
-		PlayerId = playerId;
+		if ( steamId == 0 ) steamId = Connection.Local.SteamId;
+
+		Info = new()
+		{
+			Index = playerId,
+			OwningSteamId = steamId,
+			GameObject = GameObject
+		};
+
 		Body.SetPlayerId( playerId );
 	}
 

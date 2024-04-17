@@ -24,7 +24,7 @@ public sealed class PlayerSpawnerComponent : Component
 		OnPlayerSpawned?.Invoke( player, spawnPoint );
 	}
 
-	public void CreatePlayer( int playerId )
+	public void CreatePlayer( int playerId, ulong steamId = 0 )
 	{
 		var spawnPoint = FindSpawnPoint( playerId );
 		var gameObject = PlayerPrefab.Clone( new CloneConfig()
@@ -38,7 +38,7 @@ public sealed class PlayerSpawnerComponent : Component
 		player.SetPlayer( playerId );
 
 		// Register the player
-		GameStateManager.Instance.PlayerManager?.AddPlayer( playerId, gameObject );
+		GameStateManager.Instance.PlayerManager?.AddPlayer( playerId, steamId, gameObject );
 	}
 
 	/// <summary>
@@ -47,7 +47,7 @@ public sealed class PlayerSpawnerComponent : Component
 	/// <param name="player"></param>
 	internal void MoveToSpawnPoint( PlayerComponent player )
 	{
-		var spawnPoint = FindSpawnPoint( player.PlayerId );
+		var spawnPoint = FindSpawnPoint( player.Info.Index );
 		if ( spawnPoint is not null )
 		{
 			player.Transform.Position = spawnPoint.Transform.Position;

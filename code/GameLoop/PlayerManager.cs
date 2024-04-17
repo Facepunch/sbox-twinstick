@@ -21,8 +21,9 @@ public partial class PlayerManager : Component
 	/// Adds a player to play
 	/// </summary>
 	/// <param name="playerId"></param>
+	/// <param name="steamId"></param>
 	/// <param name="controllable"></param>
-	public void AddPlayer( int playerId, GameObject controllable )
+	public void AddPlayer( int playerId, ulong steamId = 0, GameObject controllable = null )
 	{
 		var existing = Players.FirstOrDefault( x => x.Index == playerId );
 		if ( existing is not null )
@@ -30,6 +31,15 @@ public partial class PlayerManager : Component
 			// Replace the GameObject
 			existing.GameObject?.Destroy();
 			existing.GameObject = controllable;
+		}
+		else
+		{
+			Players.Add( new()
+			{
+				Index = playerId,
+				OwningSteamId = steamId,
+				GameObject = controllable
+			} );
 		}
 	}
 
@@ -70,7 +80,7 @@ public partial class PlayerManager : Component
 		/// <summary>
 		/// The owning connection's SteamId
 		/// </summary>
-		public long OwningSteamId { get; set; }
+		public ulong OwningSteamId { get; set; }
 
 		/// <summary>
 		/// The player's index. Unique to an OwningSteamId
