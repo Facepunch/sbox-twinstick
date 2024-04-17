@@ -181,6 +181,10 @@ public sealed class ShieldComponent : Component, IDamageListener, IProjectileCol
 			projectile.SetOwner( Player.GameObject );
 			projectile.SetDirection( ShieldAngle.Forward );
 
+			var timedDestroy = projectile.Components.Get<TimedDestroyComponent>();
+			if ( timedDestroy.IsValid() )
+				timedDestroy.TimeUntilDestroy = timedDestroy.Time;
+
 			return false;
 		}
 
