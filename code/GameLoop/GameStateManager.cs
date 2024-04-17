@@ -68,7 +68,7 @@ public sealed class GameStateManager : Component
 		if ( IsDevelopment )
 		{
 			SetGameState( GameState.Play );
-			CreatePlayers( 0 );
+			CreatePlayers( 0, 1 );
 		}
 	}
 
@@ -138,7 +138,7 @@ public sealed class GameStateManager : Component
 		}
 		if ( @new == GameState.Play )
 		{
-			TimeUntilCountdown = 120;
+			TimeUntilCountdown = 99999;
 		}
 		if ( @new == GameState.GameOver )
 		{

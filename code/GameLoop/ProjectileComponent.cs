@@ -167,7 +167,7 @@ public partial class ProjectileComponent : Component, Component.ITriggerListener
 		// All recipients need this event
 		foreach ( var recipient in rootObject.Components.GetAll<IProjectileCollisionListener>( FindMode.EnabledInSelfAndDescendants ).OrderByDescending( x => x.Priority ) )
 		{
-			var shouldDestroy = recipient.OnProjectileCollision( this );
+			var shouldDestroy = recipient.OnProjectileCollision( this, obj );
 			if ( !shouldDestroy ) return;
 
 			GameObject.Destroy();

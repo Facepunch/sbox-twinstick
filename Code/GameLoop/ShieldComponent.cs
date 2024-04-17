@@ -31,6 +31,17 @@ public sealed class ShieldComponent : Component, IDamageListener, IProjectileCol
 	/// </summary>
 	[Property, Group( "Configuration" )] public float RegeneratePower { get; set; } = 5f;
 
+	private Angles shieldAngle = Angles.Zero;
+	public Angles ShieldAngle
+	{
+		get => shieldAngle;
+		set
+		{
+			shieldAngle = value;
+			GameObject.Transform.Rotation = Rotation.From( 0, shieldAngle.yaw, 0 );
+		}
+	}
+
 	[Property] public GameObject EffectsGameObject { get; set; }
 
 	[Property] public Action<Twinstick.DamageInfo> OnDamageDeflected { get; set; }
@@ -113,6 +124,16 @@ public sealed class ShieldComponent : Component, IDamageListener, IProjectileCol
 			{
 				IsActive = false;
 			}
+
+			var lookAnalog = Input.AnalogLook.AsVector3();
+			lookAnalog = lookAnalog.Normal;
+
+			var direction = new Vector3( -lookAnalog.x, lookAnalog.y, 0 );
+			var lookAt = Rotation.LookAt( direction * 100 );
+
+			if ( lookAnalog.Length.AlmostEqual( 0, 0.1f ) ) return;
+
+			ShieldAngle = lookAt.Angles();
 		}
 	}
 
@@ -152,13 +173,13 @@ public sealed class ShieldComponent : Component, IDamageListener, IProjectileCol
 	}
 
 	// @IProjectileCollisionListener
-	bool IProjectileCollisionListener.OnProjectileCollision( ProjectileComponent projectile )
+	bool IProjectileCollisionListener.OnProjectileCollision( ProjectileComponent projectile, GameObject hitObject )
 	{
 		// Don't delete the projectile
-		if ( IsActive )
+		if ( IsActive && hitObject.Tags.Has( "shield" ) )
 		{
 			projectile.SetOwner( Player.GameObject );
-			projectile.SetDirection( Player.LookDirection );
+			projectile.SetDirection( ShieldAngle.Forward );
 
 			return false;
 		}

@@ -733,9 +733,8 @@
             },
             "ShootSound": "sounds/weapons/laser_shoot.sound",
             "TimeUntilNextFire": {
-              "Absolute": 1,
-              "Relative": -900.5075,
-              "Passed": 901.5075,
+              "Relative": -2909.3362,
+              "Passed": 2909.3362,
               "Fraction": 1
             }
           }
@@ -753,8 +752,8 @@
             "__guid": "3e849ecf-1279-49bf-a432-b9865c9c28ae",
             "Collider": {
               "_type": "component",
-              "component_id": "46a4314b-8e6e-46d3-871f-b13a41bc23d0",
-              "go": "57649825-22bb-44f0-9d5e-2aa1c120b27e",
+              "component_id": "cfd4c5d7-9d17-4ca5-9ad7-213966bafe83",
+              "go": "c44b6114-fb8a-4d75-bdac-3c2c5b86e414",
               "component_type": "SphereCollider"
             },
             "DrainPower": 10,
@@ -771,14 +770,6 @@
             "RegeneratePower": 10,
             "ShieldAmount": 100,
             "ShieldRange": "0.00,100.00,1"
-          },
-          {
-            "__type": "Sandbox.SphereCollider",
-            "__guid": "46a4314b-8e6e-46d3-871f-b13a41bc23d0",
-            "Center": "0,0,0",
-            "IsTrigger": false,
-            "Radius": 64,
-            "Static": false
           }
         ],
         "Children": [
@@ -902,7 +893,7 @@
                     "__type": "Sandbox.ParticleRingEmitter",
                     "__guid": "733b3f3b-42bf-48ae-b7b0-c31eac056eb1",
                     "Angle": {
-                      "Constants": "360,0,0,0"
+                      "Constants": "90,0,0,0"
                     },
                     "AngleStart": {},
                     "Burst": 0,
@@ -955,6 +946,23 @@
                     }
                   }
                 ]
+              }
+            ]
+          },
+          {
+            "__guid": "c44b6114-fb8a-4d75-bdac-3c2c5b86e414",
+            "Name": "Collision",
+            "Position": "31.39085,0,0",
+            "Enabled": true,
+            "NetworkMode": 2,
+            "Components": [
+              {
+                "__type": "Sandbox.SphereCollider",
+                "__guid": "cfd4c5d7-9d17-4ca5-9ad7-213966bafe83",
+                "Center": "0,0,0",
+                "IsTrigger": false,
+                "Radius": 32,
+                "Static": false
               }
             ]
           }

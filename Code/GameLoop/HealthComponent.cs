@@ -92,7 +92,7 @@ public partial class HealthComponent : Component, IProjectileCollisionListener
 	}
 
 	// @IProjectileCollisionRecipient
-	public bool OnProjectileCollision( ProjectileComponent projectile )
+	public bool OnProjectileCollision( ProjectileComponent projectile, GameObject hitObject )
 	{
 		var dmgInfo = projectile.CalculateDamage();
 
