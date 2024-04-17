@@ -10,6 +10,11 @@ public partial class ProjectileComponent : Component, Component.ITriggerListener
 	[Property, Group( "Setup" )] public float Speed { get; set; }
 
 	/// <summary>
+	/// How big is the projectile?
+	/// </summary>
+	[Property, Group( "Setup" )] public float Radius { get; set; }
+
+	/// <summary>
 	/// How long until this projectile is deleted?
 	/// </summary>
 	[Property, Group( "Setup" )] public float Lifetime { get; set; }
@@ -30,11 +35,6 @@ public partial class ProjectileComponent : Component, Component.ITriggerListener
 	/// The projectile's model renderer.
 	/// </summary>
 	[Property, Group( "Components" )] public ModelRenderer ModelRenderer { get; set; }
-
-	/// <summary>
-	/// The projectile's collider.
-	/// </summary>
-	[Property, Group( "Components" )] public Collider Collider { get; set; }
 
 	/// <summary>
 	/// How much damage?
@@ -155,7 +155,7 @@ public partial class ProjectileComponent : Component, Component.ITriggerListener
 	void CheckCollisions()
 	{
 		// Shitty expensive collision detection
-		var objects = Scene.FindInPhysics( Collider.KeyframeBody.GetBounds() );
+		var objects = Scene.FindInPhysics( new Sphere( Transform.Position, Radius ) );
 		foreach ( var obj in objects )
 		{
 			if ( IsSuitableCollision( obj ) )
