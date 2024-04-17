@@ -10,6 +10,7 @@ public partial class ShootingComponent : Component
 
 	protected bool CanFire()
 	{
+		if ( GameObject.Root.Components.Get<ShieldComponent>( FindMode.EnabledInSelfAndDescendants )?.IsActive ?? false ) return false;
 		return TimeSinceLastFire > FireRate;
 	}
 

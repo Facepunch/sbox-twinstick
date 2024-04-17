@@ -198,7 +198,7 @@
           "__guid": "5a0784a7-df94-4c84-84da-840dacb6a71c",
           "PlayerPrefab": {
             "_type": "gameobject",
-            "prefab": "assets/prefabs/player.prefab"
+            "prefab": "prefabs/player.prefab"
           }
         },
         {
@@ -370,7 +370,7 @@
   },
   "Title": "Game Scene",
   "Description": "",
-  "LastSaved": "2024-04-16T17:42:45.0687497\u002B01:00",
+  "LastSaved": "2024-04-17T10:52:41.3078754\u002B01:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

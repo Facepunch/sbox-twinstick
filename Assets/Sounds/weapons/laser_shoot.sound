@@ -5,7 +5,7 @@
   "Decibels": 70,
   "SelectionMode": "Random",
   "Sounds": [
-    "assets/sounds/weapons/laser_shoot.vsnd"
+    "sounds/weapons/laser_shoot.vsnd"
   ],
   "Occlusion": true,
   "Reflections": true,

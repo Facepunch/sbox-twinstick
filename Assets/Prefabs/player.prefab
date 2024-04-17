@@ -23,6 +23,7 @@
           "go": "5a30bce2-799e-4596-83f8-c6caba2a8d56",
           "component_type": "HealthComponent"
         },
+        "IsTwinStick": false,
         "MainCollider": {
           "_type": "component",
           "component_id": "c033ad74-d0a9-437d-8a8e-7ee1a545afc9",
@@ -63,7 +64,7 @@
             "__type": "Sandbox.ModelRenderer",
             "__guid": "f4b80999-ed74-41ac-af85-d7326a63cec1",
             "BodyGroups": 18446744073709551615,
-            "Model": "assets/ships/craft_speeder_a.vmdl",
+            "Model": "ships/craft_speedera.vmdl",
             "RenderType": "On",
             "Tint": "0,0,0,1"
           },
@@ -724,12 +725,10 @@
             "FireRate": 0.2,
             "ProjectilePrefab": {
               "_type": "gameobject",
-              "prefab": "assets/prefabs/bullet.prefab"
+              "prefab": "prefabs/bullet.prefab"
             },
-            "ShootSound": "assets/sounds/weapons/laser_shoot.sound",
-            "TimeSinceLastFire": {
-              "Relative": 483.85492
-            }
+            "ShootSound": "sounds/weapons/laser_shoot.sound",
+            "TimeSinceLastFire": {}
           }
         ]
       },
