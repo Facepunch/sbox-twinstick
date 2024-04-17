@@ -1,34 +1,34 @@
 {
   "RootObject": {
-    "__guid": "eaeed44b-6f2b-496c-a5fb-c6bc3af46b01",
+    "__guid": "cb58f489-c44d-4f80-a050-636fb3420f2e",
     "Name": "player",
     "Enabled": true,
     "NetworkMode": 2,
     "Components": [
       {
         "__type": "Twinstick.PlayerComponent",
-        "__guid": "acf536c8-6ef4-4b1e-aa69-0eeea9b1cb90",
+        "__guid": "2ef71539-5fe5-4c72-910d-d478b4a6bf35",
         "Acceleration": 50,
         "BaseFriction": 10,
         "Body": {
           "_type": "component",
-          "component_id": "7a919fea-62c2-40b0-8173-adc762575ad9",
-          "go": "68f3436a-e9b5-43cf-942e-19013ca36c22",
+          "component_id": "f33b220d-4c2f-493f-a7a0-1818830e348a",
+          "go": "d714688f-0fb6-4b3f-8c35-98442c6da39a",
           "component_type": "PlayerBodyComponent"
         },
         "BoostMoveSpeed": 1000,
         "HealthComponent": {
           "_type": "component",
-          "component_id": "82985b58-6ea9-4c7e-8940-eaf432036318",
-          "go": "eaeed44b-6f2b-496c-a5fb-c6bc3af46b01",
+          "component_id": "74d5ecb1-5676-464f-8fb4-f676aa879cb0",
+          "go": "cb58f489-c44d-4f80-a050-636fb3420f2e",
           "component_type": "HealthComponent"
         },
         "Info": {},
         "IsTwinStick": false,
         "MainCollider": {
           "_type": "component",
-          "component_id": "62ab56f5-f790-4879-9f91-ddb56a1b0970",
-          "go": "eaeed44b-6f2b-496c-a5fb-c6bc3af46b01",
+          "component_id": "54f605dc-5957-47aa-8944-d6f8f85e6021",
+          "go": "cb58f489-c44d-4f80-a050-636fb3420f2e",
           "component_type": "SphereCollider"
         },
         "MoveSpeed": 500,
@@ -37,7 +37,7 @@
       },
       {
         "__type": "Twinstick.HealthComponent",
-        "__guid": "82985b58-6ea9-4c7e-8940-eaf432036318",
+        "__guid": "74d5ecb1-5676-464f-8fb4-f676aa879cb0",
         "Health": 100,
         "HealthRange": "0.00,100.00,1",
         "RespawnTime": 3,
@@ -45,7 +45,7 @@
       },
       {
         "__type": "Sandbox.SphereCollider",
-        "__guid": "62ab56f5-f790-4879-9f91-ddb56a1b0970",
+        "__guid": "54f605dc-5957-47aa-8944-d6f8f85e6021",
         "Center": "0,0,0",
         "IsTrigger": false,
         "Radius": 35,
@@ -54,7 +54,7 @@
     ],
     "Children": [
       {
-        "__guid": "68f3436a-e9b5-43cf-942e-19013ca36c22",
+        "__guid": "d714688f-0fb6-4b3f-8c35-98442c6da39a",
         "Name": "Body",
         "Scale": "3,3,3",
         "Enabled": true,
@@ -62,7 +62,7 @@
         "Components": [
           {
             "__type": "Sandbox.ModelRenderer",
-            "__guid": "9fe312f5-634e-45b0-9e90-1cab6f9fa089",
+            "__guid": "de2144e1-76a2-4de4-8c3e-e89d9105f3d4",
             "BodyGroups": 18446744073709551615,
             "Model": "ships/craft_speedera.vmdl",
             "RenderType": "On",
@@ -70,35 +70,35 @@
           },
           {
             "__type": "PlayerBodyComponent",
-            "__guid": "7a919fea-62c2-40b0-8173-adc762575ad9",
+            "__guid": "f33b220d-4c2f-493f-a7a0-1818830e348a",
             "BoostEffectsGameObject": {
               "_type": "gameobject",
-              "go": "d57fb671-57e2-42b4-87f4-7baa464aba62"
+              "go": "32aacfbd-a6fd-4002-8910-5c88712d417c"
             },
             "EffectsGameObject": {
               "_type": "gameobject",
-              "go": "4dc1f5fa-19cd-42e5-abec-cbd8b91647a4"
+              "go": "315e0141-4875-45f1-9c96-191134b318f1"
             },
             "Outliner": {
               "_type": "component",
-              "component_id": "90d54ae6-ec7e-4855-b31b-729a9614d944",
-              "go": "68f3436a-e9b5-43cf-942e-19013ca36c22",
+              "component_id": "037d76ac-ddfe-40cb-a9e6-38407bf5430a",
+              "go": "d714688f-0fb6-4b3f-8c35-98442c6da39a",
               "component_type": "HighlightOutline"
             },
             "Renderer": {
               "_type": "component",
-              "component_id": "9fe312f5-634e-45b0-9e90-1cab6f9fa089",
-              "go": "68f3436a-e9b5-43cf-942e-19013ca36c22",
+              "component_id": "de2144e1-76a2-4de4-8c3e-e89d9105f3d4",
+              "go": "d714688f-0fb6-4b3f-8c35-98442c6da39a",
               "component_type": "ModelRenderer"
             },
             "UIObject": {
               "_type": "gameobject",
-              "go": "c5feb9c1-bacb-4e80-9c65-d0f8d7debd18"
+              "go": "0a4bf749-6459-4908-ae1f-448d8e64719b"
             }
           },
           {
             "__type": "Sandbox.HighlightOutline",
-            "__guid": "90d54ae6-ec7e-4855-b31b-729a9614d944",
+            "__guid": "037d76ac-ddfe-40cb-a9e6-38407bf5430a",
             "Color": "1,0.03721,0.03721,0",
             "InsideColor": "1,0,0,0.4",
             "InsideObscuredColor": "0,0,0,0",
@@ -108,13 +108,13 @@
         ],
         "Children": [
           {
-            "__guid": "4dc1f5fa-19cd-42e5-abec-cbd8b91647a4",
+            "__guid": "315e0141-4875-45f1-9c96-191134b318f1",
             "Name": "Effects",
             "Enabled": true,
             "NetworkMode": 2,
             "Children": [
               {
-                "__guid": "2c04ec8f-ea0c-4f22-bd63-ab6b81b9b966",
+                "__guid": "cf38c603-d7a6-4a6f-97f1-136913508792",
                 "Name": "Exhaust 1",
                 "Position": "-10.90904,-3.541648,-2.040193",
                 "Scale": "0.3333333,0.3333333,0.3333333",
@@ -124,7 +124,7 @@
                 "Components": [
                   {
                     "__type": "Sandbox.ParticleEffect",
-                    "__guid": "b178fe73-da02-4b57-8752-710a012dbf9e",
+                    "__guid": "562e1a4c-9321-4b88-8f56-c2e220e4cdd1",
                     "Alpha": {
                       "Type": "Curve",
                       "CurveA": [
@@ -230,7 +230,7 @@
                   },
                   {
                     "__type": "Sandbox.ParticleSpriteRenderer",
-                    "__guid": "5d75e6df-8c9d-4230-98fd-93a212115b2d",
+                    "__guid": "2f79a596-d8f3-4fb6-922b-a25d5e12ea0a",
                     "Additive": true,
                     "BlurAmount": 0.5,
                     "BlurOpacity": 0.5,
@@ -249,7 +249,7 @@
                   },
                   {
                     "__type": "Sandbox.ParticleBoxEmitter",
-                    "__guid": "8660773a-38c6-44f0-ba1f-32cb02daedd5",
+                    "__guid": "d22955d9-0f48-4275-b3f4-b3e8ef4f503a",
                     "Burst": 100,
                     "Delay": 0,
                     "DestroyOnEnd": false,
@@ -262,7 +262,7 @@
                 ]
               },
               {
-                "__guid": "d835fd6e-a237-44b3-b535-28e5d1ef807c",
+                "__guid": "a28c31f6-0e17-42b4-9fbc-ffee82a16576",
                 "Name": "Exhaust 2",
                 "Position": "-10.90904,3.571606,-2.040193",
                 "Scale": "0.3333333,0.3333333,0.3333333",
@@ -272,7 +272,7 @@
                 "Components": [
                   {
                     "__type": "Sandbox.ParticleEffect",
-                    "__guid": "b6ab70a5-0d0a-4263-ab43-e79482bbaee7",
+                    "__guid": "7fbbf6a0-975c-43ad-a573-a72ace0518c7",
                     "Alpha": {
                       "Type": "Curve",
                       "CurveA": [
@@ -378,7 +378,7 @@
                   },
                   {
                     "__type": "Sandbox.ParticleSpriteRenderer",
-                    "__guid": "8e226a6b-4be0-40a6-b4f7-d469b9ef6998",
+                    "__guid": "2d1568fb-c0ef-40ac-8104-2a593615cf04",
                     "Additive": true,
                     "BlurAmount": 0.5,
                     "BlurOpacity": 0.5,
@@ -397,7 +397,7 @@
                   },
                   {
                     "__type": "Sandbox.ParticleBoxEmitter",
-                    "__guid": "27d433d2-21da-4384-8fe7-53c09c093209",
+                    "__guid": "78e650d0-5cc2-47af-a3f2-03ed4cf7dd29",
                     "Burst": 100,
                     "Delay": 0,
                     "DestroyOnEnd": false,
@@ -412,12 +412,12 @@
             ]
           },
           {
-            "__guid": "d57fb671-57e2-42b4-87f4-7baa464aba62",
+            "__guid": "32aacfbd-a6fd-4002-8910-5c88712d417c",
             "Name": "BoostEffects",
             "NetworkMode": 2,
             "Children": [
               {
-                "__guid": "fca00848-ba1d-497f-840a-bcb024d39c39",
+                "__guid": "47112ac3-6ee4-4b91-a60c-076375c88e48",
                 "Name": "Exhaust 1",
                 "Position": "-10.90904,-3.541648,-2.040193",
                 "Scale": "0.3333333,0.3333333,0.3333333",
@@ -427,7 +427,7 @@
                 "Components": [
                   {
                     "__type": "Sandbox.ParticleEffect",
-                    "__guid": "f94c0a90-8c44-4e99-958c-9ec617d1dcb1",
+                    "__guid": "6fee1754-25d4-4ff5-ab98-f63ca2d601fe",
                     "Alpha": {
                       "Type": "Curve",
                       "CurveA": [
@@ -533,7 +533,7 @@
                   },
                   {
                     "__type": "Sandbox.ParticleSpriteRenderer",
-                    "__guid": "c27a3a8a-fe91-4db9-83a5-57b253641d43",
+                    "__guid": "80c85e57-f9c9-43bb-9bb4-ae0d4804ba16",
                     "Additive": true,
                     "BlurAmount": 0.5,
                     "BlurOpacity": 0.5,
@@ -552,7 +552,7 @@
                   },
                   {
                     "__type": "Sandbox.ParticleBoxEmitter",
-                    "__guid": "629649e2-7878-4c5e-bd7c-3589e25c6811",
+                    "__guid": "5540a816-c25f-4a65-a6a1-7efe6d0339fc",
                     "Burst": 100,
                     "Delay": 0,
                     "DestroyOnEnd": false,
@@ -565,7 +565,7 @@
                 ]
               },
               {
-                "__guid": "0fa7c829-de7f-446c-b90f-3b3916093e5a",
+                "__guid": "d97f1002-ae34-4e78-907e-40f4a2434546",
                 "Name": "Exhaust 2",
                 "Position": "-10.90904,3.571606,-2.040193",
                 "Scale": "0.3333333,0.3333333,0.3333333",
@@ -575,7 +575,7 @@
                 "Components": [
                   {
                     "__type": "Sandbox.ParticleEffect",
-                    "__guid": "0c92c4a9-618a-4a0d-8083-8e6400f1b56b",
+                    "__guid": "d522c488-751f-46cb-a813-b8f8056ceba4",
                     "Alpha": {
                       "Type": "Curve",
                       "CurveA": [
@@ -681,7 +681,7 @@
                   },
                   {
                     "__type": "Sandbox.ParticleSpriteRenderer",
-                    "__guid": "be506190-8dd1-4a2d-8e53-9b1debf31d04",
+                    "__guid": "35d0e6ee-e08e-466d-9470-bc9fbe624a76",
                     "Additive": true,
                     "BlurAmount": 0.5,
                     "BlurOpacity": 0.5,
@@ -700,7 +700,7 @@
                   },
                   {
                     "__type": "Sandbox.ParticleBoxEmitter",
-                    "__guid": "a7ab19a6-096c-4264-93fc-c17caf05a179",
+                    "__guid": "ad7ceda3-a2b0-4ef1-8f7f-22039d94f96d",
                     "Burst": 100,
                     "Delay": 0,
                     "DestroyOnEnd": false,
@@ -717,7 +717,7 @@
         ]
       },
       {
-        "__guid": "83a5b10c-3404-4bfe-8625-4dabbd06bfbd",
+        "__guid": "aab3968f-789e-4970-88ee-92728f44ef7f",
         "Name": "Shooting",
         "Position": "65.0824,0,0",
         "Enabled": true,
@@ -725,7 +725,7 @@
         "Components": [
           {
             "__type": "Twinstick.ShootingComponent",
-            "__guid": "ee235ca2-366f-43e4-9634-1356d6c74ecf",
+            "__guid": "86ef8564-ab6a-4d84-a617-557cb561d2bf",
             "FireRate": 0.2,
             "ProjectilePrefab": {
               "_type": "gameobject",
@@ -733,13 +733,13 @@
             },
             "ShootSound": "sounds/weapons/laser_shoot.sound",
             "TimeSinceLastFire": {
-              "Relative": 867.77673
+              "Relative": 1423.3353
             }
           }
         ]
       },
       {
-        "__guid": "994b30e4-859f-4adf-bf11-861a93109df2",
+        "__guid": "c2b75313-5098-4412-8620-8ed2cad9f929",
         "Name": "Shield",
         "Tags": "shield",
         "Enabled": true,
@@ -747,22 +747,22 @@
         "Components": [
           {
             "__type": "ShieldComponent",
-            "__guid": "9cd3d3bc-b852-4f9d-86a1-e9ce24e9c6cc",
+            "__guid": "fdb0631c-ed3b-42e7-a660-f27408e63ff0",
             "Collider": {
               "_type": "component",
-              "component_id": "e5dd3fd8-257f-4a38-9d64-0aafb0cebbea",
-              "go": "994b30e4-859f-4adf-bf11-861a93109df2",
+              "component_id": "1e933a11-4042-484b-bcd2-f4c6c316ffa8",
+              "go": "c2b75313-5098-4412-8620-8ed2cad9f929",
               "component_type": "SphereCollider"
             },
             "DrainPower": 10,
             "EffectsGameObject": {
               "_type": "gameobject",
-              "go": "18adc3e8-fb69-4b9d-8202-d4b56ad29a76"
+              "go": "6d95f9e1-5cfb-49a7-a8c3-b64e315416d8"
             },
             "Player": {
               "_type": "component",
-              "component_id": "acf536c8-6ef4-4b1e-aa69-0eeea9b1cb90",
-              "go": "eaeed44b-6f2b-496c-a5fb-c6bc3af46b01",
+              "component_id": "2ef71539-5fe5-4c72-910d-d478b4a6bf35",
+              "go": "cb58f489-c44d-4f80-a050-636fb3420f2e",
               "component_type": "PlayerComponent"
             },
             "RegeneratePower": 10,
@@ -771,7 +771,7 @@
           },
           {
             "__type": "Sandbox.SphereCollider",
-            "__guid": "e5dd3fd8-257f-4a38-9d64-0aafb0cebbea",
+            "__guid": "1e933a11-4042-484b-bcd2-f4c6c316ffa8",
             "Center": "0,0,0",
             "IsTrigger": false,
             "Radius": 64,
@@ -780,12 +780,12 @@
         ],
         "Children": [
           {
-            "__guid": "18adc3e8-fb69-4b9d-8202-d4b56ad29a76",
+            "__guid": "6d95f9e1-5cfb-49a7-a8c3-b64e315416d8",
             "Name": "Effects",
             "NetworkMode": 2,
             "Children": [
               {
-                "__guid": "9d31ea4c-78ef-4e83-816e-83f550518095",
+                "__guid": "f690c1ee-13b8-4cee-a49c-232dc5c8374c",
                 "Name": "Ring (3)",
                 "Rotation": "0,0,-0.3826835,0.9238795",
                 "Tags": "particles",
@@ -794,7 +794,7 @@
                 "Components": [
                   {
                     "__type": "Sandbox.ParticleEffect",
-                    "__guid": "52bb969b-0330-4912-ac1f-08a94d17fe96",
+                    "__guid": "36d54cda-e282-4847-ac85-d57a0886f974",
                     "Alpha": {
                       "Constants": "1,0,0,0"
                     },
@@ -878,7 +878,7 @@
                   },
                   {
                     "__type": "Sandbox.ParticleSpriteRenderer",
-                    "__guid": "05c84a4e-bc00-4e8a-8fc7-87ecfe8a8407",
+                    "__guid": "c8804183-4ad6-48ed-afad-ed11990bd501",
                     "Additive": true,
                     "BlurAmount": 0.5,
                     "BlurOpacity": 0.5,
@@ -897,7 +897,7 @@
                   },
                   {
                     "__type": "Sandbox.ParticleRingEmitter",
-                    "__guid": "258bd6c6-db21-478f-89bf-e3aca191ddfb",
+                    "__guid": "44a7abbf-6178-4ab8-adb1-4717c9469336",
                     "Angle": {
                       "Constants": "360,0,0,0"
                     },
@@ -958,35 +958,34 @@
         ]
       },
       {
-        "__guid": "c5feb9c1-bacb-4e80-9c65-d0f8d7debd18",
+        "__guid": "0a4bf749-6459-4908-ae1f-448d8e64719b",
         "Name": "UI",
         "Enabled": true,
         "NetworkMode": 2,
         "Children": [
           {
-            "__guid": "b4144318-8fee-4386-ba81-585fa9fa5d75",
+            "__guid": "96c51d81-60a0-42b0-a951-a91622c0cd80",
             "Name": "Name",
-            "Position": "26.21915,-63.86191,0.0002926118",
             "Rotation": "0,0.7071067,0,0.7071068",
             "Enabled": true,
             "NetworkMode": 2,
             "Components": [
               {
                 "__type": "Sandbox.WorldPanel",
-                "__guid": "210b40b1-1a7c-4b73-bcec-a4abb42f61da",
+                "__guid": "a48cb173-b42c-4b05-ac26-8587b5fa50cc",
                 "HorizontalAlign": "Center",
                 "LookAtCamera": true,
-                "PanelSize": "2500,2500",
+                "PanelSize": "3000,3000",
                 "RenderScale": 1,
                 "VerticalAlign": "Center"
               },
               {
                 "__type": "Twinstick.PlayerNamePanel",
-                "__guid": "3a8ffa74-ebb9-447d-b0a7-3462ec691632",
+                "__guid": "e46a39c4-54c3-434a-9880-617176caed77",
                 "Player": {
                   "_type": "component",
-                  "component_id": "acf536c8-6ef4-4b1e-aa69-0eeea9b1cb90",
-                  "go": "eaeed44b-6f2b-496c-a5fb-c6bc3af46b01",
+                  "component_id": "2ef71539-5fe5-4c72-910d-d478b4a6bf35",
+                  "go": "cb58f489-c44d-4f80-a050-636fb3420f2e",
                   "component_type": "PlayerComponent"
                 }
               }

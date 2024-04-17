@@ -5,8 +5,17 @@
 @inherits PanelComponent
 
 <root>
-	<div class="title" @ref="NamePanel">
-        <label>P@(Player.Info.Index + 1)</label>
+    <div class="name">
+        <div class="name-panel" @ref="NamePanel">
+            <label>P@(Player.Info.Index + 1)</label>
+        </div>
+    </div>
+
+    <div class="hint @HintClasses()">
+        @using ( Player.ScopeInput() )
+        {
+            <InputHint Size=@InputGlyphSize.Large Action="Attack1" />
+        }
     </div>
 </root>
 
@@ -17,11 +26,25 @@
 
     public Panel NamePanel { get; set; }
 
+    public ShootingComponent ShootComponent => Player.Components.Get<ShootingComponent>(FindMode.EnabledInSelfAndDescendants);
+
+    string HintClasses()
+    {
+        var shootComponent = ShootComponent;
+        if ( !shootComponent.IsValid() ) return "";
+        if ( shootComponent.TimeUntilNextFire > 0 ) return "cooldown";
+
+        return "";
+    }
+
     protected override void OnTreeFirstBuilt()
     {
-        BindClass( "visible", () => Manager.TimeSinceStateChanged < 2f );
-
+        NamePanel.BindClass( "visible", () => Manager.TimeSinceStateChanged < 2f );
         NamePanel.Style.BackgroundColor = Manager.PlayerManager.PlayerColors[Player.Info.Index].WithAlpha( 0.5f );
+    }
 
+    protected override int BuildHash()
+    {
+        return HashCode.Combine( Time.Now );
     }
 }

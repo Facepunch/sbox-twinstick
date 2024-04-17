@@ -4,21 +4,21 @@ public partial class ShootingComponent : Component
 {
 	[Property] public GameObject ProjectilePrefab { get; set; }
 	[Property] public float FireRate { get; set; } = 0.1f;
-	[Property] public TimeSince TimeSinceLastFire { get; set; } = 1f;
+	[Property] public TimeUntil TimeUntilNextFire { get; set; } = 1f;
 
 	[Property] public SoundEvent ShootSound { get; set; }
 
 	protected bool CanFire()
 	{
 		if ( GameObject.Root.Components.Get<ShieldComponent>( FindMode.EnabledInSelfAndDescendants )?.IsActive ?? false ) return false;
-		return TimeSinceLastFire > FireRate;
+		return TimeUntilNextFire;
 	}
 
 	public void Fire( Vector3 direction )
 	{
 		if ( !CanFire() ) return;
 
-		TimeSinceLastFire = 0;
+		TimeUntilNextFire = FireRate;
 
 		var gameObject = ProjectilePrefab.Clone( new CloneConfig()
 		{

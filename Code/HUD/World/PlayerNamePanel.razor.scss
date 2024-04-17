@@ -9,39 +9,85 @@ PlayerNamePanel
 	align-items: center;
 	font-weight: bold;
 
-	transition: all 0.5s ease-in-out;
-	opacity: 0;
-	transform: scale( 0 );
-
-	&:intro 
+	.name
 	{
-		opacity: 0;
-		transform: scale( 0 );
+		position: absolute;
+		bottom: 0;
+		right: 0;
 	}
 
-	&.visible
+	.hint
 	{
-		transform: scale( 1 );
-		opacity: 1;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 256px;
+		height: 256px;
+		border-radius: 1000px;
+		background-color: rgba( black, 0.35 );
+		margin: 32px;
+
+		InputHint
+		{
+			padding: 32px;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+
+			img
+			{
+				position: absolute;
+				width: 80%;
+				height: 80%;
+			}
+		}
+
+		&.cooldown
+		{
+			InputHint
+			{
+				transform: scale( 0.8 );
+
+				img
+				{
+					opacity: 0.1;
+				}
+			}
+		}
 	}
 
-	.title
+	.name-panel
 	{
 		border-radius: 1000px;
 		background-color: rgba( white, 0.1 );
-		font-size: 250px;
+		font-size: 200px;
 		aspect-ratio: 1;
 		padding: 128px;
 		font-family: Poppins;
 		color: #fff;
 		justify-content: center;
 		align-items: center;
+		transition: all 0.5s ease-in-out;
+		opacity: 0;
+		transform: scale( 0 );
 
 		label
 		{
 			justify-content: center;
 			text-shadow: 15px 15px 0px rgba( black, 0.5 );
 			align-items: center;
+		}
+
+		&:intro
+		{
+			opacity: 0;
+			transform: scale( 0 );
+		}
+
+		&.visible
+		{
+			transform: scale( 1 );
+			opacity: 1;
 		}
 	}
 }
