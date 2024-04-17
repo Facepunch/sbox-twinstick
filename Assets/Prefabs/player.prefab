@@ -25,7 +25,6 @@
           "component_type": "HealthComponent"
         },
         "Info": {},
-        "IsTwinStick": false,
         "MainCollider": {
           "_type": "component",
           "component_id": "0c0bac02-5ae7-4d4f-8714-1b34571f3fbf",
@@ -34,7 +33,7 @@
         },
         "MoveSpeed": 500,
         "Radius": 16,
-        "TurnSpeed": 20
+        "TurnSpeed": 10
       },
       {
         "__type": "Twinstick.HealthComponent",
@@ -734,8 +733,8 @@
             },
             "ShootSound": "sounds/weapons/laser_shoot.sound",
             "TimeUntilNextFire": {
-              "Relative": -5817.918,
-              "Passed": 5817.918,
+              "Relative": -6825.342,
+              "Passed": 6825.342,
               "Fraction": 1
             }
           }

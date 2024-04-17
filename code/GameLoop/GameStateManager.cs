@@ -21,6 +21,7 @@ public sealed class GameStateManager : Component
 	[Property, Group( "Setup" )] public PlayerManager PlayerManager { get; set; }
 
 	[Property, Group( "Development" )] public bool IsDevelopment { get; set; } = true;
+	[Property, Group( "Development" )] public int PlayerCount { get; set; } = 1;
 
 	/// <summary>
 	/// What's our current state?
@@ -68,7 +69,11 @@ public sealed class GameStateManager : Component
 		if ( IsDevelopment )
 		{
 			SetGameState( GameState.Play );
-			CreatePlayers( 0, 1 );
+
+			var playerList = new List<int>();
+			for ( int i = 0; i < PlayerCount; i++ ) playerList.Add( i );
+
+			CreatePlayers( playerList.ToArray() );
 		}
 	}
 
