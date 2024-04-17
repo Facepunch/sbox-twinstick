@@ -2,7 +2,7 @@ using System;
 
 namespace Twinstick;
 
-public partial class ProjectileComponent : Component, Component.ITriggerListener
+public partial class ProjectileComponent : Component, Component.ITriggerListener, Component.ITintable
 {
 	/// <summary>
 	/// How fast is this projectile?
@@ -42,6 +42,11 @@ public partial class ProjectileComponent : Component, Component.ITriggerListener
 	[Property, Group( "Damage" )] public float Damage { get; set; } = 25f;
 
 	/// <summary>
+	/// The particle
+	/// </summary>
+	[Property] public ParticleEffect Particles { get; set; } = null;
+
+	/// <summary>
 	/// Called when the projectile hits something.
 	/// </summary>
 	public Action<GameObject> OnProjectileHit { get; set; }
@@ -64,6 +69,17 @@ public partial class ProjectileComponent : Component, Component.ITriggerListener
 	{
 		Owner = owner;
 		Target = null;
+
+		if ( owner.Root.Components.Get<PlayerComponent>( FindMode.EnabledInSelfAndDescendants ) is { } player )
+		{
+			Color = player.Body.Color;
+
+			if ( Particles.IsValid() )
+			{
+				Particles.Tint = Color;
+				Particles.Gradient = Color;
+			}
+		}
 	}
 
 	public DamageInfo CalculateDamage() => DamageInfo.FromProjectile( this );
@@ -88,6 +104,16 @@ public partial class ProjectileComponent : Component, Component.ITriggerListener
 
 	GameObject Target { get; set; }
 	TimeSince TimeSinceTargeted { get; set; } = 1f;
+
+	public Color Color
+	{
+		get => ModelRenderer.Tint;
+		set
+		{
+			ModelRenderer.Tint = value;
+		}
+	}
+
 	void TryGetTarget()
 	{
 		if ( TimeSinceTargeted < 0.2f ) return;

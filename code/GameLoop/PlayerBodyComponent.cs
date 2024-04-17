@@ -10,9 +10,18 @@ public sealed class PlayerBodyComponent : Component
 
 	PlayerManager PlayerManager => GameStateManager.Instance.PlayerManager;
 
+	public Color Color
+	{
+		get => Outliner.Color;
+		set
+		{
+			Outliner.Color = value;
+		}
+	}
+
 	internal void SetPlayerId( int playerId )
 	{
-		Outliner.Color = PlayerManager.PlayerColors[playerId];
+		Color = PlayerManager.PlayerColors[playerId];
 		Outliner.InsideColor = Outliner.Color.WithAlpha( 0.25f );
 	}
 
