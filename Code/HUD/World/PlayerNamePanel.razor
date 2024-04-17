@@ -10,12 +10,27 @@
             <label>P@(Player.Info.Index + 1)</label>
         </div>
     </div>
+    <div class="hints">
+        <div class="hint small @ShieldClasses()">
+            @using ( Player.ScopeInput() )
+            {
+                <InputHint Size=@InputGlyphSize.Large Action="Attack2" />
+            }
+        </div>
 
-    <div class="hint @HintClasses()">
-        @using ( Player.ScopeInput() )
-        {
-            <InputHint Size=@InputGlyphSize.Large Action="Attack1" />
-        }
+        <div class="hint @BoostClasses()">
+            @using ( Player.ScopeInput() )
+            {
+                <InputHint Size=@InputGlyphSize.Large Action="Run" />
+            }
+        </div>
+
+        <div class="hint small @HintClasses()">
+            @using ( Player.ScopeInput() )
+            {
+                <InputHint Size=@InputGlyphSize.Large Action="Attack1" />
+            }
+        </div>
     </div>
 </root>
 
@@ -26,13 +41,26 @@
 
     public Panel NamePanel { get; set; }
 
-    public ShootingComponent ShootComponent => Player.Components.Get<ShootingComponent>(FindMode.EnabledInSelfAndDescendants);
+    public ShootingComponent ShootComponent => Player.Components.Get<ShootingComponent>( FindMode.EnabledInSelfAndDescendants );
+    public ShieldComponent ShieldComponent => Player.Components.Get<ShieldComponent>( FindMode.EnabledInSelfAndDescendants );
+
+    string ShieldClasses()
+    {
+        if ( ShieldComponent.IsActive ) return "cooldown";
+        return "";
+    }
+
+    string BoostClasses()
+    {
+        if (Player.IsBoosting) return "cooldown";
+        return "";
+    }
 
     string HintClasses()
     {
         var shootComponent = ShootComponent;
         if ( !shootComponent.IsValid() ) return "";
-        if ( shootComponent.TimeUntilNextFire > 0 ) return "cooldown";
+        if ( !shootComponent.CanFire() ) return "cooldown";
 
         return "";
     }

@@ -12,20 +12,30 @@ PlayerNamePanel
 	.name
 	{
 		position: absolute;
-		bottom: 0;
+		top: 0;
 		right: 0;
 	}
 
-	.hint
+	.hints
 	{
 		position: absolute;
 		bottom: 0;
 		left: 0;
-		width: 256px;
-		height: 256px;
-		border-radius: 1000px;
-		background-color: rgba( black, 0.35 );
-		margin: 32px;
+		width: 100%;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.hint
+	{
+		aspect-ratio: 1;
+		width: 400px;
+
+		&.small
+		{
+			width: 200px;
+			height: 200px;
+		}
 
 		InputHint
 		{

@@ -68,7 +68,7 @@ public sealed class GameStateManager : Component
 		if ( IsDevelopment )
 		{
 			SetGameState( GameState.Play );
-			CreatePlayers( 0, 1 );
+			CreatePlayers( 0 );
 		}
 	}
 

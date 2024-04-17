@@ -8,7 +8,7 @@ public partial class ShootingComponent : Component
 
 	[Property] public SoundEvent ShootSound { get; set; }
 
-	protected bool CanFire()
+	public bool CanFire()
 	{
 		if ( GameObject.Root.Components.Get<ShieldComponent>( FindMode.EnabledInSelfAndDescendants )?.IsActive ?? false ) return false;
 		return TimeUntilNextFire;
