@@ -48,6 +48,11 @@ public sealed class GameStateManager : Component
 	public TimeUntil TimeUntilCountdown { get; private set; }
 
 	/// <summary>
+	/// When did we change state?
+	/// </summary>
+	public TimeSince TimeSinceStateChanged { get; private set; }
+
+	/// <summary>
 	/// The singleton instance of GameStateManager
 	/// </summary>
 	public static GameStateManager Instance { get; private set; }
@@ -114,6 +119,7 @@ public sealed class GameStateManager : Component
 	{
 		var old = CurrentState;
 		CurrentState = state;
+		TimeSinceStateChanged = 0;
 
 		OnGameStateChanged( old, state );
 	}

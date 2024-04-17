@@ -1,0 +1,27 @@
+@using Sandbox;
+@using Sandbox.UI;
+
+@namespace Twinstick
+@inherits PanelComponent
+
+<root>
+	<div class="title" @ref="NamePanel">
+        <label>P@(Player.Info.Index + 1)</label>
+    </div>
+</root>
+
+@code
+{
+    [Property] public PlayerComponent Player { get; set; }
+    public GameStateManager Manager => GameStateManager.Instance;
+
+    public Panel NamePanel { get; set; }
+
+    protected override void OnTreeFirstBuilt()
+    {
+        BindClass( "visible", () => Manager.TimeSinceStateChanged < 2f );
+
+        NamePanel.Style.BackgroundColor = Manager.PlayerManager.PlayerColors[Player.Info.Index].WithAlpha( 0.5f );
+
+    }
+}

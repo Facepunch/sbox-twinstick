@@ -1,0 +1,47 @@
+PlayerNamePanel
+{
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	justify-content: center;
+	align-items: center;
+	font-weight: bold;
+
+	transition: all 0.5s ease-in-out;
+	opacity: 0;
+	transform: scale( 0 );
+
+	&:intro 
+	{
+		opacity: 0;
+		transform: scale( 0 );
+	}
+
+	&.visible
+	{
+		transform: scale( 1 );
+		opacity: 1;
+	}
+
+	.title
+	{
+		border-radius: 1000px;
+		background-color: rgba( white, 0.1 );
+		font-size: 250px;
+		aspect-ratio: 1;
+		padding: 128px;
+		font-family: Poppins;
+		color: #fff;
+		justify-content: center;
+		align-items: center;
+
+		label
+		{
+			justify-content: center;
+			text-shadow: 15px 15px 0px rgba( black, 0.5 );
+			align-items: center;
+		}
+	}
+}
