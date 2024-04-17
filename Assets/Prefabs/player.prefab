@@ -17,6 +17,7 @@
           "component_type": "PlayerBodyComponent"
         },
         "BoostMoveSpeed": 1000,
+        "BoostTurnSpeed": 2,
         "HealthComponent": {
           "_type": "component",
           "component_id": "dd56f700-bb97-40f4-b283-2eb9455fcd3f",
@@ -733,8 +734,8 @@
             },
             "ShootSound": "sounds/weapons/laser_shoot.sound",
             "TimeUntilNextFire": {
-              "Relative": -2909.3362,
-              "Passed": 2909.3362,
+              "Relative": -5817.918,
+              "Passed": 5817.918,
               "Fraction": 1
             }
           }

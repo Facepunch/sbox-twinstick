@@ -14,6 +14,8 @@ public sealed class PlayerComponent : Component, ILifeStateListener
 	/// </summary>
 	[Property, Group( "Movement" )] public float TurnSpeed { get; set; } = 20f;
 
+	[Property, Group( "Movement" )] public float BoostTurnSpeed { get; set; } = 5f;
+
 	/// <summary>
 	/// What's our base move speed (left stick)?
 	/// </summary>
@@ -103,35 +105,15 @@ public sealed class PlayerComponent : Component, ILifeStateListener
 	Rotation TargetRotation;
 	internal Vector3 LookDirection;
 
-	[Property] public bool IsTwinStick { get; set; } = false;
-
 	void Turn()
 	{
-		if ( IsTwinStick )
+		var normalized = Input.AnalogMove.Normal;
+		if ( MathF.Abs( normalized.x ) > 0.1f || MathF.Abs( normalized.y ) > 0.1f )
 		{
-			var analogLook = EnableInput ? Input.AnalogLook.AsVector3() : 0;
-			analogLook = analogLook.Normal;
-
-			var direction = new Vector3( -analogLook.x, analogLook.y, 0 );
-
-			// Don't bother if we're not looking at anything
-			if ( direction.Length <= 0 )
-				return;
-
-			LookDirection = direction;
-		}
-		else
-		{
-			if ( Velocity.Length < 0.1f ) 
-				return;
-
-			LookDirection = Velocity.Normal;
+			LookDirection = Input.AnalogMove.Normal;
 		}
 
-		const float fwd = 100f;
-		var lookAt = Rotation.LookAt( LookDirection * fwd );
-
-		TargetRotation = Rotation.Lerp( TargetRotation, lookAt, Time.Delta * TurnSpeed );
+		TargetRotation = Rotation.Lerp( TargetRotation, Rotation.LookAt( LookDirection ), Time.Delta * GetTurnSpeed() );
 		GameObject.Transform.Rotation = Rotation.From( 0, TargetRotation.Yaw(), 0 );
 	}
 
@@ -139,9 +121,15 @@ public sealed class PlayerComponent : Component, ILifeStateListener
 	/// Add acceleration to the current velocity. 
 	/// No need to scale by time delta - it will be done inside.
 	/// </summary>
-	public void Accelerate( Vector3 vector )
+	public void Accelerate()
 	{
-		Velocity = Velocity.WithAcceleration( vector, Acceleration * Time.Delta );
+		Velocity = Velocity.WithAcceleration( ( TargetRotation.Forward * GetMoveSpeed() ) * WishVelocity.Length, GetAcceleration() * Time.Delta );
+		Velocity = Velocity.WithZ( 0f );
+	}
+
+	public float GetAcceleration()
+	{
+		return Acceleration;
 	}
 
 	/// <summary>
@@ -210,6 +198,12 @@ public sealed class PlayerComponent : Component, ILifeStateListener
 		return MoveSpeed;
 	}
 
+	float GetTurnSpeed()
+	{
+		if ( IsBoosting ) return BoostTurnSpeed;
+		return TurnSpeed;
+	}
+
 	Vector3 WishVelocity;
 	void MoveInput()
 	{
@@ -221,12 +215,11 @@ public sealed class PlayerComponent : Component, ILifeStateListener
 		{
 			WishVelocity = WishVelocity.WithZ( 0 );
 			WishVelocity = WishVelocity.ClampLength( 1 );
-			WishVelocity *= GetMoveSpeed();
 		}
 
 		ApplyFriction( BaseFriction );
 
-		Accelerate( WishVelocity );
+		Accelerate();
 	}
 
 	private void ShootInput()
