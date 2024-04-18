@@ -183,6 +183,53 @@ public sealed class PlayerComponent : Component, ILifeStateListener
 		Velocity = mover.Velocity;
 	}
 
+
+	int _stuckTries;
+
+	bool TryUnstuck()
+	{
+		var result = BuildTrace( Transform.Position, Transform.Position ).Run();
+
+		// Not stuck, we cool
+		if ( !result.StartedSolid )
+		{
+			_stuckTries = 0;
+			return false;
+		}
+
+		//using ( Gizmo.Scope( "unstuck", Transform.World ) )
+		//{
+		//	Gizmo.Draw.Color = Gizmo.Colors.Red;
+		//	Gizmo.Draw.LineBBox( BoundingBox );
+		//}
+
+		int AttemptsPerTick = 20;
+
+		for ( int i = 0; i < AttemptsPerTick; i++ )
+		{
+			var pos = Transform.Position + Vector3.Random.Normal * (((float)_stuckTries) / 2.0f);
+
+			// First try the up direction for moving platforms
+			if ( i == 0 )
+			{
+				pos = Transform.Position + Vector3.Up * 2;
+			}
+
+			result = BuildTrace( pos, pos ).Run();
+
+			if ( !result.StartedSolid )
+			{
+				//Log.Info( $"unstuck after {_stuckTries} tries ({_stuckTries * AttemptsPerTick} tests)" );
+				Transform.Position = pos;
+				return false;
+			}
+		}
+
+		_stuckTries++;
+
+		return true;
+	}
+
 	public bool IsBoosting { get; private set; } = false;
 	void SetBoosting( bool boosting )
 	{
@@ -237,6 +284,7 @@ public sealed class PlayerComponent : Component, ILifeStateListener
 		using var _ = ScopeInput();
 
 		MoveInput();
+		TryUnstuck();
 		Move();
 		ShootInput();
 	}
