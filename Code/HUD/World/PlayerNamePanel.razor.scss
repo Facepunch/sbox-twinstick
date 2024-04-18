@@ -26,6 +26,29 @@ PlayerNamePanel
 		align-items: center;
 	}
 
+	.bar-area
+	{
+		position: absolute;
+		bottom: -96px;
+		left: 0;
+		width: 100%;
+		justify-content: center;
+		align-items: center;
+	}
+
+	.bar
+	{
+		background-color: rgba( black, 0.5 );
+		height: 128px;
+		width: 35%;
+	}
+
+	.bar-inner
+	{
+		background-color: rgb( 182, 255, 0, 1 );
+		height: 128px;
+	}
+
 	.hint
 	{
 		aspect-ratio: 1;

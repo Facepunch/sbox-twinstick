@@ -32,6 +32,13 @@
             }
         </div>
     </div>
+
+    <div class="bar-area">
+        <div class="bar">
+            <div class="bar-inner" style="width:@((HealthComponent.Health / HealthComponent.HealthRange.y) * 100f)%" />
+        </div>
+    </div>
+
 </root>
 
 @code
@@ -41,6 +48,7 @@
 
     public Panel NamePanel { get; set; }
 
+    public HealthComponent HealthComponent => Player.HealthComponent;
     public ShootingComponent ShootComponent => Player.Components.Get<ShootingComponent>( FindMode.EnabledInSelfAndDescendants );
     public ShieldComponent ShieldComponent => Player.Components.Get<ShieldComponent>( FindMode.EnabledInSelfAndDescendants );
 

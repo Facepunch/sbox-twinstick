@@ -1,0 +1,203 @@
+{
+  "RootObject": {
+    "__guid": "8029b57d-fb66-4ba0-863e-5fc22de79ee3",
+    "Name": "player_damage",
+    "Tags": "particles",
+    "Enabled": true,
+    "NetworkMode": 2,
+    "Components": [
+      {
+        "__type": "Twinstick.TimedDestroyComponent",
+        "__guid": "d3cad4d5-bb55-479d-9596-852c8334eebb",
+        "Time": 1,
+        "TimeUntilDestroy": {
+          "Relative": -2201.1155,
+          "Passed": 2201.1155,
+          "Fraction": 1
+        }
+      }
+    ],
+    "Children": [
+      {
+        "__guid": "52b101cd-d775-4450-8ba7-874e40db209f",
+        "Name": "Ring (3)",
+        "Rotation": "0,0,-0.3826835,0.9238795",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "Sandbox.ParticleEffect",
+            "__guid": "d5d64f88-ed3f-4e50-991e-2c6231db27b0",
+            "Alpha": {
+              "Type": "Curve",
+              "CurveA": [
+                {},
+                {
+                  "x": 0.46130952,
+                  "y": 1
+                },
+                {
+                  "x": 1
+                }
+              ],
+              "Constants": "1,0,0,0"
+            },
+            "ApplyColor": true,
+            "ApplyRotation": true,
+            "ApplyShape": true,
+            "Bounce": {
+              "Constants": "1,0,0,0"
+            },
+            "Brightness": {
+              "Constants": "10,0,0,0"
+            },
+            "Bumpiness": {
+              "Constants": "1,0,0,0"
+            },
+            "Collision": false,
+            "CollisionRadius": 0,
+            "Damping": {
+              "Constants": "0.5,0,0,0"
+            },
+            "DieOnCollisionChance": {},
+            "Force": true,
+            "ForceDirection": "0,0,5",
+            "ForceScale": {
+              "Constants": "50,0,0,0"
+            },
+            "Friction": {
+              "Constants": "1,0,0,0"
+            },
+            "Gradient": {
+              "Evaluation": "Particle",
+              "GradientA": {
+                "color": [
+                  {
+                    "t": 0.5,
+                    "c": "1,1,1,1"
+                  }
+                ],
+                "alpha": []
+              },
+              "GradientB": {
+                "color": [
+                  {
+                    "t": 0.5,
+                    "c": "1,1,1,1"
+                  }
+                ],
+                "alpha": []
+              },
+              "ConstantA": "0.1385,0.40426,0.45116,1",
+              "ConstantB": "1,1,1,1"
+            },
+            "Lifetime": {
+              "Constants": "0.3,0.1,0,0"
+            },
+            "MaxParticles": 2000,
+            "PerParticleTimeScale": {
+              "Constants": "1,0,0,0"
+            },
+            "PreWarm": 0,
+            "PushStrength": {},
+            "Roll": {
+              "Constants": "55,0,0,0"
+            },
+            "Scale": {
+              "Constants": "1,0,0,0"
+            },
+            "SequenceId": {},
+            "SequenceSpeed": {
+              "Constants": "1,0,0,0"
+            },
+            "SequenceTime": {
+              "Constants": "1,0,0,0"
+            },
+            "SheetSequence": false,
+            "Space": "Local",
+            "StartVelocity": {},
+            "Stretch": {},
+            "TimeScale": 1,
+            "Tint": "0.46728,0.65188,0.74419,1"
+          },
+          {
+            "__type": "Sandbox.ParticleSpriteRenderer",
+            "__guid": "1cea8750-0ac9-4eb7-bf42-5b5fe6db4fe8",
+            "Additive": true,
+            "BlurAmount": 0.5,
+            "BlurOpacity": 0.5,
+            "BlurSpacing": 0.5,
+            "DepthFeather": 0,
+            "FaceVelocity": false,
+            "FogStrength": 0,
+            "LeadingTrail": true,
+            "MotionBlur": false,
+            "Opaque": true,
+            "RotationOffset": 0,
+            "Scale": 2,
+            "Shadows": true,
+            "SortMode": "Unsorted",
+            "Texture": "materials/tools/handle_circle_color_tga_f67bf942.generated.vtex"
+          },
+          {
+            "__type": "Sandbox.ParticleRingEmitter",
+            "__guid": "023cf677-ed64-4e38-9e38-3a1747606866",
+            "Angle": {
+              "Constants": "360,0,0,0"
+            },
+            "AngleStart": {},
+            "Burst": 0,
+            "Delay": 0,
+            "DestroyOnEnd": true,
+            "Duration": 0.1,
+            "Flatness": {},
+            "Loop": false,
+            "Radius": {
+              "Type": "Curve",
+              "CurveA": {
+                "rangey": "0,4",
+                "frames": [
+                  {},
+                  {
+                    "x": 1,
+                    "y": 1
+                  }
+                ]
+              },
+              "Constants": "50,0,0,0"
+            },
+            "Rate": 10000,
+            "Thickness": {
+              "Constants": "2,0,0,0"
+            },
+            "VelocityFromCenter": {
+              "Constants": "-125,0,0,0"
+            },
+            "VelocityFromRing": {
+              "CurveA": {
+                "rangey": "-20,20",
+                "frames": [
+                  {},
+                  {
+                    "x": 0.5,
+                    "y": 1
+                  },
+                  {
+                    "x": 1
+                  }
+                ]
+              },
+              "Constants": "-100,0,0,0"
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "ShowInMenu": false,
+  "MenuPath": null,
+  "MenuIcon": null,
+  "ResourceVersion": 1,
+  "__version": 1,
+  "__references": []
+}

@@ -20,6 +20,8 @@ public partial class HealthComponent : Component, IProjectileCollisionListener
 
 	[Property] public RangedFloat HealthRange { get; set; } = new( 0, 100 );
 
+	[Property] public GameObject PrefabOnDamage { get; set; }
+
 	public int Priority { get; set; } = 0;
 
 	/// <summary>
@@ -55,9 +57,24 @@ public partial class HealthComponent : Component, IProjectileCollisionListener
 		}
 	}
 
+	void OnDamage( float amount )
+	{
+		var prefab = PrefabOnDamage.Clone( new CloneConfig()
+		{
+			Name = "Damage Prefab",
+			Transform = GameObject.Transform.World,
+			StartEnabled = true
+		} );
+	}
+
 	void HealthChanged( float before, float after )
 	{
 		OnHealthChanged?.Invoke( before, after );
+
+		if ( after < before )
+		{
+			OnDamage( (after - before) );
+		}
 
 		// On death
 		if ( Health <= HealthRange.x )
