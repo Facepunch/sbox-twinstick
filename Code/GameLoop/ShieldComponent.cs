@@ -26,6 +26,9 @@ public sealed class ShieldComponent : Component, IDamageListener, IProjectileCol
 	/// </summary>
 	[Property, Group( "Configuration" )] public float DrainPower { get; set; } = 10f;
 
+	[Property, Group( "Visuals" )] public Gradient ShieldGradient { get; set; }
+	[Property, Group( "Visuals" )] public ParticleEffect ParticleEffect { get; set; }
+
 	/// <summary>
 	/// How quickly do the shields regenerate
 	/// </summary>
@@ -144,6 +147,11 @@ public sealed class ShieldComponent : Component, IDamageListener, IProjectileCol
 
 		if ( IsActive )
 		{
+			if ( ParticleEffect.IsValid() )
+			{
+				ParticleEffect.Tint = ShieldGradient.Evaluate( 1 - ( ShieldAmount / ShieldRange.y ) );
+			}
+
 			Drain();
 		}
 		else

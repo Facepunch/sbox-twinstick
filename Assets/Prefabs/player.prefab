@@ -739,8 +739,8 @@
             },
             "ShootSound": "sounds/weapons/laser_shoot.sound",
             "TimeUntilNextFire": {
-              "Relative": -1864.7974,
-              "Passed": 1864.7974,
+              "Relative": -3388.916,
+              "Passed": 3388.916,
               "Fraction": 1
             }
           }
@@ -767,6 +767,12 @@
               "_type": "gameobject",
               "go": "f0b0ea6b-d21a-41d8-9d87-15c58e4ef91b"
             },
+            "ParticleEffect": {
+              "_type": "component",
+              "component_id": "2676d7b4-1afc-4f7e-b59e-40b1b9700eb6",
+              "go": "dba1fe22-40ff-4359-b7a7-1d0827ba8856",
+              "component_type": "ParticleEffect"
+            },
             "Player": {
               "_type": "component",
               "component_id": "4e4af219-54b6-4c23-9db0-1261ede15755",
@@ -775,6 +781,21 @@
             },
             "RegeneratePower": 10,
             "ShieldAmount": 100,
+            "ShieldGradient": {
+              "color": [
+                {
+                  "c": "0.25925,0.99535,0.94628,1"
+                },
+                {
+                  "t": 0.50213677,
+                  "c": "0.93953,0.75775,0.10051,1"
+                },
+                {
+                  "t": 1,
+                  "c": "0.90698,0.16452,0.16452,1"
+                }
+              ]
+            },
             "ShieldRange": "0.00,100.00,1"
           }
         ],
