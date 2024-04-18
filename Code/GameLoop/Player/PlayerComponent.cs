@@ -2,7 +2,7 @@ using System;
 
 namespace Twinstick;
 
-public sealed class PlayerComponent : Component, ILifeStateListener
+public sealed class PlayerComponent : Component, ILifeStateListener, IDamageListener
 {
 	/// <summary>
 	/// What's this player's info? Used for input, networking, identification.
@@ -291,6 +291,17 @@ public sealed class PlayerComponent : Component, ILifeStateListener
 			Body?.SetShouldRender( true );
 
 			GameStateManager.Instance.PlayerSpawner?.MoveToSpawnPoint( this );
+		}
+	}
+
+	void IDamageListener.OnDamage( ref DamageInfo dmgInfo )
+	{
+		if ( dmgInfo.Damage > 0f )
+		{
+			using ( ScopeInput() )
+			{
+				Input.TriggerHaptics( 1.0f, 0.0f, 0f, 0f, 500 );
+			}
 		}
 	}
 }
