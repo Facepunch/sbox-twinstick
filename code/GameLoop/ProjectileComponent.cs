@@ -72,12 +72,14 @@ public partial class ProjectileComponent : Component, Component.ITriggerListener
 
 		if ( owner.Root.Components.Get<PlayerComponent>( FindMode.EnabledInSelfAndDescendants ) is { } player )
 		{
-			Color = player.Body.Color;
+			Color col = player.Body.Color;
+
+			Color = col;
 
 			if ( Particles.IsValid() )
 			{
-				Particles.Tint = Color;
-				Particles.Gradient = Color;
+				Particles.Tint = col * 5f;
+				Particles.Gradient = col * 5f;
 			}
 		}
 	}

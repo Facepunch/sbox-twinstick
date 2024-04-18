@@ -52,11 +52,6 @@ public sealed class PlayerComponent : Component, ILifeStateListener
 	[Property, Group( "Components" )] public HealthComponent HealthComponent { get; set; }
 
 	/// <summary>
-	/// The main collider for the player.
-	/// </summary>
-	[Property, Group( "Components" )] public Collider MainCollider { get; set; }
-
-	/// <summary>
 	/// Is input enabled right now for this player?
 	/// </summary>
 	private bool EnableInput { get; set; } = true;
@@ -197,30 +192,16 @@ public sealed class PlayerComponent : Component, ILifeStateListener
 			return false;
 		}
 
-		//using ( Gizmo.Scope( "unstuck", Transform.World ) )
-		//{
-		//	Gizmo.Draw.Color = Gizmo.Colors.Red;
-		//	Gizmo.Draw.LineBBox( BoundingBox );
-		//}
-
 		int AttemptsPerTick = 20;
-
 		for ( int i = 0; i < AttemptsPerTick; i++ )
 		{
 			var pos = Transform.Position + Vector3.Random.Normal * (((float)_stuckTries) / 2.0f);
-
-			// First try the up direction for moving platforms
-			if ( i == 0 )
-			{
-				pos = Transform.Position + Vector3.Up * 2;
-			}
-
 			result = BuildTrace( pos, pos ).Run();
 
 			if ( !result.StartedSolid )
 			{
 				//Log.Info( $"unstuck after {_stuckTries} tries ({_stuckTries * AttemptsPerTick} tests)" );
-				Transform.Position = pos;
+				Transform.Position = pos.WithZ( Transform.Position.y );
 				return false;
 			}
 		}
@@ -275,7 +256,10 @@ public sealed class PlayerComponent : Component, ILifeStateListener
 
 		if ( Input.Down( "Attack1" ) )
 		{
-			Components.Get<ShootingComponent>( FindMode.EnabledInSelfAndDescendants )?.Fire( LookDirection );
+			if ( Components.Get<ShootingComponent>( FindMode.EnabledInSelfAndDescendants )?.Fire( LookDirection ) ?? false )
+			{
+				// Input.TriggerHaptics( 1.0f, 1.0f, 1.0f, 1.0f, 500 );
+			}
 		}
 	}
 
@@ -300,13 +284,11 @@ public sealed class PlayerComponent : Component, ILifeStateListener
 		{
 			EnableInput = false;
 			Body?.SetShouldRender( false );
-			MainCollider.Enabled = false;
 		}
 		if ( after == HealthComponent.LifeState.Alive )
 		{
 			EnableInput = true;
 			Body?.SetShouldRender( true );
-			MainCollider.Enabled = true;
 
 			GameStateManager.Instance.PlayerSpawner?.MoveToSpawnPoint( this );
 		}

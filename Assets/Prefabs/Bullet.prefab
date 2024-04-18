@@ -1,13 +1,13 @@
 {
   "RootObject": {
-    "__guid": "18a6daba-78dc-49a0-bcd5-6acd2f38a33f",
+    "__guid": "2a9a23f1-b154-4670-9c44-6bc5477c0929",
     "Name": "bullet",
     "Enabled": true,
     "NetworkMode": 2,
     "Components": [
       {
         "__type": "Twinstick.ProjectileComponent",
-        "__guid": "834bfe1d-6364-406b-8b12-39d9413a2c16",
+        "__guid": "5ea84833-b078-4021-9c5c-8b1b256a3ffa",
         "Damage": 25,
         "HomingPower": 128,
         "HomingRadius": 386,
@@ -15,14 +15,14 @@
         "Lifetime": 2,
         "ModelRenderer": {
           "_type": "component",
-          "component_id": "ef41f90b-8612-4138-a4b6-2b9c672e9b96",
-          "go": "fa877c29-2cc3-4662-8072-bcd61c75bb3d",
+          "component_id": "6256b5ba-9084-4a2d-893f-71df61ac949a",
+          "go": "73458ddc-2be0-4d2b-82ee-024f64086d76",
           "component_type": "ModelRenderer"
         },
         "Particles": {
           "_type": "component",
-          "component_id": "1dd95b65-d225-4ab8-b2f7-ade16687610e",
-          "go": "c06e71fa-ea82-49b3-94d1-8b73c1facd80",
+          "component_id": "73b9add6-8d31-4455-b533-4b6fbc77bd13",
+          "go": "e5d8a75d-2a0a-4061-9329-da61be67ac74",
           "component_type": "ParticleEffect"
         },
         "Radius": 32,
@@ -31,7 +31,7 @@
     ],
     "Children": [
       {
-        "__guid": "fa877c29-2cc3-4662-8072-bcd61c75bb3d",
+        "__guid": "73458ddc-2be0-4d2b-82ee-024f64086d76",
         "Name": "Mesh",
         "Position": "12.02762,0,0",
         "Scale": "0.5,0.1,0.1",
@@ -40,7 +40,7 @@
         "Components": [
           {
             "__type": "Sandbox.ModelRenderer",
-            "__guid": "ef41f90b-8612-4138-a4b6-2b9c672e9b96",
+            "__guid": "6256b5ba-9084-4a2d-893f-71df61ac949a",
             "BodyGroups": 18446744073709551615,
             "RenderType": "On",
             "Tint": "1,1,1,1"
@@ -48,7 +48,7 @@
         ],
         "Children": [
           {
-            "__guid": "c06e71fa-ea82-49b3-94d1-8b73c1facd80",
+            "__guid": "e5d8a75d-2a0a-4061-9329-da61be67ac74",
             "Name": "Exhaust 2",
             "Position": "-25.22242,0,0",
             "Scale": "2,2,2",
@@ -58,7 +58,7 @@
             "Components": [
               {
                 "__type": "Sandbox.ParticleEffect",
-                "__guid": "1dd95b65-d225-4ab8-b2f7-ade16687610e",
+                "__guid": "73b9add6-8d31-4455-b533-4b6fbc77bd13",
                 "Alpha": {
                   "Type": "Curve",
                   "CurveA": [
@@ -164,7 +164,7 @@
               },
               {
                 "__type": "Sandbox.ParticleSpriteRenderer",
-                "__guid": "07ae4033-6533-46c1-9eaf-a77f5a87f9b7",
+                "__guid": "85b0285c-fa12-44a5-8a26-49a3949d725a",
                 "Additive": true,
                 "BlurAmount": 0.5,
                 "BlurOpacity": 0.5,
@@ -183,7 +183,7 @@
               },
               {
                 "__type": "Sandbox.ParticleSphereEmitter",
-                "__guid": "19b4e280-f302-4fe0-8099-c724b044c600",
+                "__guid": "0cdc7f35-a5a9-4c76-984b-83a051b3919e",
                 "Burst": 0,
                 "Delay": 0,
                 "DestroyOnEnd": false,
@@ -195,6 +195,22 @@
                 "Velocity": 0
               }
             ]
+          }
+        ]
+      },
+      {
+        "__guid": "fb67b83d-258e-40df-9b05-4fbbce61584d",
+        "Name": "Collision",
+        "Enabled": true,
+        "NetworkMode": 2,
+        "Components": [
+          {
+            "__type": "Sandbox.BoxCollider",
+            "__guid": "396541d6-dbdc-40c4-b045-41868a92d2f8",
+            "Center": "0,0,0",
+            "IsTrigger": false,
+            "Scale": "60,10,10",
+            "Static": false
           }
         ]
       }

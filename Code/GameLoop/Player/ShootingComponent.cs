@@ -14,9 +14,9 @@ public partial class ShootingComponent : Component
 		return TimeUntilNextFire;
 	}
 
-	public void Fire( Vector3 direction )
+	public bool Fire( Vector3 direction )
 	{
-		if ( !CanFire() ) return;
+		if ( !CanFire() ) return false;
 
 		TimeUntilNextFire = FireRate;
 
@@ -40,5 +40,7 @@ public partial class ShootingComponent : Component
 		}
 
 		var snd = Sound.Play( ShootSound, Transform.Position );
+
+		return true;
 	}
 }
