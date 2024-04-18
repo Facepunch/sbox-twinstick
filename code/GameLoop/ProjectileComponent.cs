@@ -173,6 +173,11 @@ public partial class ProjectileComponent : Component, Component.ITriggerListener
 			return false;
 		}
 
+		if ( obj.Root.Components.Get<Collider>( FindMode.EverythingInSelfAndDescendants ) is { } collider )
+		{
+			if ( !collider.Enabled ) return false;
+		}
+
 		// Self 
 		if ( obj == GameObject ) return false;
 		if ( obj.Root == GameObject ) return false;
