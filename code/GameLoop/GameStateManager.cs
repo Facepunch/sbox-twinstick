@@ -139,7 +139,7 @@ public sealed class GameStateManager : Component
 		if ( @new == GameState.Countdown )
 		{
 			CreatePlayers( ReadyUpSystem.ReadyPlayers.Keys.ToArray() );
-			TimeUntilCountdown = 10;
+			TimeUntilCountdown = 3;
 		}
 		if ( @new == GameState.Play )
 		{

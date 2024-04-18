@@ -38,6 +38,8 @@
     public string Action { get; set; } = "Use";
     public InputGlyphSize Size { get; set; } = InputGlyphSize.Small;
 
+    public Color? GlyphColor { get; set; }
+
     public int ScopeId { get; set; } = -1;
 
     IDisposable Scope()
@@ -63,11 +65,16 @@
         UpdateTexture();
 
         SetClass( "keyboard", !Input.UsingController );
+
+        if ( GlyphColor.HasValue )
+        {
+            Glyph.Style.BackgroundTint = GlyphColor.Value;   
+        }
     }
 
     protected override int BuildHash()
     {
         // If we switch input device, rebuild the tree.
-        return HashCode.Combine( Action, Input.UsingController );
+        return HashCode.Combine( Action, Input.UsingController, GlyphColor );
     }
 }

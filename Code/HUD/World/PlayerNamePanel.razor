@@ -12,21 +12,21 @@
     </div>
     <div class="hints">
         <div class="hint small @ShieldClasses()">
-            <InputHint Size=@InputGlyphSize.Large Action="Attack2" ScopeId=@Player.Info.Index />
+            <InputHint Size=@InputGlyphSize.Large Action="Attack2" ScopeId=@Player.Info.Index GlyphColor=@GetColor() />
         </div>
 
         <div class="hint @BoostClasses()">
-            <InputHint Size=@InputGlyphSize.Large Action="Boost" ScopeId=@Player.Info.Index />
+            <InputHint Size=@InputGlyphSize.Large Action="Boost" ScopeId=@Player.Info.Index GlyphColor=@GetColor()/>
         </div>
 
         <div class="hint small @HintClasses()">
-             <InputHint Size=@InputGlyphSize.Large Action="Attack1" ScopeId=@Player.Info.Index />
+             <InputHint Size=@InputGlyphSize.Large Action="Attack1" ScopeId=@Player.Info.Index GlyphColor=@GetColor() />
         </div>
     </div>
 
     <div class="bar-area">
         <div class="bar @BarClasses()">
-            <div class="bar-inner" style="width:@((HealthComponent.Health / HealthComponent.HealthRange.y) * 100f)%" />
+            <div class="bar-inner" style=@BarStyles() />
         </div>
     </div>
 
@@ -58,6 +58,16 @@
     {
         if (Player.IsBoosting) return "cooldown";
         return "";
+    }
+
+    string BarStyles()
+    {
+        return $"background-color:{GetColor()}; width:{(HealthComponent.Health / HealthComponent.HealthRange.y) * 100f}%;";
+    }
+
+    Color GetColor()
+    {
+        return Manager.PlayerManager.PlayerColors[Player.Info.Index] * 1.15f;
     }
 
     string HintClasses()
