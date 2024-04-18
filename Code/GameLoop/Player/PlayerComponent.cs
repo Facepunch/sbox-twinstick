@@ -261,7 +261,7 @@ public sealed class PlayerComponent : Component, ILifeStateListener, IDamageList
 
 		if ( Input.Down( "Attack1" ) )
 		{
-			if ( Components.Get<ShootingComponent>( FindMode.EnabledInSelfAndDescendants )?.Fire( LookDirection ) ?? false )
+			if ( Components.Get<ShootingComponent>( FindMode.EnabledInSelfAndDescendants )?.Fire( TargetRotation.Forward ) ?? false )
 			{
 				Input.TriggerHaptics( 0f, 1f, 0.0f, 0.0f, 100 );
 			}
