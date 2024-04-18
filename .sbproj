@@ -51,9 +51,9 @@
           "GroupName": "Movement"
         },
         {
-          "Name": "Run",
+          "Name": "Boost",
           "KeyboardCode": "shift",
-          "GamepadCode": "LeftJoystickButton",
+          "GamepadCode": "X",
           "GroupName": "Movement"
         },
         {

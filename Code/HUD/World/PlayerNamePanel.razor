@@ -12,24 +12,15 @@
     </div>
     <div class="hints">
         <div class="hint small @ShieldClasses()">
-            @using ( Player.ScopeInput() )
-            {
-                <InputHint Size=@InputGlyphSize.Large Action="Attack2" />
-            }
+            <InputHint Size=@InputGlyphSize.Large Action="Attack2" ScopeId=@Player.Info.Index />
         </div>
 
         <div class="hint @BoostClasses()">
-            @using ( Player.ScopeInput() )
-            {
-                <InputHint Size=@InputGlyphSize.Large Action="Run" />
-            }
+            <InputHint Size=@InputGlyphSize.Large Action="Boost" ScopeId=@Player.Info.Index />
         </div>
 
         <div class="hint small @HintClasses()">
-            @using ( Player.ScopeInput() )
-            {
-                <InputHint Size=@InputGlyphSize.Large Action="Attack1" />
-            }
+             <InputHint Size=@InputGlyphSize.Large Action="Attack1" ScopeId=@Player.Info.Index />
         </div>
     </div>
 

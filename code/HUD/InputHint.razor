@@ -38,11 +38,20 @@
     public string Action { get; set; } = "Use";
     public InputGlyphSize Size { get; set; } = InputGlyphSize.Small;
 
+    public int ScopeId { get; set; } = -1;
+
+    IDisposable Scope()
+    {
+        if ( ScopeId != -1 ) return Input.PlayerScope( ScopeId );
+        return null;
+    }
+
     /// <summary>
     /// Checks the current button and updates the glyph.
     /// </summary>
     void UpdateTexture()
     {
+        using var scope = Scope();
         var texture = Input.GetGlyph( Action, Size, false );
         if ( texture is null ) return;
         if ( Glyph is null ) return;

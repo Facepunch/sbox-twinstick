@@ -256,7 +256,7 @@ public sealed class PlayerComponent : Component, ILifeStateListener
 	{
 		WishVelocity = EnableInput ? Input.AnalogMove : 0;
 
-		SetBoosting( Input.Down( "Run" ) && WishVelocity.Length > 0f );
+		SetBoosting( Input.Down( "Boost" ) && WishVelocity.Length > 0f );
 
 		if ( !WishVelocity.IsNearlyZero() )
 		{

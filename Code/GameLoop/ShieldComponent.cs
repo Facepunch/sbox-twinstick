@@ -105,6 +105,7 @@ public sealed class ShieldComponent : Component, IDamageListener, IProjectileCol
 
 	bool CanToggleActive()
 	{
+		if ( Player.Components.Get<HealthComponent>()?.State != HealthComponent.LifeState.Alive ) return true;
 		if ( ShieldAmount <= ShieldRange.x ) return false;
 		return true;
 	}
