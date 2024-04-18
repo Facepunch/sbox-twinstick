@@ -346,6 +346,13 @@
           "Tint": "0.0186,0.0186,0.0186,1"
         }
       ]
+    },
+    {
+      "__guid": "687b2aef-fc0e-4e5f-9e25-a683ddcd0194",
+      "Name": "PickupManager",
+      "Position": "-188.2825,-66.94821,-111.0289",
+      "Enabled": true,
+      "NetworkMode": 2
     }
   ],
   "SceneProperties": {
@@ -371,7 +378,7 @@
   },
   "Title": "Game Scene",
   "Description": "",
-  "LastSaved": "2024-04-18T10:15:27.9509695\u002B01:00",
+  "LastSaved": "2024-04-18T11:42:25.4709623\u002B01:00",
   "ResourceVersion": 1,
   "__version": 1,
   "__references": []

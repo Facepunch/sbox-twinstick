@@ -69,7 +69,7 @@
             "__type": "Sandbox.ModelRenderer",
             "__guid": "bf6c72ef-3136-4e83-960f-6783e25d3311",
             "BodyGroups": 18446744073709551615,
-            "Model": "ships/craft_speedera.vmdl",
+            "Model": "ships/new/spaceship.vmdl",
             "RenderType": "On",
             "Tint": "0,0,0,1"
           },
@@ -121,7 +121,7 @@
               {
                 "__guid": "d72d95d1-7b78-4e03-a99e-42a075ce97c9",
                 "Name": "Exhaust 1",
-                "Position": "-10.90904,-3.541648,-2.040193",
+                "Position": "-8.829823,-3.471521,-0.5920055",
                 "Scale": "0.3333333,0.3333333,0.3333333",
                 "Tags": "particles",
                 "Enabled": true,
@@ -269,7 +269,7 @@
               {
                 "__guid": "abcc790e-2beb-40d1-933c-a5fcce317788",
                 "Name": "Exhaust 2",
-                "Position": "-10.90904,3.571606,-2.040193",
+                "Position": "-8.829823,3.297468,-0.5920055",
                 "Scale": "0.3333333,0.3333333,0.3333333",
                 "Tags": "particles",
                 "Enabled": true,
@@ -419,6 +419,7 @@
           {
             "__guid": "3223fc2c-f559-4d6b-844a-b053880f32d5",
             "Name": "BoostEffects",
+            "Position": "1.591821,0,0.789969",
             "NetworkMode": 2,
             "Children": [
               {
@@ -738,8 +739,8 @@
             },
             "ShootSound": "sounds/weapons/laser_shoot.sound",
             "TimeUntilNextFire": {
-              "Relative": -1483.8821,
-              "Passed": 1483.8821,
+              "Relative": -1864.7974,
+              "Passed": 1864.7974,
               "Fraction": 1
             }
           }
