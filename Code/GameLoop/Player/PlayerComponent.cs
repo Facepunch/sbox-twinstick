@@ -52,6 +52,11 @@ public sealed class PlayerComponent : Component, ILifeStateListener, IDamageList
 	[Property, Group( "Components" )] public HealthComponent HealthComponent { get; set; }
 
 	/// <summary>
+	/// The player's main collider
+	/// </summary>
+	[Property, Group( "Components" )] public Collider MainCollider { get; set; }
+
+	/// <summary>
 	/// Is input enabled right now for this player?
 	/// </summary>
 	private bool EnableInput { get; set; } = true;
@@ -284,11 +289,13 @@ public sealed class PlayerComponent : Component, ILifeStateListener, IDamageList
 		{
 			EnableInput = false;
 			Body?.SetShouldRender( false );
+			MainCollider.Enabled = false;
 		}
 		if ( after == HealthComponent.LifeState.Alive )
 		{
 			EnableInput = true;
 			Body?.SetShouldRender( true );
+			MainCollider.Enabled = true;
 
 			GameStateManager.Instance.PlayerSpawner?.MoveToSpawnPoint( this );
 		}

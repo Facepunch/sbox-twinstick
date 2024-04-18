@@ -175,9 +175,10 @@ public partial class ProjectileComponent : Component, Component.ITriggerListener
 			return false;
 		}
 
-		if ( obj.Root.Components.Get<Collider>( FindMode.EverythingInSelfAndDescendants ) is { } collider )
+		var colliders = obj.Root.Components.GetAll<Collider>( FindMode.EverythingInSelfAndDescendants );
+		if ( colliders.Count( x => x.Enabled ) == 0 )
 		{
-			if ( !collider.Enabled ) return false;
+			return false;
 		}
 
 		// Self 
