@@ -41,6 +41,12 @@ PlayerNamePanel
 		background-color: rgba( black, 0.5 );
 		height: 128px;
 		width: 35%;
+		opacity: 0;
+
+		&.visible
+		{
+			opacity: 1;
+		}
 	}
 
 	.bar-inner
