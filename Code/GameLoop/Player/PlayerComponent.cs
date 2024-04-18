@@ -258,7 +258,7 @@ public sealed class PlayerComponent : Component, ILifeStateListener
 		{
 			if ( Components.Get<ShootingComponent>( FindMode.EnabledInSelfAndDescendants )?.Fire( LookDirection ) ?? false )
 			{
-				// Input.TriggerHaptics( 1.0f, 1.0f, 1.0f, 1.0f, 500 );
+				Input.TriggerHaptics( 0f, 1f, 0.0f, 0.0f, 100 );
 			}
 		}
 	}
