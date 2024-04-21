@@ -237,12 +237,24 @@ public sealed class PlayerComponent : Component, ILifeStateListener, IDamageList
 		return TurnSpeed;
 	}
 
+	Vector3 LastNonZeroVelocity;
 	Vector3 WishVelocity;
 	void MoveInput()
 	{
+		var prevWishVelocity = WishVelocity;
+
+		if ( prevWishVelocity.Length > 0 )
+		{
+			LastNonZeroVelocity = prevWishVelocity;
+		}
+
 		WishVelocity = EnableInput ? Input.AnalogMove : 0;
 
-		SetBoosting( Input.Down( "Boost" ) && WishVelocity.Length > 0f );
+		SetBoosting( Input.Down( "Boost" ) );
+
+		if ( Input.Down( "Boost" ) ) WishVelocity = LastNonZeroVelocity;
+
+		Log.Info( WishVelocity );
 
 		if ( !WishVelocity.IsNearlyZero() )
 		{
