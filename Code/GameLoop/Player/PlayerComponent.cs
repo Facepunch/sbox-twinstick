@@ -221,6 +221,8 @@ public sealed class PlayerComponent : Component, ILifeStateListener, IDamageList
 	{
 		if ( boosting == IsBoosting ) return;
 
+		if ( HealthComponent.State != HealthComponent.LifeState.Alive ) boosting = false;
+
 		IsBoosting = boosting;
 		Body.SetBoosting( boosting );
 	}

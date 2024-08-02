@@ -43,6 +43,5 @@ public sealed class PlayerBodyComponent : Component
 	{
 		isBoost = boosting;
 		BoostEffectsGameObject.Enabled = isBoost;
-		EffectsGameObject.Enabled = !isBoost;
 	}
 }
