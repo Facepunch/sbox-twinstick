@@ -254,8 +254,6 @@ public sealed class PlayerComponent : Component, ILifeStateListener, IDamageList
 
 		if ( Input.Down( "Boost" ) ) WishVelocity = LastNonZeroVelocity;
 
-		Log.Info( WishVelocity );
-
 		if ( !WishVelocity.IsNearlyZero() )
 		{
 			WishVelocity = WishVelocity.WithZ( 0 );

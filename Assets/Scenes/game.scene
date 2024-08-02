@@ -1,13 +1,13 @@
 {
-  "__guid": "c67fc9bc-ba2b-48d0-b652-af8ffa7b1fd3",
+  "__guid": "e16ad37f-07e2-40eb-9f3e-150fe2410a4b",
   "GameObjects": [
     {
       "__guid": "bfc59c12-1ed2-4f91-8956-a95a315eac3c",
+      "Flags": 0,
       "Name": "Sun",
       "Rotation": "-0.0729315,0.4822396,0.1305433,0.8631827",
       "Tags": "light_directional,light",
       "Enabled": true,
-      "NetworkMode": 2,
       "Components": [
         {
           "__type": "Sandbox.DirectionalLight",
@@ -22,10 +22,10 @@
     },
     {
       "__guid": "00344a8c-fa5e-45ae-b12a-10bb781a1dc3",
+      "Flags": 0,
       "Name": "2D Skybox",
       "Tags": "skybox",
       "Enabled": true,
-      "NetworkMode": 2,
       "Components": [
         {
           "__type": "Sandbox.SkyBox2D",
@@ -56,11 +56,11 @@
     },
     {
       "__guid": "3ee1c9f4-07be-4e0b-8b23-67bee2d8ec8a",
+      "Flags": 0,
       "Name": "Camera",
       "Position": "-0.0006160085,0.00004222622,2583.727",
       "Rotation": "0.00000002652706,0.7071068,-0.00000002652706,0.7071068",
       "Enabled": true,
-      "NetworkMode": 2,
       "Components": [
         {
           "__type": "Sandbox.CameraComponent",
@@ -111,9 +111,13 @@
         {
           "__type": "Sandbox.Tonemapping",
           "__guid": "63602e63-a94c-48ef-a971-b3f74ebf9256",
+          "__version": 1,
+          "ExposureBias": 2,
           "ExposureCompensation": 0.53,
+          "ExposureMethod": "RGB",
           "MaximumExposure": 1.43,
           "MinimumExposure": 1.5,
+          "Mode": "Legacy",
           "Rate": 1
         },
         {
@@ -156,16 +160,16 @@
     },
     {
       "__guid": "60e1ff4e-a325-435d-b298-20484e2b3879",
+      "Flags": 0,
       "Name": "GameManager",
       "Position": "21.18487,14.66469,14.19653",
       "Enabled": true,
-      "NetworkMode": 2,
       "Components": [
         {
           "__type": "Twinstick.GameStateManager",
           "__guid": "5c25a0df-eb91-4e70-991a-9103d3afa86c",
           "CurrentState": "ReadyingPlayers",
-          "IsDevelopment": true,
+          "IsDevelopment": false,
           "PlayerCount": 2,
           "PlayerManager": {
             "_type": "component",
@@ -216,10 +220,10 @@
       "Children": [
         {
           "__guid": "0e42fbe9-6fd3-4666-a1fc-7ba8f3253b6a",
+          "Flags": 0,
           "Name": "HUD",
           "Position": "0,0,0",
           "Enabled": true,
-          "NetworkMode": 2,
           "Components": [
             {
               "__type": "Twinstick.GameHUD",
@@ -251,17 +255,17 @@
     },
     {
       "__guid": "43b7b83f-16ae-4dcc-8a4d-1a81bf3ecec0",
+      "Flags": 0,
       "Name": "Spawn Points",
       "Position": "0,0,55.09144",
       "Enabled": true,
-      "NetworkMode": 2,
       "Children": [
         {
           "__guid": "3b04ce1d-8a54-4b5a-a24c-0cacab57d26c",
+          "Flags": 0,
           "Name": "Point",
           "Position": "-297.8163,-319.0418,-0.00008385931",
           "Enabled": true,
-          "NetworkMode": 2,
           "Components": [
             {
               "__type": "Sandbox.SpawnPoint",
@@ -272,10 +276,10 @@
         },
         {
           "__guid": "e3a3fb00-2639-469e-81f4-fc1f037a91a9",
+          "Flags": 0,
           "Name": "Point (1)",
           "Position": "448.2776,348.3219,-0.00001314103",
           "Enabled": true,
-          "NetworkMode": 2,
           "Components": [
             {
               "__type": "Sandbox.SpawnPoint",
@@ -286,10 +290,10 @@
         },
         {
           "__guid": "64e11c34-8b24-47c7-827b-b96140d18095",
+          "Flags": 0,
           "Name": "Point (2)",
           "Position": "450.0531,-336.8779,0.0007095374",
           "Enabled": true,
-          "NetworkMode": 2,
           "Components": [
             {
               "__type": "Sandbox.SpawnPoint",
@@ -300,10 +304,10 @@
         },
         {
           "__guid": "814d2177-77e4-4679-aef4-99279621441e",
+          "Flags": 0,
           "Name": "Point (3)",
           "Position": "-326.2569,326.8099,0.0004430546",
           "Enabled": true,
-          "NetworkMode": 2,
           "Components": [
             {
               "__type": "Sandbox.SpawnPoint",
@@ -316,11 +320,11 @@
     },
     {
       "__guid": "04527242-9fa1-47a6-bc30-9cd0425ff517",
+      "Flags": 0,
       "Name": "2D Skybox",
       "Position": "-37.68263,85.71933,146.4176",
       "Tags": "skybox",
       "Enabled": true,
-      "NetworkMode": 2,
       "Components": [
         {
           "__type": "Sandbox.SkyBox2D",
@@ -332,10 +336,10 @@
     },
     {
       "__guid": "ad18a618-e09e-43f1-9425-826f2fa2bc48",
+      "Flags": 0,
       "Name": "Cube",
       "Scale": "300,300,1",
       "Enabled": true,
-      "NetworkMode": 2,
       "Components": [
         {
           "__type": "Sandbox.ModelRenderer",
@@ -349,9 +353,9 @@
     },
     {
       "__guid": "687b2aef-fc0e-4e5f-9e25-a683ddcd0194",
+      "Flags": 0,
       "Name": "PickupManager",
       "Enabled": true,
-      "NetworkMode": 2,
       "Components": [
         {
           "__type": "Twinstick.PickupManager",
@@ -361,11 +365,11 @@
     },
     {
       "__guid": "c5384eb3-2bae-48bf-81f9-d56ee0ce403b",
+      "Flags": 0,
       "Name": "Pickup",
       "Position": "0,0,74.31615",
       "Tags": "trigger",
       "Enabled": true,
-      "NetworkMode": 2,
       "Components": [
         {
           "__type": "Sandbox.ModelRenderer",
@@ -393,9 +397,9 @@
   ],
   "SceneProperties": {
     "FixedUpdateFrequency": 50,
-    "Lerping": true,
     "MaxFixedUpdates": 5,
     "NetworkFrequency": 60,
+    "NetworkInterpolation": true,
     "ThreadedAnimation": true,
     "TimeScale": 1,
     "UseFixedUpdate": true,
@@ -414,8 +418,7 @@
   },
   "Title": "Game Scene",
   "Description": "",
-  "LastSaved": "2024-04-18T16:13:27.6803597\u002B01:00",
   "ResourceVersion": 1,
-  "__version": 1,
-  "__references": []
+  "__references": [],
+  "__version": 1
 }
