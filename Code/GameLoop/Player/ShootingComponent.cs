@@ -23,7 +23,7 @@ public partial class ShootingComponent : Component
 		var gameObject = ProjectilePrefab.Clone( new CloneConfig()
 		{
 			 Name = "Projectile",
-			 Transform = new Transform( Transform.Position ),
+			 Transform = new Transform( Transform.Position ).WithRotation( Rotation.LookAt( direction ) ),
 			 StartEnabled = true,
 		} );
 
